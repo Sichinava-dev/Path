@@ -758,6 +758,15 @@ h2::before,h2::after{background:linear-gradient(90deg,transparent,var(--gold)) c
 .btn.danger-btn{background:color-mix(in srgb,var(--ember) 22%,var(--panel))!important;color:var(--ember)!important;border-color:var(--ember)!important}
 @media (prefers-reduced-motion:reduce){.dlg .dlg-wrap{animation:none!important;opacity:1;transform:none;filter:none}}
 
+
+/* tap-to-skip for ascension overlays */
+.asc .btn.gold{animation:fadein .4s 1.6s forwards,goldflow 3.5s linear infinite!important}
+.over.skip .asc .btn.gold{animation:fadein .1s forwards,goldflow 3.5s linear infinite!important}
+.over.skip .asc,.over.skip .asc *{animation-delay:0s!important;animation-duration:.08s!important}
+.over.skip .asc .spin{animation-duration:80s!important}
+.over.skip .asc .rays{animation:raysin .08s forwards,raysspin 30s linear infinite!important;opacity:1}
+.over.skip .asc .shard{display:none}
+.over{cursor:pointer}
 </style>
 </head>
 <body>
@@ -1266,7 +1275,10 @@ const SFX=(()=>{
     glitchHeavy(t){ signal(t,.06); tapestop(t+.15,160,.6,.07); },
     error(t){ horn([N.E2,N.Bb2],t,.6,.07,.05); sub(t,.12,60,34,.5); }
   };
-  return { init, vol(v){ if(master) master.gain.value=1.0*(v/100); }, play(name){ if(S.sound===false) return; if(!init()) return; try{ P[name](ctx.currentTime+.02); }catch(e){} } };
+  let buses=[];
+  return { init, vol(v){ if(master) master.gain.value=1.0*(v/100); },
+    play(name){ if(S.sound===false) return; if(!init()) return; const real=master, bus=ctx.createGain(); bus.connect(real); master=bus; try{ P[name](ctx.currentTime+.02); }catch(e){} master=real; buses.push(bus); if(buses.length>24) buses.shift(); },
+    stopAll(){ if(!ctx) return; const n=ctx.currentTime; buses.forEach(b=>{ try{ b.gain.cancelScheduledValues(n); b.gain.setValueAtTime(b.gain.value,n); b.gain.linearRampToValueAtTime(0,n+.22); }catch(e){} }); buses=[]; } };
 })();
 ["touchend","click","keydown"].forEach(ev=>document.addEventListener(ev,()=>{ if(S.sound!==false) SFX.init(); },{capture:true,passive:true}));
 
@@ -1588,9 +1600,13 @@ function ascend(ev,g){
    <p>${sub}</p>
    <button class="btn gold full" data-close>Continue</button>`;
   $("#over").classList.add("on"); SFX.play(snd); if(ev.k==="boss"||(ev.k==="judge"&&ev.J.fell)||ev.k==="lvdown"||(ev.k==="lv"&&ev.rank)) glitchFx(ev.k==="boss"||(ev.k==="judge"&&ev.J.fell)?2:1,true);
-  setTimeout(()=>screenFX(ev.k==="boss"||ev.rank||(ev.k==="judge"&&ev.J.fell)?"shake":"",col||null),delay);
+  clearTimeout(window._ascT); window._ascT=setTimeout(()=>screenFX(ev.k==="boss"||ev.rank||(ev.k==="judge"&&ev.J.fell)?"shake":"",col||null),delay);
+  { const ov=$("#over"); ov.classList.remove("skip"); ov.classList.add("anim"); clearTimeout(window._ascA); window._ascA=setTimeout(()=>ov.classList.remove("anim"),2000); }
   setTimeout(()=>{const x=$("#ovbox .btn");x&&x.focus();},50);
 }
+function closeOver(){ const ov=$("#over"); clearTimeout(window._ascT); clearTimeout(window._ascA); ov.classList.remove("on","anim","skip"); SFX.stopAll(); SFX.play("tap"); setTimeout(celebrate,120); }
+function skipOver(){ const ov=$("#over"); if(!ov.classList.contains("anim")) return false; clearTimeout(window._ascT); clearTimeout(window._ascA); ov.classList.remove("anim"); ov.classList.add("skip"); const b=$("#ovbox .btn"); b&&b.focus(); return true; }
+document.getElementById("over").addEventListener("click",e=>{ if(e.target.closest("[data-close]")) return; e.stopPropagation(); if(!skipOver()) closeOver(); });
 function celebrate(){
   if($("#over").classList.contains("on")) return;
   const g=game(), ev=pendingEvents(g)[0]; if(!ev) return;
@@ -2223,7 +2239,7 @@ document.addEventListener("click",async e=>{
   const t=e.target.closest("button,.aura[data-pal]"); if(!t) return;
   const R=S.run;
   if(false&&t.id==="snd"){ S.sound = S.sound===false; save(); sndUI(); if(S.sound){SFX.init();SFX.play("check");toast("ხმა ჩართულია");} else toast("ხმა გამორთულია"); return; }
-  if("close" in t.dataset){SFX.play("tap");$("#over").classList.remove("on");celebrate();return;}
+  if("close" in t.dataset){ closeOver(); return; }
   /* runner */
   if("rpain" in t.dataset){ if(!await ask("შევწყვიტოთ მისია? დღე Recovery Day გახდება — სასჯელის გარეშე.",{t:"Stop Mission",r:"ᛁ",ok:"შეწყვეტა",danger:1})) return;
     const k=todayKey(), R=S.run; if(R&&Object.keys(R.reps).length){ S.sessions=S.sessions.filter(s=>!(s.d===k&&s.type===R.type)); S.sessions.push({d:k,type:R.type,sets:JSON.parse(JSON.stringify(R.reps))}); }
