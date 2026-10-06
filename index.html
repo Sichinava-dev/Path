@@ -33,7 +33,8 @@
 }
 :root[data-theme="dark"]{--bg:#0A0810;--panel:#141019;--panel2:#1B1522;--ink:#F1E9DA;--soft:#A99DB4;--line:#3A2F45;--gold:#E4B95B;--gold-soft:#2E2414;--arc:#A97CFF;--arc-soft:#231A36;--ember:#FF7A6B;--glow:rgba(228,185,91,.22);--aglow:rgba(169,124,255,.22);--shine:#FFF4D6;--bronze:#D08A4E;--silver:#C3CBD6;--goldt:#F0C766;--myth:#B992FF;}
 *,*::before,*::after{box-sizing:inherit}
-html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);touch-action:manipulation}
+*{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 body{margin:0;min-height:100%;color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.5;-webkit-text-size-adjust:100%;
   background:radial-gradient(ellipse 120% 60% at 50% -10%,var(--aglow),transparent 65%) fixed,var(--bg)}
 #motes{position:fixed;inset:0;pointer-events:none;z-index:0}
@@ -107,7 +108,7 @@ button,input{font:inherit;color:inherit} button{cursor:pointer}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn.warn{background:transparent;color:var(--ember);border-color:var(--ember)}
 .row{display:flex;gap:10px;align-items:center}
-input[type=number],input[type=date]{background:var(--bg);border:1px solid var(--line);padding:12px;min-width:0;width:100%;font-size:1.05rem;border-radius:4px}
+input[type=number],input[type=date],input[type=text],input[type=search]{background:var(--bg);border:1px solid var(--line);padding:12px;min-width:0;width:100%;font-size:1.05rem;border-radius:4px}
 input:focus{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 0 14px var(--glow)}
 label.f{display:block;font-size:.85rem;color:var(--soft);margin-bottom:4px}
 /* mission page */
@@ -127,7 +128,7 @@ details.ex summary::-webkit-details-marker{display:none}
 .ex .n{flex:0 0 34px;height:34px;display:grid;place-items:center;font-family:var(--num);font-weight:800;color:var(--gold);border:1px solid var(--gold);transform:rotate(45deg)}
 .ex .n span{transform:rotate(-45deg)}
 .ex .nm{flex:1;min-width:0}
-.ex .nm b{display:block;line-height:1.3}
+.ex .nm b{display:block;line-height:1.3;font-family:var(--num);letter-spacing:.03em}
 .ex .nm small{color:var(--soft)}
 .ex .sr{font-family:var(--num);font-weight:800;color:var(--gold);font-size:.88rem;white-space:nowrap}
 .ex .chev{transition:transform .25s;color:var(--soft)}
@@ -235,7 +236,7 @@ table.week tr.today td{color:var(--gold);font-weight:800}
 .supp .ico{font-size:1.5rem}
 .supp .dose{font-weight:800;color:var(--gold)}
 .supp ul{margin:.4em 0 0;padding-left:1.1em} .supp li{margin:.2em 0;font-size:.94rem}
-textarea.code{display:block;width:100%;min-height:90px;margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:10px;font:12px/1.4 ui-monospace,Menlo,monospace;color:var(--ink);word-break:break-all;resize:vertical}
+textarea.code{display:block;width:100%;min-height:90px;margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:10px;font:16px/1.4 ui-monospace,Menlo,monospace;color:var(--ink);word-break:break-all;resize:vertical}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .targets{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
 .targets div{border:1px solid var(--line);padding:8px 4px;border-radius:4px}
@@ -243,7 +244,7 @@ textarea.code{display:block;width:100%;min-height:90px;margin-top:10px;backgroun
 .targets span{font-size:.8rem;color:var(--soft)}
 /* tabs */
 .tabs{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--panel) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
-.tabs .in{max-width:600px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.tabs .in{max-width:600px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
 .tabs button{background:none;border:0;padding:8px 2px 10px;font-family:var(--num);letter-spacing:.06em;font-size:.74rem;font-weight:800;color:var(--soft);display:flex;flex-direction:column;align-items:center;gap:1px;position:relative}
 .tabs .e{font-family:var(--rune);font-size:1.45rem;line-height:1.2;opacity:.5;transition:all .25s}
 .tabs button[aria-selected="true"]{color:var(--gold)}
@@ -326,7 +327,7 @@ svg text{font-family:var(--num)}
 select{background:var(--bg);border:1px solid var(--line);padding:12px;width:100%;font-size:1rem;border-radius:4px;color:var(--ink)}
 .sndbtn{position:fixed;z-index:26;top:calc(env(safe-area-inset-top,0px) + 12px);right:12px;width:42px;height:42px;border-radius:50%;border:1px solid var(--gold);background:color-mix(in srgb,var(--panel) 85%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:1.1rem;display:grid;place-items:center;box-shadow:0 0 14px var(--glow)}
 .sndbtn.off{border-color:var(--line);box-shadow:none;opacity:.7}
-h1{padding-right:50px}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.asc *{opacity:1!important;stroke-dashoffset:0!important}.asc .pillar{display:none}}
 
 /* ===== grand effects ===== */
@@ -405,6 +406,147 @@ body.shake main,body.shake .over .asc{animation:shake .8s cubic-bezier(.36,.07,.
 .asc .btn{position:relative;z-index:1}
 @media (prefers-reduced-motion:reduce){.bg .aur,.bg .beams,.bigring{animation:none!important}.win.lit::before{display:none}.shard,.asc .rays{display:none}}
 
+
+.life{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:.8rem}
+.lifebar{flex:1;height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.lifebar i{display:block;height:100%;background:linear-gradient(90deg,#8E1B2B,#E23B4E);box-shadow:0 0 10px #E23B4E;transition:width .6s}
+.lifebar.low i{animation:lowhp 1s ease-in-out infinite}
+@keyframes lowhp{50%{opacity:.45}}
+.goldc{color:var(--gold);margin-left:6px;white-space:nowrap}
+.fxrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.fx{font-size:.74rem;font-weight:800;padding:3px 9px;border-radius:999px;border:1px solid}
+.fx.bad{color:var(--ember);border-color:var(--ember);background:color-mix(in srgb,var(--ember) 12%,transparent)}
+.fx.good{color:var(--gold);border-color:var(--gold);background:var(--gold-soft)}
+.threat{margin-top:8px;font-size:.84rem;padding:8px 12px;border-left:3px solid var(--ember);background:color-mix(in srgb,var(--ember) 8%,transparent);color:var(--ink)}
+.threat .num{color:var(--ember)}
+.win.fallen{border-color:#D8283F;box-shadow:0 0 30px rgba(216,40,63,.35),inset 0 0 40px rgba(216,40,63,.18);animation:fallenpulse 2.4s ease-in-out infinite}
+.win.fallen .tag,.win.fallen .tag::before{color:#FF5C6E}
+@keyframes fallenpulse{50%{box-shadow:0 0 44px rgba(216,40,63,.55),inset 0 0 60px rgba(216,40,63,.25)}}
+.shop{display:grid;gap:8px;margin-top:10px}
+.item{display:grid;grid-template-columns:36px 1fr auto;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+.item .ii{font-size:1.6rem;text-align:center}
+.btn.buy{padding:10px 12px;white-space:nowrap;font-family:var(--num)}
+.btn[disabled]{opacity:.45;animation:none}
+.fsearch{margin-top:14px}
+.fcats{display:flex;gap:6px;overflow-x:auto;margin:10px -4px 0;padding:2px 4px 4px;scrollbar-width:none}
+.fcats::-webkit-scrollbar{display:none}
+.fcat{flex:0 0 auto;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:7px 13px;font-family:var(--num);font-weight:800;font-size:.8rem;letter-spacing:.03em;color:var(--soft)}
+.fcat[aria-pressed="true"]{border-color:var(--gold);color:var(--gold);box-shadow:0 0 12px var(--glow)}
+.fmul{display:flex;align-items:center;gap:6px;margin-top:10px}
+.fmul button{border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:6px 11px;font-family:var(--num);font-weight:800;font-size:.85rem}
+.fmul button[aria-pressed="true"]{border-color:var(--gold);color:var(--gold);background:var(--gold-soft)}
+details.custom{margin-top:12px;border:1px dashed var(--line);border-radius:6px;padding:10px 12px}
+details.custom summary{cursor:pointer;font-weight:700;color:var(--gold)}
+/* splash */
+.splash{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 40%,#1a1226,#06040A 70%);transition:opacity .7s ease,transform .7s ease;cursor:pointer}
+.splash.out{opacity:0;transform:scale(1.08);pointer-events:none}
+.sp-in{text-align:center;position:relative}
+.sp-ring{width:260px;height:260px;display:block;margin:0 auto;overflow:visible}
+.sp-ring .c1{stroke-dasharray:600;stroke-dashoffset:600;animation:draw 1.3s .1s ease-out forwards}
+.sp-ring .c2{stroke-dasharray:640;stroke-dashoffset:640;animation:draw 1.5s .3s ease-out forwards}
+.sp-ring .rt{opacity:0;animation:fadein .8s .9s forwards}
+.sp-ring .hx{opacity:0;animation:fadein .8s .6s forwards}
+.sp-title{position:absolute;left:0;right:0;top:104px;font-family:"Cinzel",serif;font-weight:800;font-size:3rem;letter-spacing:.32em;padding-left:.32em;color:#E4B95B}
+.sp-title span{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(10px);animation:letter .7s ease-out forwards;text-shadow:0 0 24px rgba(228,185,91,.7)}
+.sp-title span:nth-child(1){animation-delay:1.0s}.sp-title span:nth-child(2){animation-delay:1.15s}.sp-title span:nth-child(3){animation-delay:1.3s}.sp-title span:nth-child(4){animation-delay:1.45s}
+@keyframes letter{to{opacity:1;filter:none;transform:none}}
+.sp-sub{font-family:"Cinzel",serif;color:#A99DB4;letter-spacing:.3em;font-size:.78rem;margin-top:14px;opacity:0;animation:fadein .8s 1.8s forwards}
+.sp-tap{margin-top:26px;color:#E4B95B;font-size:.85rem;opacity:0;animation:fadein .6s 2.2s forwards,tapblink 1.6s 2.8s ease-in-out infinite}
+@keyframes tapblink{50%{opacity:.35}}
+.sp-flare{position:absolute;left:50%;top:130px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(255,244,214,.95) 0,rgba(228,185,91,.45) 18%,rgba(228,185,91,.12) 40%,transparent 65%);transform:translate(-50%,-50%) scale(.05);opacity:0;pointer-events:none;animation:flare 1.3s .95s ease-out forwards}
+@keyframes flare{0%{opacity:0;transform:translate(-50%,-50%) scale(.05)}25%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(1.6)}}
+@media (prefers-reduced-motion:reduce){.splash *{animation:none!important;opacity:1!important;filter:none!important;transform:none!important;stroke-dashoffset:0!important}}
+
+
+.htabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:4px 0 12px}
+.htabs button{border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:10px 4px;font-family:var(--num);font-weight:800;font-size:.8rem;letter-spacing:.04em;color:var(--soft)}
+.htabs button[aria-pressed="true"]{border-color:var(--gold);color:var(--gold);box-shadow:inset 0 0 18px var(--glow)}
+.classes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cls{border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:12px;text-align:left;display:flex;flex-direction:column;gap:4px}
+.cls .ci{font-size:1.6rem}
+.cls.on{border-color:var(--gold);box-shadow:0 0 20px var(--glow);opacity:1!important}
+.cls[disabled]:not(.on){opacity:.55}
+.tal{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:10px 0}
+.tal+.tal{border-top:1px solid var(--line)}
+.tal .ti{font-size:1.4rem;text-align:center}
+.pips{display:flex;gap:5px;margin-top:5px}
+.pips i{width:16px;height:6px;border-radius:3px;background:var(--line)}
+.pips i.on{background:var(--gold);box-shadow:0 0 8px var(--gold)}
+.btn.plus{width:44px;height:44px;padding:0;font-size:1.4rem;border-radius:50%}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.slot{border:1.5px solid var(--rc);border-radius:6px;padding:10px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;background:color-mix(in srgb,var(--rc) 8%,var(--panel));box-shadow:0 0 16px color-mix(in srgb,var(--rc) 25%,transparent)}
+.slot .si{font-size:2rem}
+.inv{display:grid;gap:8px}
+.gear{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center;text-align:left;border:1px solid color-mix(in srgb,var(--rc) 55%,var(--line));background:var(--panel);border-radius:6px;padding:10px;position:relative}
+.gear .gi{font-size:1.8rem;text-align:center;filter:drop-shadow(0 0 8px var(--rc))}
+.gear .gt{display:flex;flex-direction:column;min-width:0}
+.gear.on{box-shadow:0 0 0 1px var(--rc),0 0 22px color-mix(in srgb,var(--rc) 40%,transparent)}
+.gear .badge{position:absolute;top:8px;right:10px;font-size:.68rem;color:var(--rc)}
+.locked-gear{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.locked-gear span{width:30px;height:30px;display:grid;place-items:center;border:1px dashed var(--rc);border-radius:6px;color:var(--rc);font-family:var(--num);opacity:.5}
+.twr{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center}
+.twr .tw{font-size:2rem;text-align:center}
+.win.event{border-color:color-mix(in srgb,var(--arc) 50%,var(--line))}
+.fx{color:var(--soft);border-color:var(--line)}
+.fx.ev{color:var(--arc);border-color:var(--arc);background:var(--arc-soft)}
+.setrow{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.switch{width:56px;height:32px;border-radius:16px;border:1px solid var(--line);background:var(--line);position:relative;padding:0;transition:background .2s}
+.switch i{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:var(--ink);transition:transform .2s}
+.switch.on{background:var(--gold);border-color:var(--gold)}
+.switch.on i{transform:translateX(24px);background:var(--bg)}
+input[type=range]{width:100%;accent-color:var(--gold)}
+dl.elx{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:10px 0 0;font-size:.9rem}
+dl.elx dt{font-weight:800;color:var(--gold);white-space:nowrap}
+dl.elx dd{margin:0}
+@media (max-width:380px){dl.elx{grid-template-columns:1fr}dl.elx dd{margin-bottom:6px}}
+
+.win.rec{border-color:var(--gold);box-shadow:0 0 24px var(--glow)}
+
+.htabs{grid-template-columns:repeat(5,1fr)!important}
+.htabs button{font-size:.72rem!important;padding:10px 2px!important}
+.tabs button{font-size:.68rem}
+.slots{grid-template-columns:repeat(3,1fr)}
+.slot{cursor:pointer}
+.setb{display:flex;flex-direction:column;gap:2px;margin-top:10px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+.gbtns{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.btn.sm{padding:7px 10px;font-size:.8rem}
+.coll{display:grid;gap:8px}
+.locked-gear span.got{opacity:1;border-style:solid;background:color-mix(in srgb,var(--rc) 15%,transparent);font-size:1rem}
+.gold-bal .bal{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.gold-bal .bal .num{font-size:1.8rem;color:var(--gold);text-shadow:0 0 16px var(--glow)}
+.win.deal{border-color:var(--rc);box-shadow:0 0 24px color-mix(in srgb,var(--rc) 30%,transparent)}
+.tgrid{display:grid;grid-template-columns:78px 1fr;gap:12px;align-items:start}
+.tviz{display:flex;flex-direction:column;gap:3px}
+.tfl{display:flex;justify-content:space-between;align-items:center;padding:4px 7px;border:1px solid var(--line);border-radius:3px;font-size:.7rem;background:var(--panel);color:var(--soft)}
+.tfl.clr{color:var(--gold);border-color:color-mix(in srgb,var(--gold) 40%,var(--line))}
+.tfl.cur{border-color:var(--gold);color:var(--ink);box-shadow:0 0 12px var(--glow);animation:btnpulse 2.4s infinite}
+.tfl.grd{border-style:dashed}
+.trial{margin-top:8px;padding:10px;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+.trial.grd{border-color:var(--ember);box-shadow:inset 0 0 20px color-mix(in srgb,var(--ember) 15%,transparent)}
+.jsum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:4px}
+.jsum div{border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:10px 6px;text-align:center}
+.jsum b{display:block;font-size:1.3rem;color:var(--gold)}
+.jsum span{font-size:.72rem;color:var(--soft)}
+.calhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cw{text-align:center;font-size:.7rem;color:var(--soft)}
+.cd{aspect-ratio:1;border:1px solid var(--line);border-radius:6px;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0;font-size:.8rem;position:relative}
+.cd i{font-style:normal;font-size:.55rem;line-height:1;height:.6rem}
+.cd.empty{border:0;background:none}
+.cd.none{opacity:.35}
+.cd.perf{background:color-mix(in srgb,var(--gold) 28%,var(--panel));border-color:var(--gold);color:var(--ink)}
+.cd.part{background:color-mix(in srgb,var(--gold) 9%,var(--panel))}
+.cd.miss{background:color-mix(in srgb,var(--ember) 22%,var(--panel));border-color:color-mix(in srgb,var(--ember) 60%,var(--line))}
+.cd.rec{background:var(--arc-soft);border-color:var(--arc)}
+.cd.tod{box-shadow:0 0 0 1px var(--gold)}
+.cd.sel{outline:2px solid var(--gold);outline-offset:1px}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;color:var(--soft)}
+.lg{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:middle}
+.lg.perf{background:var(--gold)}.lg.part{background:color-mix(in srgb,var(--gold) 30%,var(--panel));border:1px solid var(--line)}.lg.miss{background:var(--ember)}.lg.rec{background:var(--arc)}
+.jday{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:1rem}
+.jq{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:3px;font-size:.88rem}
+.jq li.ok{color:var(--ink)} .jq li.no{color:var(--soft);opacity:.7}
+
 /* auras (palettes) */
 :root{--og:#E4B95B;--oa:#A97CFF}
 :root[data-pal="obsidian"]{--gold:#8E5E10;--gold-soft:#F1E2BF;--arc:#5B3AA8;--arc-soft:#E6DDF6;--ember:#B83A3A;--glow:rgba(142,94,16,.16);--aglow:rgba(91,58,168,.14);--shine:#D9A63A;--og:#E4B95B;--oa:#A97CFF}
@@ -429,18 +571,31 @@ body.shake main,body.shake .over .asc{animation:shake .8s cubic-bezier(.36,.07,.
 </head>
 <body>
 <script>try{var _s=JSON.parse(localStorage.getItem("masa-tracker-v1")||"{}");document.documentElement.dataset.pal=_s.pal||"obsidian";}catch(e){document.documentElement.dataset.pal="obsidian";}</script>
+<div class="splash" id="splash" role="button" aria-label="შესვლა">
+  <div class="sp-in">
+    <svg class="sp-ring" viewBox="0 0 260 260" aria-hidden="true"><defs><path id="spp" d="M130,130 m-104,0 a104,104 0 1,1 208,0 a104,104 0 1,1 -208,0"/></defs>
+      <circle class="c1" cx="130" cy="130" r="95" fill="none" stroke="#E4B95B" stroke-width="1.6"/>
+      <circle class="c2" cx="130" cy="130" r="118" fill="none" stroke="#A97CFF" stroke-width=".8" stroke-dasharray="2 6"/>
+      <g class="rt"><g class="spin"><text font-family="Noto Sans Runic, serif" font-size="15" fill="#A97CFF" letter-spacing="7"><textPath href="#spp">ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟ</textPath></text></g></g>
+      <g class="hx"><g class="spin rev"><polygon points="130,62 189,96 189,164 130,198 71,164 71,96" fill="none" stroke="#E4B95B" stroke-width=".8" opacity=".6"/></g></g>
+    </svg>
+    <div class="sp-flare"></div>
+    <div class="sp-title"><span>P</span><span>A</span><span>T</span><span>H</span></div>
+    <div class="sp-sub">RISE · ENDURE · ASCEND</div>
+  </div>
+</div>
 <div class="bg" aria-hidden="true"><div class="aur a1"></div><div class="aur a2"></div><div class="beams"></div>
 <svg class="bigring" viewBox="0 0 400 400"><defs><path id="bgp" d="M200,200 m-180,0 a180,180 0 1,1 360,0 a180,180 0 1,1 -360,0"/></defs>
 <circle cx="200" cy="200" r="196" fill="none" style="stroke:var(--gold)" stroke-width=".6" stroke-dasharray="2 8"/><circle cx="200" cy="200" r="160" fill="none" style="stroke:var(--arc)" stroke-width=".5"/>
 <text font-family="Noto Sans Runic, serif" font-size="20" style="fill:var(--gold)" letter-spacing="10"><textPath href="#bgp">ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇ</textPath></text>
 <polygon points="200,60 321,130 321,270 200,340 79,270 79,130" fill="none" style="stroke:var(--gold)" stroke-width=".6"/><polygon points="200,340 79,130 321,130" fill="none" style="stroke:var(--arc)" stroke-width=".5"/><polygon points="200,60 321,270 79,270" fill="none" style="stroke:var(--arc)" stroke-width=".5"/></svg></div>
 <canvas id="motes" aria-hidden="true"></canvas>
-<button class="sndbtn" id="snd" aria-label="ხმის ჩართვა/გამორთვა"></button>
 <main id="app"></main>
 <nav class="tabs" aria-label="განყოფილებები"><div class="in" role="tablist">
   <button role="tab" data-tab="today"><span class="e" aria-hidden="true">ᛉ</span>Quests</button>
   <button role="tab" data-tab="train"><span class="e" aria-hidden="true">ᛏ</span>Mission</button>
   <button role="tab" data-tab="hero"><span class="e" aria-hidden="true">ᚱ</span>Hero</button>
+  <button role="tab" data-tab="journey"><span class="e" aria-hidden="true">ᛃ</span>Journey</button>
   <button role="tab" data-tab="food"><span class="e" aria-hidden="true">ᚠ</span>Nutrition</button>
 </div></nav>
 <div class="runner" id="runner" role="dialog" aria-modal="true" aria-label="მისიის რეჟიმი"></div>
@@ -457,14 +612,6 @@ const BOSSES = [
   {kg:62,name:"Iron Colossus",ep:"The Unmoving Mountain",lore:"რკინის გიგანტი, რომელიც მხოლოდ ძალას ემორჩილება.",r:"ᛗ",xp:400,col:"#C2A878"},
   {kg:65,name:"Abyss Sovereign",ep:"King Beneath the World",lore:"უფსკრულის მეფე — ფინალური ბოსი. მხოლოდ ტიტანი დაამარცხებს.",r:"ᛟ",xp:1000,col:"#D8283F"}];
 const STREAK_REWARDS = {3:30,7:100,14:200,30:500};
-const FOODS = [
-  {n:"კვერცხი",u:"1 ც",k:75,p:6,i:"🥚"},{n:"პური",u:"1 ნაჭერი",k:80,p:3,i:"🍞"},{n:"ყველი",u:"50 გ",k:130,p:9,i:"🧀"},
-  {n:"ქათამი",u:"150 გ",k:250,p:45,i:"🍗"},{n:"საქონელი",u:"150 გ",k:380,p:38,i:"🥩"},{n:"თევზი",u:"150 გ",k:220,p:32,i:"🐟"},
-  {n:"ბრინჯი",u:"1 თეფში",k:260,p:5,i:"🍚"},{n:"წიწიბურა",u:"1 თეფში",k:190,p:7,i:"🥣"},{n:"კარტოფილი",u:"200 გ",k:170,p:4,i:"🥔"},
-  {n:"მაკარონი",u:"1 თეფში",k:350,p:12,i:"🍝"},{n:"ლობიო",u:"1 თეფში",k:300,p:15,i:"🫘"},{n:"ხინკალი",u:"1 ც",k:85,p:4,i:"🥟"},
-  {n:"ხაჭაპური",u:"¼ ცალი",k:350,p:14,i:"🫓"},{n:"მაწონი",u:"1 ჭიქა",k:150,p:8,i:"🥛"},{n:"ხაჭო",u:"150 გ",k:200,p:25,i:"🍶"},
-  {n:"რძე",u:"1 ჭიქა",k:150,p:8,i:"🥛"},{n:"თხილი",u:"1 მუჭა",k:190,p:5,i:"🌰"},{n:"ბანანი",u:"1 ც",k:105,p:1,i:"🍌"},
-  {n:"გეინერი",u:"1 პორცია",k:700,p:34,i:"🥤",q:"gainer"}];
 const PALETTES = [
   {id:"obsidian",name:"Obsidian Oath",lv:1,sw:["#0A0810","#E4B95B","#A97CFF"],d:"ობსიდიანი, ოქრო და იასამნისფერი მაგია"},
   {id:"blood",name:"Blood Moon",lv:1,sw:["#0C0507","#EBCB9F","#E5394F"],d:"სისხლისფერი მთვარე და ძვლისფერი რუნები"},
@@ -472,9 +619,141 @@ const PALETTES = [
   {id:"ember",name:"Emberforge",lv:10,sw:["#0F0805","#FFA23D","#FFD45E"],d:"მჭედლის გავარვარებული ქურა"},
   {id:"solar",name:"Solar Throne",lv:18,sw:["#0D0B06","#FFE18C","#FFF6DC"],d:"მზის ტახტის თეთრი ოქრო"},
   {id:"void",name:"Void Rose",lv:28,sw:["#07040B","#FF92CA","#C9A7FF"],d:"სიცარიელეში აყვავებული ვარდი"}];
+const PEN = {workout:{hp:20,xp:30},meals:{hp:15,xp:15},gainer:{hp:10,xp:5},sleep:{hp:10,xp:5},water:{hp:5,xp:0},creatine:{hp:5,xp:0},d3:{hp:5,xp:0}};
+const SHOP = [
+  {id:"potion",n:"Minor Potion",i:"🧪",cost:30,d:"აღადგენს +30 HP-ს.",cat:"c"},
+  {id:"gpotion",n:"Greater Potion",i:"⚗️",cost:70,d:"HP სრულად აღდგება.",cat:"c"},
+  {id:"shield",n:"Streak Shield",i:"🛡️",cost:60,d:"სერიას დაიცავს ერთ გამოტოვებულ დღეზე (მაქს. 3).",cat:"c"},
+  {id:"scroll",n:"Scroll of Fervor",i:"📜",cost:50,d:"დღევანდელი XP ×1.5.",cat:"c"},
+  {id:"revive",n:"Phoenix Feather",i:"🪶",cost:120,d:"Fallen მდგომარეობიდან მაშინვე აღგადგენს (½ HP).",cat:"c"},
+  {id:"chest",n:"Mystery Chest",i:"🎁",cost:80,d:"შემთხვევითი ნივთი — მინიმუმ Rare.",cat:"x"},
+  {id:"chest2",n:"Grand Chest",i:"💎",cost:220,d:"შემთხვევითი ნივთი — მინიმუმ Epic.",cat:"x"}];
+const CLASSES = [
+  {id:"none",n:"Wanderer",i:"🚶",d:"კლასის გარეშე. არც ბონუსი, არც სისუსტე."},
+  {id:"warrior",n:"Warrior",i:"⚔️",d:"მისიის XP +25%, მისიის ოქრო +50%.",w:"გამოტოვებული მისიის სასჯელი ×1.5."},
+  {id:"monk",n:"Monk",i:"🧘",d:"სრული დღე +10 HP დამატებით, ძილი და წყალი XP ×2.",w:"მისიის XP −10%."},
+  {id:"alchemist",n:"Alchemist",i:"⚗️",d:"ელიქსირების XP ×2, Merchant −20%.",w:"ჭამის გამოტოვების სასჯელი ×1.5."}];
+const TALENTS = [
+  {id:"vit",n:"Vitality",i:"❤️",d:"+10 მაქს. HP თითო ქულაზე"},
+  {id:"dis",n:"Discipline",i:"🛡️",d:"−8% HP სასჯელი თითო ქულაზე"},
+  {id:"greed",n:"Greed",i:"🪙",d:"+8% ოქრო თითო ქულაზე"},
+  {id:"fury",n:"Fury",i:"🔥",d:"+5% XP თითო ქულაზე"}];
+const RARITY = {common:{n:"Common",c:"#B9B4C2",g:10,up:20},rare:{n:"Rare",c:"#5FB0FF",g:25,up:35},epic:{n:"Epic",c:"#B57CFF",g:60,up:60},legendary:{n:"Legendary",c:"#FFB547",g:150,up:100},mythic:{n:"Mythic",c:"#FF4F7A",g:400,up:160}};
+const SLOTS = [["weapon","Weapon","⚔️"],["helm","Helm","⛑️"],["armor","Armor","🛡️"],["gloves","Gloves","🧤"],["boots","Boots","🥾"],["trinket","Trinket","💍"]];
+const EFF_TXT = {xp:v=>`+${Math.round(v*100)}% XP`,mis:v=>`მისიის XP +${Math.round(v*100)}%`,gold:v=>`+${Math.round(v*100)}% ოქრო`,pen:v=>`−${Math.round(v*100)}% HP სასჯელი`,hp:v=>`+${Math.round(v)} მაქს. HP`,regen:v=>`სრული დღე +${Math.round(v)} HP`,revive:()=>`Fallen-იდან აღდგენა 1 დღეში`,kcal:v=>`კალორიის XP +${Math.round(v*100)}%`,elx:v=>`ელიქსირების XP +${Math.round(v*100)}%`,rest:v=>`ძილი/წყალი XP +${Math.round(v*100)}%`,tower:v=>`Tower XP +${Math.round(v*100)}%`,disc:v=>`Merchant −${Math.round(v*100)}%`};
+const SETS = {
+  ember:{n:"Ember Set",i:"🔥",b2:{xp:.05},b3:{mis:.2},d2:"+5% XP",d3:"მისიის XP +20%"},
+  warden:{n:"Warden Set",i:"🛡️",b2:{pen:.1},b3:{hp:20},d2:"−10% HP სასჯელი",d3:"+20 მაქს. HP"},
+  prince:{n:"Merchant Prince",i:"👑",b2:{gold:.1},b3:{disc:.15},d2:"+10% ოქრო",d3:"Merchant −15%"},
+  wind:{n:"Windwalker Set",i:"🌪️",b2:{tower:.2},b3:{regen:10},d2:"Tower XP +20%",d3:"სრული დღე +10 HP"}};
+const GEAR = [
+  {id:"w1",s:"weapon",r:"common",n:"Rusted Blade",i:"🗡️",e:{xp:.03}},
+  {id:"w5",s:"weapon",r:"common",n:"Oak Staff",i:"🪄",e:{rest:.15}},
+  {id:"w2",s:"weapon",r:"rare",n:"Runed Spear",i:"🔱",e:{xp:.06}},
+  {id:"w6",s:"weapon",r:"rare",n:"Hunter's Bow",i:"🏹",e:{kcal:.3}},
+  {id:"w7",s:"weapon",r:"rare",n:"Twin Hatchets",i:"🪓",e:{mis:.1,gold:.03}},
+  {id:"w3",s:"weapon",r:"epic",n:"Ember Greatsword",i:"🗡️",e:{xp:.08,mis:.15},set:"ember"},
+  {id:"w8",s:"weapon",r:"epic",n:"Stormcaller Staff",i:"⚡",e:{xp:.06,tower:.2},set:"wind"},
+  {id:"w4",s:"weapon",r:"legendary",n:"Abyssal Fang",i:"⚔️",e:{xp:.15,gold:.1}},
+  {id:"m2",s:"weapon",r:"mythic",n:"Skyforged Blade",i:"🌠",e:{xp:.2,mis:.3},src:"Tower Floor 50"},
+  {id:"h1",s:"helm",r:"common",n:"Leather Cap",i:"🧢",e:{pen:.05}},
+  {id:"h5",s:"helm",r:"rare",n:"Sage Hood",i:"🧙",e:{elx:.25}},
+  {id:"h2",s:"helm",r:"rare",n:"Iron Helm",i:"⛑️",e:{pen:.1,hp:5}},
+  {id:"h3",s:"helm",r:"epic",n:"Ember Crown",i:"🔥",e:{xp:.05},set:"ember"},
+  {id:"h4",s:"helm",r:"epic",n:"Warden Visor",i:"🪖",e:{pen:.12},set:"warden"},
+  {id:"h6",s:"helm",r:"legendary",n:"Halo of Dawn",i:"😇",e:{regen:10,xp:.08}},
+  {id:"a1",s:"armor",r:"common",n:"Leather Vest",i:"🦺",e:{pen:.1}},
+  {id:"a6",s:"armor",r:"rare",n:"Monk Robe",i:"🥋",e:{rest:.3,regen:5}},
+  {id:"a2",s:"armor",r:"rare",n:"Iron Mail",i:"🛡️",e:{pen:.2}},
+  {id:"a5",s:"armor",r:"epic",n:"Warden Cuirass",i:"🛡️",e:{pen:.2,hp:15},set:"warden"},
+  {id:"a3",s:"armor",r:"epic",n:"Obsidian Plate",i:"🛡️",e:{pen:.3,hp:10}},
+  {id:"a4",s:"armor",r:"legendary",n:"Titan Aegis",i:"🛡️",e:{pen:.4,hp:25}},
+  {id:"g1",s:"gloves",r:"common",n:"Cloth Wraps",i:"🧤",e:{mis:.05}},
+  {id:"g4",s:"gloves",r:"rare",n:"Gilded Gloves",i:"🧤",e:{gold:.1},set:"prince"},
+  {id:"g5",s:"gloves",r:"rare",n:"Alchemist Gloves",i:"🧪",e:{elx:.3}},
+  {id:"g2",s:"gloves",r:"rare",n:"Iron Gauntlets",i:"🥊",e:{mis:.1}},
+  {id:"g3",s:"gloves",r:"epic",n:"Ember Grips",i:"🔥",e:{mis:.15},set:"ember"},
+  {id:"g6",s:"gloves",r:"legendary",n:"Titan Fists",i:"👊",e:{mis:.25,xp:.05}},
+  {id:"b1",s:"boots",r:"common",n:"Worn Boots",i:"🥾",e:{regen:3}},
+  {id:"b2",s:"boots",r:"rare",n:"Swift Boots",i:"👟",e:{tower:.25},set:"wind"},
+  {id:"b5",s:"boots",r:"rare",n:"Merchant's Steps",i:"👞",e:{gold:.08},set:"prince"},
+  {id:"b4",s:"boots",r:"epic",n:"Warden Greaves",i:"🥾",e:{pen:.1,hp:10},set:"warden"},
+  {id:"b3",s:"boots",r:"epic",n:"Ember Treads",i:"🔥",e:{xp:.04},set:"ember"},
+  {id:"b6",s:"boots",r:"legendary",n:"Windwalkers",i:"🌪️",e:{tower:.5,regen:10},set:"wind"},
+  {id:"t1",s:"trinket",r:"common",n:"Copper Coin",i:"🪙",e:{gold:.1}},
+  {id:"t6",s:"trinket",r:"rare",n:"Feast Horn",i:"📯",e:{kcal:.5}},
+  {id:"t2",s:"trinket",r:"rare",n:"Moon Amulet",i:"🌙",e:{regen:10}},
+  {id:"t3",s:"trinket",r:"epic",n:"Phoenix Charm",i:"🔥",e:{revive:1}},
+  {id:"t5",s:"trinket",r:"epic",n:"Merchant's Seal",i:"🔏",e:{disc:.15},set:"prince"},
+  {id:"t4",s:"trinket",r:"legendary",n:"Crown of Ash",i:"👑",e:{gold:.15,xp:.05}},
+  {id:"m1",s:"trinket",r:"mythic",n:"Heart of the Abyss",i:"❤️‍🔥",e:{xp:.2,gold:.2,pen:.2},src:"Abyss Sovereign"}];
+function gearEff(id,lvl){ const it=GEAR.find(g=>g.id===id), f=1+.2*(lvl||0), e={}; for(const k in it.e) e[k]=k==="revive"?it.e[k]:it.e[k]*f; return e; }
+function effText(e){ return Object.entries(e).map(([k,v])=>EFF_TXT[k]?EFF_TXT[k](v):"").filter(Boolean).join(", "); }
+function upCost(it,lvl){ return RARITY[it.r].up*(lvl+1); }
+function dealFor(k){ const r=rng(Math.round(parse(k).getTime()/864e5)*6151+3), x=r(); const rar=x<.06?"legendary":x<.4?"epic":"rare"; const pool=GEAR.filter(g=>g.r===rar); return pool[Math.floor(r()*pool.length)]; }
+const DEAL_PRICE={rare:120,epic:250,legendary:520};
+const TOWER_POOL = [
+  {t:"ჩაჯდომა ერთ სეტში",n:25,u:"ჯერ",i:"🦵"},{t:"აზიდვა (შეგიძლია 2–3 სეტად)",n:20,u:"ჯერ",i:"💪"},{t:"პლანკი ჯამში",n:60,u:"წამი",i:"🧱"},
+  {t:"სეირნობა სუფთა ჰაერზე",n:20,u:"წუთი",i:"🚶"},{t:"გაჭიმვა",n:10,u:"წუთი",i:"🧘"},{t:"მენჯის აწევა",n:40,u:"ჯერ",i:"🍑"},
+  {t:"წვივის აწევა",n:45,u:"ჯერ",i:"🦶"},{t:"Wall sit (კედელთან ჩაჯდომა) ჯამში",n:90,u:"წამი",i:"🧱"},{t:"Jumping jacks",n:50,u:"ჯერ",i:"⭐"},
+  {t:"ღრმა სუნთქვა მშვიდად",n:5,u:"წუთი",i:"🌬️"},{t:"კიბეებზე ასვლა",n:5,u:"სართული",i:"🪜"},{t:"ლანჯი თითო ფეხზე",n:12,u:"ჯერ",i:"🦵"},
+  {t:"Superman-ის შეკავება ჯამში",n:60,u:"წამი",i:"🦸"},{t:"Mountain climbers",n:40,u:"ჯერ",i:"⛰️"},{t:"ძილის წინ ეკრანის გარეშე",n:30,u:"წუთი",i:"📵"}];
+const TOWER_GUARD = [
+  {t:"Guardian: ჩაჯდომა დღის განმავლობაში",n:100,u:"ჯერ",i:"🗿"},{t:"Guardian: აზიდვა დღის განმავლობაში",n:50,u:"ჯერ",i:"🗿"},
+  {t:"Guardian: პლანკი ჯამში",n:180,u:"წამი",i:"🗿"},{t:"Guardian: სეირნობა",n:45,u:"წუთი",i:"🗿"},{t:"Guardian: მენჯის აწევა",n:100,u:"ჯერ",i:"🗿"}];
+function towerTrial(f){ const guard=f%10===0, pool=guard?TOWER_GUARD:TOWER_POOL, r=rng(f*7919+17), b=pool[Math.floor(r()*pool.length)];
+  const sc=Math.min(1.6,1+Math.floor((f-1)/10)*.15), n=(b.u==="წუთი"||b.u==="სართული")?b.n:Math.round(b.n*sc/ (b.n>=20?5:1))*(b.n>=20?5:1);
+  return {f,guard,i:b.i,t:b.t,n,u:b.u,xp:guard?120:30,gold:guard?40:10,chest:f%50===0?"mythic":guard?"epic":f%5===0?"rare":null}; }
+const EVENTS = [
+  {id:"quiet",n:"Quiet Week",i:"🕯️",d:"განსაკუთრებული მოვლენა არ არის.",m:{}},
+  {id:"blood",n:"Blood Moon",i:"🌑",d:"XP ×1.25, მაგრამ HP სასჯელები ×1.5.",m:{xp:1.25,pen:1.5}},
+  {id:"calm",n:"Calm Tide",i:"🌊",d:"HP სასჯელები ×0.5, XP ×0.9.",m:{pen:.5,xp:.9}},
+  {id:"feast",n:"Harvest Feast",i:"🍖",d:"კალორიის მიზნის XP ×3, ოქრო ×1.25.",m:{kcal:3,gold:1.25}},
+  {id:"iron",n:"Iron Week",i:"⚒️",d:"მისიის XP ×1.5.",m:{mis:1.5}},
+  {id:"gold",n:"Gold Rush",i:"💰",d:"ოქრო ×1.5.",m:{gold:1.5}},
+  {id:"sloth",n:"Plague of Sloth",i:"🦠",d:"გამოტოვებული ძილი და წყალი ×2 სასჯელი, მაგრამ სრული დღე +10 HP დამატებით.",m:{restPen:2,regen:10}}];
+function weekEvent(ws){ const r=rng(Math.round(parse(ws).getTime()/6048e5)*7349+11); return EVENTS[Math.floor(r()*EVENTS.length)]; }
+
+const BOUNTIES = ["20 დამატებითი აზიდვა","15 წუთი სეირნობა","100 ჩაჯდომა დღის განმავლობაში","დამატებით 1 ჭიქა რძე","5 წუთი გაჭიმვა ძილის წინ","2 × 45 წამიანი პლანკი","დამატებით 1 მუჭა თხილი","ძილის წინ 30 წუთი ტელეფონის გარეშე","საუზმეზე 1 დამატებითი კვერცხი","50 მენჯის აწევა","კიბეებზე 5 სართულის ასვლა","დამატებით 1 ხილი"];
+const FOOD_CATS = ["Breakfast","Meat & Fish","Grains","Georgian","Dairy","Fruit & Nuts","Snacks","Elixirs"];
+const FOODS = [
+  {c:"Breakfast",n:"კვერცხი",u:"1 ც",k:75,p:6,i:"🥚"},{c:"Breakfast",n:"ერბოკვერცხი",u:"2 კვერცხი",k:200,p:12,i:"🍳"},{c:"Breakfast",n:"ომლეტი",u:"3 კვერცხი",k:280,p:19,i:"🍳"},
+  {c:"Breakfast",n:"შვრიის ფაფა რძით",u:"1 თეფში",k:300,p:11,i:"🥣"},{c:"Breakfast",n:"მიუსლი რძით",u:"1 თეფში",k:350,p:11,i:"🥣"},{c:"Breakfast",n:"ბლინი",u:"2 ც",k:230,p:7,i:"🥞"},
+  {c:"Breakfast",n:"სენდვიჩი ყველით",u:"1 ც",k:300,p:13,i:"🥪"},{c:"Breakfast",n:"ტოსტი კარაქით",u:"1 ც",k:170,p:3,i:"🍞"},{c:"Breakfast",n:"პური",u:"1 ნაჭერი",k:80,p:3,i:"🍞"},
+  {c:"Meat & Fish",n:"ქათმის მკერდი",u:"150 გ",k:250,p:45,i:"🍗"},{c:"Meat & Fish",n:"ქათმის ბარკალი",u:"1 ც",k:230,p:25,i:"🍗"},{c:"Meat & Fish",n:"საქონლის ხორცი",u:"150 გ",k:380,p:38,i:"🥩"},
+  {c:"Meat & Fish",n:"კატლეტი",u:"1 ც",k:220,p:14,i:"🍖"},{c:"Meat & Fish",n:"ქაბაბი",u:"1 ც",k:300,p:18,i:"🍢"},{c:"Meat & Fish",n:"სოსისი/ძეხვი",u:"2 ც",k:280,p:10,i:"🌭"},
+  {c:"Meat & Fish",n:"თევზი",u:"150 გ",k:220,p:32,i:"🐟"},{c:"Meat & Fish",n:"ტუნა (კონსერვი)",u:"1 ქილა",k:200,p:35,i:"🐟"},{c:"Meat & Fish",n:"ღორის ხორცი",u:"150 გ",k:390,p:36,i:"🥩"},
+  {c:"Grains",n:"ბრინჯი",u:"1 თეფში",k:260,p:5,i:"🍚"},{c:"Grains",n:"წიწიბურა",u:"1 თეფში",k:190,p:7,i:"🥣"},{c:"Grains",n:"მაკარონი",u:"1 თეფში",k:350,p:12,i:"🍝"},
+  {c:"Grains",n:"ბულგური",u:"1 თეფში",k:220,p:8,i:"🥣"},{c:"Grains",n:"კარტოფილი მოხარშული",u:"200 გ",k:170,p:4,i:"🥔"},{c:"Grains",n:"კარტოფილი შემწვარი",u:"200 გ",k:380,p:5,i:"🍟"},
+  {c:"Grains",n:"კარტოფილის პიურე",u:"1 თეფში",k:240,p:5,i:"🥔"},{c:"Grains",n:"მჭადი",u:"1 ც",k:250,p:5,i:"🫓"},{c:"Grains",n:"ლავაში",u:"½ ც",k:200,p:7,i:"🫓"},
+  {c:"Georgian",n:"ხინკალი",u:"1 ც",k:85,p:4,i:"🥟"},{c:"Georgian",n:"ხაჭაპური იმერული",u:"¼ ცალი",k:350,p:14,i:"🫓"},{c:"Georgian",n:"აჭარული ხაჭაპური",u:"1 ც",k:1000,p:40,i:"🫓"},
+  {c:"Georgian",n:"ლობიანი",u:"¼ ცალი",k:300,p:10,i:"🫓"},{c:"Georgian",n:"კუბდარი",u:"¼ ცალი",k:380,p:18,i:"🫓"},{c:"Georgian",n:"ლობიო",u:"1 თეფში",k:300,p:15,i:"🫘"},
+  {c:"Georgian",n:"მწვადი",u:"200 გ",k:520,p:42,i:"🍢"},{c:"Georgian",n:"ჩახოხბილი",u:"1 თეფში",k:420,p:35,i:"🍲"},{c:"Georgian",n:"ჩაქაფული",u:"1 თეფში",k:450,p:40,i:"🍲"},
+  {c:"Georgian",n:"ოჯახური",u:"1 თეფში",k:650,p:30,i:"🍳"},{c:"Georgian",n:"შქმერული",u:"½ ქათამი",k:700,p:55,i:"🍗"},{c:"Georgian",n:"ელარჯი",u:"1 თეფში",k:450,p:15,i:"🧀"},
+  {c:"Georgian",n:"ფხალი",u:"100 გ",k:150,p:5,i:"🥬"},{c:"Georgian",n:"ბადრიჯანი ნიგვზით",u:"3 ც",k:250,p:5,i:"🍆"},{c:"Georgian",n:"ჩურჩხელა",u:"1 ც",k:380,p:6,i:"🍬"},
+  {c:"Georgian",n:"ხარჩო",u:"1 თეფში",k:400,p:28,i:"🍲"},{c:"Georgian",n:"ჩიხირთმა",u:"1 თეფში",k:300,p:22,i:"🍲"},{c:"Georgian",n:"საცივი",u:"1 თეფში",k:500,p:35,i:"🍗"},
+  {c:"Georgian",n:"ბაჟე ქათმით",u:"1 თეფში",k:450,p:35,i:"🍗"},{c:"Georgian",n:"ჩაშუშული",u:"1 თეფში",k:450,p:35,i:"🍲"},{c:"Georgian",n:"ხაშლამა",u:"1 თეფში",k:550,p:45,i:"🥩"},
+  {c:"Georgian",n:"ჩანახი",u:"1 ქოთანი",k:550,p:35,i:"🍲"},{c:"Georgian",n:"აჯაფსანდალი",u:"1 თეფში",k:220,p:4,i:"🍆"},{c:"Georgian",n:"კუპატი",u:"2 ც",k:450,p:22,i:"🌭"},
+  {c:"Georgian",n:"აფხაზურა",u:"2 ც",k:400,p:22,i:"🍖"},{c:"Georgian",n:"ტოლმა",u:"5 ც",k:350,p:18,i:"🍃"},{c:"Georgian",n:"გუფთა",u:"1 თეფში",k:450,p:25,i:"🍲"},
+  {c:"Georgian",n:"შილაფლავი",u:"1 თეფში",k:550,p:25,i:"🍚"},{c:"Georgian",n:"მაწვნის შეჭამანდი",u:"1 თეფში",k:220,p:10,i:"🥣"},{c:"Georgian",n:"ქათმის ბულიონი",u:"1 თეფში",k:150,p:12,i:"🥣"},
+  {c:"Georgian",n:"მეგრული ხაჭაპური",u:"¼ ცალი",k:450,p:18,i:"🫓"},{c:"Georgian",n:"პენოვანი",u:"1 ც",k:400,p:12,i:"🥐"},{c:"Georgian",n:"ფხლოვანი",u:"¼ ცალი",k:300,p:10,i:"🫓"},
+  {c:"Georgian",n:"ჭვიშტარი",u:"1 ც",k:300,p:12,i:"🫓"},{c:"Georgian",n:"ღომი სულგუნით",u:"1 თეფში",k:450,p:16,i:"🥣"},{c:"Georgian",n:"შოთის პური",u:"½ ც",k:300,p:10,i:"🥖"},
+  {c:"Georgian",n:"ნაზუქი",u:"1 ნაჭერი",k:300,p:6,i:"🍞"},{c:"Georgian",n:"გოზინაყი",u:"50 გ",k:270,p:6,i:"🍯"},{c:"Georgian",n:"ფელამუში",u:"1 თეფში",k:200,p:1,i:"🍮"},
+  {c:"Georgian",n:"ტყლაპი",u:"50 გ",k:150,p:1,i:"🍑"},{c:"Georgian",n:"ჯონჯოლი",u:"100 გ",k:60,p:2,i:"🌿"},
+  {c:"Dairy",n:"მაწონი",u:"1 ჭიქა",k:150,p:8,i:"🥛"},{c:"Dairy",n:"კეფირი",u:"1 ჭიქა",k:140,p:8,i:"🥛"},{c:"Dairy",n:"რძე",u:"1 ჭიქა",k:150,p:8,i:"🥛"},
+  {c:"Dairy",n:"ხაჭო",u:"150 გ",k:200,p:25,i:"🍶"},{c:"Dairy",n:"ყველი იმერული",u:"50 გ",k:130,p:9,i:"🧀"},{c:"Dairy",n:"სულგუნი",u:"50 გ",k:145,p:10,i:"🧀"},
+  {c:"Dairy",n:"ნადუღი",u:"100 გ",k:160,p:12,i:"🧀"},{c:"Dairy",n:"იოგურტი",u:"1 ც",k:120,p:6,i:"🥛"},
+  {c:"Fruit & Nuts",n:"ბანანი",u:"1 ც",k:105,p:1,i:"🍌"},{c:"Fruit & Nuts",n:"ვაშლი",u:"1 ც",k:95,p:0,i:"🍎"},{c:"Fruit & Nuts",n:"ფორთოხალი",u:"1 ც",k:70,p:1,i:"🍊"},
+  {c:"Fruit & Nuts",n:"ყურძენი",u:"1 მტევანი",k:110,p:1,i:"🍇"},{c:"Fruit & Nuts",n:"თხილი",u:"1 მუჭა",k:190,p:5,i:"🌰"},{c:"Fruit & Nuts",n:"ნიგოზი",u:"1 მუჭა",k:195,p:5,i:"🌰"},
+  {c:"Fruit & Nuts",n:"არაქისის კარაქი",u:"2 ს/კ",k:190,p:7,i:"🥜"},{c:"Fruit & Nuts",n:"ჩირი",u:"50 გ",k:130,p:1,i:"🍑"},
+  {c:"Snacks",n:"შოკოლადი",u:"50 გ",k:270,p:4,i:"🍫"},{c:"Snacks",n:"ორცხობილა",u:"4 ც",k:200,p:3,i:"🍪"},{c:"Snacks",n:"ნამცხვარი",u:"1 ნაჭერი",k:350,p:5,i:"🍰"},
+  {c:"Snacks",n:"ჩიფსი",u:"50 გ",k:270,p:3,i:"🥔"},{c:"Snacks",n:"პიცა",u:"1 ნაჭერი",k:280,p:12,i:"🍕"},{c:"Snacks",n:"შაურმა",u:"1 ც",k:600,p:30,i:"🌯"},
+  {c:"Snacks",n:"ბურგერი",u:"1 ც",k:500,p:25,i:"🍔"},{c:"Snacks",n:"წვენი",u:"1 ჭიქა",k:110,p:1,i:"🧃"},{c:"Snacks",n:"ყავა რძით",u:"1 ჭიქა",k:80,p:3,i:"☕"},
+  {c:"Elixirs",n:"გეინერი (სრული პორცია)",u:"3 მერქი",k:700,p:34,i:"🥤",q:"gainer"},{c:"Elixirs",n:"გეინერი (ნახევარი)",u:"1½ მერქი",k:350,p:17,i:"🥤",q:"gainer"},
+  {c:"Elixirs",n:"რძე გეინერისთვის",u:"450 მლ",k:290,p:15,i:"🥛"},{c:"Elixirs",n:"ცილის კოქტეილი",u:"1 ჭიქა",k:250,p:30,i:"🥤"}];
 const RESET_OPTS = [[0,"00:00 — შუაღამე"],[2,"02:00"],[3,"03:00"],[4,"04:00"],[5,"05:00"]];
 const RANKS = [{lv:1,name:"Novice",ico:"ᚠ"},{lv:5,name:"Warrior",ico:"ᚦ"},{lv:10,name:"Knight",ico:"ᛉ"},{lv:18,name:"Champion",ico:"ᛏ"},{lv:28,name:"Legend",ico:"ᛟ"}];
-const XP = {workout:60,creatine:10,d3:10,gainer:20,meals:30,water:15,sleep:20,bonus:40,weigh:5,measure:15,kcal:25,challenge:75};
+const XP = {workout:60,creatine:10,d3:10,gainer:20,meals:30,water:15,sleep:20,bonus:40,weigh:5,measure:15,kcal:25,challenge:75,bounty:20};
 const RUNES = "ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟ";
 const WD = ["კვირა","ორშაბათი","სამშაბათი","ოთხშაბათი","ხუთშაბათი","პარასკევი","შაბათი"];
 const WD_EN = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -488,76 +767,74 @@ const COOLDOWN = ["მკერდის გაჭიმვა კარის �
 
 const WORKOUTS = {
  upper:{name:"Mission I",title:"Ritual of Strength",days:"ორშაბათი და ხუთშაბათი",focus:"მკერდი, ზურგი, ფეხები, პრესი",ex:[
-  {id:"pu",name:"აზიდვები",mus:"მკერდი, მხრები, ტრიცეფსი",sets:4,reps:"8–15",min:8,rest:90,
+  {id:"pu",name:"Push-Ups",mus:"მკერდი, მხრები, ტრიცეფსი",sets:4,reps:"8–15",min:8,rest:90,
    steps:["ხელები იატაკზე, მხრებზე ოდნავ ფართოდ, თითები წინ.","სხეული თავიდან ქუსლებამდე სწორი ხაზია — მუცელი და დუნდულები დაჭიმე.","ნელა ჩადი, სანამ მკერდი თითქმის შეეხება იატაკს.","ხელებით იატაკს ძლიერად დააწექი და ზევით ადი."],
    err:["მენჯი ჩავარდნილია ან მაღლა აწეული","იდაყვები გვერდებზე მთლიანად გაშლილია — დაახლოებით 45° უნდა იყოს"],
    br:"ქვემოთ — ჩაისუნთქე, ზემოთ — ამოისუნთქე.",
    v:["ჩვეულებრივი აზიდვა (თუ 8 არ გამოდის, მუხლებზე)","ფეხები სკამზე","ფეხები სკამზე + 3 წამი დაშვება"]},
-  {id:"row",name:"მაგიდის ქვეშ აწევა",mus:"ზურგი, ბიცეფსი",sets:4,reps:"6–12",min:6,rest:90,
-   steps:["დაწექი ზურგზე მყარი მაგიდის ქვეშ — მკერდი მაგიდის კიდის ქვეშ იყოს.","მაგიდის კიდეს ხელებით მხრების სიგანეზე ჩაეჭიდე.","სხეული სწორად გეჭიროს და მკერდი მაგიდისკენ აწიე.","ზემოთ ბეჭები ერთმანეთს მიუახლოვე, მერე ნელა ჩადი."],
-   err:["მენჯი ჩამოკიდებულია","მხოლოდ ხელებით ქაჩავ — ბეჭები არ მუშაობს"],
-   br:"ზემოთ — ამოისუნთქე, ქვემოთ — ჩაისუნთქე.",
-   warn:"მხოლოდ ძალიან მყარი მაგიდა! თუ ასეთი არ გაქვს: პირსახოცი დახურულ კარზე გადაახვიე, ჩაეჭიდე და უკან გადახრით აიწიე.",
-   v:["მუხლები მოხრილი, ტერფები იატაკზე","ფეხები გაშლილი","ფეხები სკამზე"]},
-  {id:"sq",name:"ჩაჯდომა",mus:"ბარძაყი, დუნდულები",sets:4,reps:"15–25",min:15,rest:75,
+  {id:"ytw",name:"Prone Y-T-W Raises",mus:"ზურგი, ბეჭები, მხრები",sets:3,reps:"8–12 (თითო ასო)",min:8,rest:60,
+   steps:["დაწექი მუცელზე, შუბლი იატაკისკენ, ხელები წინ გაშლილი.","Y: ხელები ასო Y-ს ფორმით აწიე იატაკიდან, 2 წამი გაჩერდი, ჩაუშვი.","T: ხელები გვერდებზე გაშალე (ასო T) და ისე აწიე.","W: იდაყვები მოხარე, ხელები ასო W-ს ფორმით აწიე და ბეჭები ერთმანეთს მიუახლოვე."],
+   err:["თავს მაღლა ქაჩავ — კისერი სწორად","ზურგის ქვედა ნაწილით აწევ და არა ბეჭებით"],
+   br:"აწევისას — ამოისუნთქე.",
+   v:["თითო ასო 8-ჯერ","თითო ასო 12-ჯერ, 2 წამი ზემოთ","ხელებში წყლის ბოთლები"]},
+  {id:"sq",name:"Squats",mus:"ბარძაყი, დუნდულები",sets:4,reps:"15–25",min:15,rest:75,
    steps:["ფეხები მხრების სიგანეზე, თითები ოდნავ გარეთ.","ხელები წინ გაიშვირე წონასწორობისთვის.","მენჯი უკან და ქვემოთ წაიღე, თითქოს სკამზე ჯდები — ბარძაყი იატაკის პარალელურამდე.","ქუსლებით იატაკს დააწექი და ადექი."],
    err:["ქუსლები იატაკს შორდება","მუხლები შიგნით იხრება"],
    br:"ქვემოთ — ჩაისუნთქე, ზემოთ — ამოისუნთქე.",
    v:["ჩვეულებრივი ჩაჯდომა","3 წამი ქვემოთ + 1 წამი პაუზა","ზურგჩანთით (წიგნები ან ბოთლები)"]},
-  {id:"br",name:"მენჯის აწევა",mus:"დუნდულები, ბარძაყის უკანა მხარე",sets:3,reps:"12–20",min:12,rest:60,
+  {id:"br",name:"Glute Bridge",mus:"დუნდულები, ბარძაყის უკანა მხარე",sets:3,reps:"12–20",min:12,rest:60,
    steps:["დაწექი ზურგზე, მუხლები მოხარე, ტერფები იატაკზე.","ქუსლებით დააწექი და მენჯი აწიე, სანამ სხეული მუხლებიდან მხრებამდე სწორი გახდება.","ზემოთ დუნდულები 1 წამით მაგრად მოუჭირე.","ნელა ჩადი."],
    err:["წელით აწევ და არა დუნდულებით","ზემოთ არ ჩერდები"],
    br:"ზემოთ — ამოისუნთქე.",
    v:["ორივე ფეხით","ერთი ფეხით (ჩაწერე ერთ ფეხზე)","ერთი ფეხით, მხრები დივანზე"]},
-  {id:"cr",name:"პრესი — კრანჩი",mus:"მუცლის ზედა ნაწილი",sets:3,reps:"15–20",min:15,rest:45,
+  {id:"cr",name:"Crunches",mus:"მუცლის ზედა ნაწილი",sets:3,reps:"15–20",min:15,rest:45,
    steps:["დაწექი ზურგზე, მუხლები მოხრილი, ხელები გულზე ან საფეთქლებთან.","მუცლის დაჭიმვით მხრები იატაკიდან აწიე — ბოლომდე წამოჯდომა საჭირო არ არის.","1 წამი გაჩერდი და ნელა ჩადი."],
    err:["კისერს ხელებით ქაჩავ","სწრაფად, ინერციით აკეთებ"],
    br:"ზემოთ — ამოისუნთქე, ქვემოთ — ჩაისუნთქე.",
    v:["ჩვეულებრივი კრანჩი","ფეხები ჰაერში, მუხლები 90°","3 წამი ზემოთ, 3 წამი ქვემოთ"]},
-  {id:"plank",name:"პლანკი",mus:"მთელი მუცელი, წელი",sets:3,reps:"30–60 წამი",min:30,rest:45,unit:"sec",
+  {id:"plank",name:"Plank",mus:"მთელი მუცელი, წელი",sets:3,reps:"30–60 წამი",min:30,rest:45,unit:"sec",
    steps:["დაეყრდენი იდაყვებს (მხრების ქვეშ) და ფეხის წვერებს.","სხეული სწორ ხაზად — მუცელი და დუნდულები დაჭიმე.","იატაკს უყურე და მშვიდად ისუნთქე. ჩაწერე, რამდენ წამს გაძელი."],
    err:["მენჯი ჩამოვარდნილია","სუნთქვას იკავებ"],
    br:"თანაბრად ისუნთქე, სუნთქვა არ შეიკავო.",
    v:["ჩვეულებრივი პლანკი","ერთი ფეხი აწეული (შუაში შეცვალე)","ხელი და საპირისპირო ფეხი აწეული"]},
-  {id:"sup",name:"სუპერმენი",mus:"წელი, ზურგის ქვედა ნაწილი",sets:3,reps:"10–15",min:10,rest:45,
+  {id:"sup",name:"Superman",mus:"წელი, ზურგის ქვედა ნაწილი",sets:3,reps:"10–15",min:10,rest:45,
    steps:["დაწექი მუცელზე, ხელები წინ გაშლილი.","ერთდროულად აწიე ხელები, მკერდი და ფეხები.","2 წამი გაჩერდი ზემოთ და ნელა ჩადი."],
    err:["თავს მაღლა აქნევ — კისერი სწორად გეჭიროს","ძალიან სწრაფად"],
    br:"ზემოთ — ამოისუნთქე.",
    v:["ჩვეულებრივი","3 წამი გაჩერება ზემოთ","ხელებში წყლის ბოთლები"]}
  ]},
  lower:{name:"Mission II",title:"Ritual of the Warrior",days:"სამშაბათი და პარასკევი",focus:"მხრები, ხელები, ფეხები, პრესი",ex:[
-  {id:"pike",name:"მხრების აზიდვა (პაიკი)",mus:"მხრები, ტრიცეფსი",sets:3,reps:"6–12",min:6,rest:90,
+  {id:"pike",name:"Pike Push-Ups",mus:"მხრები, ტრიცეფსი",sets:3,reps:"6–12",min:6,rest:90,
    steps:["დადექი აზიდვის პოზაში და მენჯი მაღლა აწიე — სხეული ასო Λ-ს დაემსგავსება.","ხელები მხრების სიგანეზე, თავი ხელებს შორის.","იდაყვები მოხარე და თავი იატაკისკენ ჩაიტანე.","ხელებით დააწექი და ზევით ადი."],
    err:["იდაყვები გვერდებზე იშლება","მენჯი ქვემოთ ეშვება — მაშინ ჩვეულებრივ აზიდვად იქცევა"],
    br:"ქვემოთ — ჩაისუნთქე, ზემოთ — ამოისუნთქე.",
    v:["ფეხები იატაკზე","ფეხები სკამზე","ფეხები სკამზე + ნელი დაშვება"]},
-  {id:"dip",name:"სკამის დიპები",mus:"ტრიცეფსი, მკერდი",sets:3,reps:"8–15",min:8,rest:75,
-   steps:["დაჯექი სკამის კიდეზე, ხელებით გვერდებზე კიდეს ჩაეჭიდე.","წინ გადმოიწიე, ისე რომ მენჯი ჰაერში იყოს.","იდაყვები უკან მოხარე, სანამ მხრები იდაყვების დონემდე ჩავა.","ხელებით ადი ზემოთ."],
-   err:["ძალიან ღრმად ჩადიხარ — მხარი გტკივა","ზურგი სკამს შორდება"],
+  {id:"diamond",name:"Diamond Push-Ups",mus:"ტრიცეფსი, მკერდი",sets:3,reps:"6–12",min:6,rest:75,
+   steps:["აზიდვის პოზაში დადექი, ხელისგულები მკერდის ქვეშ მიუახლოვე — ცერები და საჩვენებელი თითები ბრილიანტის ფორმას ქმნის.","სხეული სწორ ხაზად გეჭიროს.","ნელა ჩადი, იდაყვები სხეულთან ახლოს.","ხელებით დააწექი და ადი."],
+   err:["იდაყვები გვერდებზე იშლება","მენჯი ჩავარდნილია"],
    br:"ქვემოთ — ჩაისუნთქე, ზემოთ — ამოისუნთქე.",
-   warn:"სკამი კედელს მიაყრდენი, რომ არ გასრიალდეს.",
-   v:["მუხლები მოხრილი","ფეხები გაშლილი","ფეხები მეორე სკამზე"]},
-  {id:"curl",name:"ბიცეფსი ზურგჩანთით",mus:"ბიცეფსი",sets:3,reps:"10–15",min:10,rest:60,
-   steps:["ზურგჩანთაში ჩადე წიგნები ან წყლის ბოთლები.","სახელურს ჩაეჭიდე, იდაყვი სხეულთან მიიდე.","მხოლოდ იდაყვის მოხრით აწიე მხრამდე.","ნელა ჩაუშვი (2–3 წამი)."],
-   err:["მთელი სხეულით ირხევი","იდაყვი წინ მიდის"],
-   br:"ზემოთ — ამოისუნთქე.",
-   v:["მსუბუქი ჩანთა (3–5 კგ)","უფრო მძიმე ჩანთა","მძიმე + 3 წამი დაშვება"]},
-  {id:"bss",name:"ბულგარული ჩაჯდომა",mus:"ბარძაყი, დუნდულები",sets:3,reps:"8–12 თითო ფეხზე",min:8,rest:90,
-   steps:["სკამს ზურგით დადექი, ერთი ფეხის წვერი სკამზე დადე.","წინა ფეხი დაახლოებით ერთი დიდი ნაბიჯით წინ.","წინა მუხლის მოხრით ჩადი, სანამ ბარძაყი იატაკის პარალელური გახდება.","წინა ქუსლით დააწექი და ადი. ჯერ ერთი ფეხი, მერე მეორე — ჩაწერე ერთი ფეხის რაოდენობა."],
-   err:["წინა მუხლი შიგნით იხრება","წონა უკანა ფეხზეა"],
+   v:["მუხლებზე","ჩვეულებრივი","3 წამი დაშვება"]},
+  {id:"angel",name:"Reverse Snow Angels",mus:"ზედა ზურგი, მხრები",sets:3,reps:"10–15",min:10,rest:60,
+   steps:["დაწექი მუცელზე, ხელები გვერდებზე, ხელისგულები ქვემოთ.","მკერდი და ხელები ოდნავ აწიე იატაკიდან.","ხელები იატაკის პარალელურად, რკალით თავის ზემოთ წაიღე — როგორც თოვლის ანგელოზი.","ნელა დააბრუნე გვერდებზე. ხელები მთელი დროის განმავლობაში ჰაერშია."],
+   err:["ხელებს იატაკზე სდებ","ძალიან სწრაფად"],
+   br:"თანაბრად ისუნთქე.",
+   v:["ნელა, ჩვეულებრივ","2 წამი გაჩერება ზემოთ","ხელებში წყლის ბოთლები"]},
+  {id:"split",name:"Split Squats",mus:"ბარძაყი, დუნდულები",sets:3,reps:"8–12 თითო ფეხზე",min:8,rest:90,
+   steps:["დადექი ფეხებით ერთი დიდი ნაბიჯის მანძილზე — ერთი წინ, მეორე უკან, უკანა ქუსლი აწეული.","ტანი სწორად გეჭიროს.","ჩადი, სანამ უკანა მუხლი იატაკს თითქმის შეეხება.","წინა ქუსლით დააწექი და ადი. ჯერ ერთი ფეხი, მერე მეორე — ჩაწერე ერთი ფეხის რაოდენობა."],
+   err:["წინა მუხლი შიგნით იხრება","ტანი წინ ძალიან იხრება"],
    br:"ქვემოთ — ჩაისუნთქე, ზემოთ — ამოისუნთქე.",
-   v:["საკუთარი წონით","3 წამი დაშვებით","ზურგჩანთით"]},
-  {id:"calf",name:"წვივის აწევა",mus:"წვივები",sets:3,reps:"15–20",min:15,rest:45,
-   steps:["ფეხის წვერებით დადექი კიბის საფეხურზე, ქუსლები ჰაერში.","წონასწორობისთვის კედელს ხელით დაეყრდენი.","ქუსლები ბოლომდე ჩაუშვი, მერე წვერებზე მაქსიმალურად აიწიე."],
+   v:["საკუთარი წონით","3 წამი დაშვებით","უკანა ფეხი დივანზე (ბულგარული)"]},
+  {id:"calf",name:"Calf Raises",mus:"წვივები",sets:3,reps:"15–20",min:15,rest:45,
+   steps:["დადექი სწორად, ფეხები ოდნავ დაშორებული.","ნელა აიწიე ფეხის წვერებზე რაც შეიძლება მაღლა.","1 წამი გაჩერდი და ნელა ჩაუშვი ქუსლები. III დონეზე შეგიძლია კიბის საფეხურზე გააკეთო."],
    err:["ზამბარასავით სწრაფად ხტუნავ","ბოლომდე არ ეშვები"],
    br:"თანაბრად ისუნთქე.",
    v:["ორივე ფეხით","ერთი ფეხით (ჩაწერე ერთზე)","ერთი ფეხით + 2 წამი ზემოთ"]},
-  {id:"lr",name:"პრესი — ფეხების აწევა",mus:"მუცლის ქვედა ნაწილი",sets:3,reps:"10–15",min:10,rest:45,
+  {id:"lr",name:"Lying Leg Raises",mus:"მუცლის ქვედა ნაწილი",sets:3,reps:"10–15",min:10,rest:45,
    steps:["დაწექი ზურგზე, ხელები გვერდებზე ან დუნდულების ქვეშ.","წელი იატაკს მიაკარი.","ფეხები ნელა აწიე 90°-მდე.","ნელა ჩაუშვი — წელი იატაკს არ უნდა მოსცილდეს."],
    err:["წელი იატაკიდან იწევა","ფეხებს უცებ აგდებ"],
    br:"აწევისას — ამოისუნთქე.",
    v:["მუხლები მოხრილი","ფეხები გაშლილი","ფეხები იატაკს ბოლომდე არ ეხება"]},
-  {id:"bike",name:"პრესი — ველოსიპედი",mus:"მუცლის გვერდები",sets:3,reps:"20–30 (ორივე მხარე)",min:20,rest:45,
+  {id:"bike",name:"Bicycle Crunch",mus:"მუცლის გვერდები",sets:3,reps:"20–30 (ორივე მხარე)",min:20,rest:45,
    steps:["დაწექი ზურგზე, ხელები საფეთქლებთან, ფეხები ჰაერში.","მარჯვენა იდაყვი მარცხენა მუხლთან მიიტანე, მარჯვენა ფეხი გაშალე.","მერე პირიქით — თითქოს ველოსიპედს ატრიალებ. ითვლი ორივე მხარეს."],
    err:["კისერს ქაჩავ","ძალიან სწრაფად"],
    br:"ყოველ შემოტრიალებაზე ამოისუნთქე.",
@@ -601,12 +878,12 @@ const SFX=(()=>{
   function init(){
     if(ctx){ if(ctx.state!=="running") ctx.resume().catch(()=>{}); return true; }
     try{ ctx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return false; }
-    const lim=ctx.createDynamicsCompressor(); lim.threshold.value=-10; lim.knee.value=6; lim.ratio.value=12; lim.attack.value=.003; lim.release.value=.25; lim.connect(ctx.destination);
-    master=ctx.createGain(); master.gain.value=.7; master.connect(lim);
+    const lim=ctx.createDynamicsCompressor(); lim.threshold.value=-8; lim.knee.value=6; lim.ratio.value=12; lim.attack.value=.003; lim.release.value=.25; lim.connect(ctx.destination);
+    master=ctx.createGain(); master.gain.value=1.2*((S.vol==null?80:S.vol)/100); master.connect(lim);
     // უზარმაზარი ტაძრის ექო (~5 წამი)
-    verb=ctx.createConvolver(); const sr=ctx.sampleRate, len=Math.floor(sr*5), ir=ctx.createBuffer(2,len,sr);
+    verb=ctx.createConvolver(); const sr=ctx.sampleRate, len=Math.floor(sr*2.2), ir=ctx.createBuffer(2,len,sr);
     for(let c=0;c<2;c++){ const d=ir.getChannelData(c); let lp=0; for(let i=0;i<len;i++){ const n=Math.random()*2-1; lp+=(n-lp)*(0.42-0.36*i/len); d[i]=lp*Math.pow(1-i/len,2.2)*1.9; } }
-    verb.buffer=ir; const vg=ctx.createGain(); vg.gain.value=.65; verb.connect(vg).connect(master);
+    verb.buffer=ir; const vg=ctx.createGain(); vg.gain.value=.26; verb.connect(vg).connect(master);
     shaper=ctx.createWaveShaper(); const cv=new Float32Array(1024); for(let i=0;i<1024;i++){const x=i/512-1; cv[i]=Math.tanh(x*2.6);} shaper.curve=cv;
     return true;
   }
@@ -662,16 +939,16 @@ const SFX=(()=>{
   function impact(t,vol){ sub(t,vol,110,24,2.2); crack(t,vol*.35); timp(t,vol*.6,60); }
   const N={A1:55,Bb1:58.27,C2:65.41,D2:73.42,E2:82.41,F2:87.31,G2:98,Ab2:103.83,A2:110,Bb2:116.54,C3:130.81,D3:146.83,Eb3:155.56,E3:164.81,F3:174.61,G3:196,Ab3:207.65,A3:220,Bb3:233.08,C4:261.63,D4:293.66,Eb4:311.13,E4:329.63,F4:349.23,G4:392,A4:440,Bb4:466.16,C5:523.25,D5:587.33,E5:659.25};
   const P={
-    tap(t){ knock(t,.045,140); },
+    tap(t){ knock(t,.07,140); },
     tab(t){ darkair(t,.55,.06,80,420); sub(t+.05,.08,60,34,.6); },
     check(t){ sub(t,.13,90,36,.7); tbell(N.D3,t,3,.07,-.2); glass(N.A4,t+.06,2.2,.03,.25,1400); },
     uncheck(t){ sub(t,.06,70,34,.4); glass(N.Eb4,t,.8,.02,0,900); },
     dayDone(t){ impact(t,.32); braam([N.D2,N.A2,N.D3,N.F3],t,3,.15); choir([N.D3*2,N.F4,N.A4],t+.05,3.4,.08,.35); [N.D4,N.A3,N.F3].forEach((f,i)=>tbell(f,t+.25+i*.25,3.4,.06,(i-1)*.5)); },
-    save(t){ knock(t,.04,120); glass(N.D4,t+.02,1.6,.03,.2,1200); },
-    food(t){ knock(t,.05,110); glass(N.A3*2,t+.02,1.2,.02,.2,1000); },
+    save(t){ knock(t,.06,120); glass(N.D4,t+.02,1.8,.045,.2,1300); },
+    food(t){ knock(t,.08,110); glass(N.A3*2,t+.02,1.4,.035,.2,1200); },
     equip(t){ metal(t,.05,1600); tbell(N.D3,t+.08,3,.07); sub(t+.05,.12,80,32,.9); },
     start(t){ riser(t,1.1,.12); impact(t+1.1,.42); braam([N.D2,N.A2,N.D3,N.F3],t+1.1,3.6,.18); choir([N.D3*2,N.F4,N.A4],t+1.15,3.6,.08,.4); thunder(t+1.2,3.5,.09); },
-    step(t){ knock(t,.03,200); },
+    step(t){ knock(t,.05,200); },
     set(t){ timp(t,.22,62); metal(t+.02,.04,1800); tbell(N.A2*2,t+.04,2.6,.07); },
     tick(t){ timp(t,.13,80); },
     restEnd(t){ impact(t,.24); tbell(N.D3,t,4.6,.12); tbell(N.A3,t+.35,4,.06,.4); glass(N.F4,t+.6,3,.025,-.4,1200); },
@@ -692,15 +969,30 @@ const SFX=(()=>{
       [N.D4,N.A3,N.F3,N.D3].forEach((f,i)=>tbell(f,t+2.6+i*.26,4,.07,i%2?.5:-.5)); },
     streak(t){ darkair(t,.9,.12,90,900); impact(t+.75,.3); braam([N.E2,123.47,N.E3,N.G3],t+.75,2.8,.14); choir([N.E3*2,N.G4,493.88],t+.8,3,.08,.3); },
     challenge(t){ timp(t,.2,62); timp(t+.16,.24,55); impact(t+.34,.3); braam([N.C2*2,N.G2*1.5,N.C3,N.Eb3],t+.34,2.4,.13); tbell(N.C4,t+.4,3.2,.06,-.3); tbell(N.G3,t+.55,3.2,.05,.3); },
+    coin(t){ knock(t,.08,260); glass(N.E5,t+.01,1,.05,-.3,2600); glass(N.A4*2,t+.09,1.2,.045,.3,2600); sub(t,.08,90,40,.4); },
+    heal(t){ darkair(t,1.2,.1,60,300); choir([N.D3,N.Eb3*2,N.A2*2],t+.1,2.4,.07,.8); sub(t+.9,.18,70,30,1.2); },
+    judge(t){ drone(N.D2,t,4,.1); tbell(N.D3,t+.2,4.4,.11); braam([N.D2,N.Eb3,N.A2],t+.25,2.6,.12); tbell(N.Ab3,t+.9,3.6,.06,.4); },
+    judgeGood(t){ tbell(N.D3,t,4.4,.11); choir([N.D3*2,N.F4,N.A4],t+.1,3.2,.08,.6); braam([N.Bb1,N.F2,N.Bb2,N.D3],t+.9,3,.12); glass(N.F4,t+1,2.6,.03,.3,1400); },
+    fallen(t){ for(let i=0;i<6;i++) timp(t+i*.22,.2-i*.02,70-i*6,i%2?.3:-.3); sub(t+1.3,.5,90,22,3); crack(t+1.3,.15);
+      braam([N.D2,N.F2,N.Ab2,N.D3],t+1.3,4.2,.2); choir([N.D3,N.F3,N.Ab3],t+1.35,4.5,.09,.6); thunder(t+1.3,6,.14); tbell(N.D3/2*2,t+1.4,5,.1); },
+    revive(t){ riser(t,1,.13); impact(t+1,.36); choir([N.D3*2,N.F4,N.A4],t+1,1.4,.09,.2); braam([N.Bb1,N.F2,N.Bb2,N.D3],t+2.1,3.4,.15); choir([N.D4,N.F4,N.Bb4],t+2.1,3,.09,.3); },
+    lvdown(t){ const o=ctx.createOscillator(),g=ctx.createGain(); o.type="sawtooth"; o.frequency.setValueAtTime(220,t); o.frequency.exponentialRampToValueAtTime(40,t+2.2); const lp=ctx.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=600; env(g,t,.1,.12,2.4); o.connect(lp).connect(g); out(g,.8); o.start(t); o.stop(t+2.5);
+      impact(t+2,.3); tbell(N.D3,t+2,4,.1); choir([N.D3,N.F3,N.A3],t+2,3,.07,.5); },
+    enter(t){ riser(t,.7,.11); impact(t+.7,.4); braam([N.D2,N.A2,N.D3,N.F3],t+.7,3.2,.15); choir([N.D3*2,N.F4,N.A4],t+.75,3.2,.08,.35); tbell(N.D3,t+.8,4,.08); },
+    talent(t){ tbell(N.A3,t,3,.08); glass(N.E4,t+.05,2,.04,.3,1600); sub(t,.12,90,40,.6); },
+    loot_common(t){ knock(t,.08,180); glass(N.A4,t+.05,2,.05,-.2,1800); glass(N.E4,t+.15,2,.04,.2,1800); },
+    loot_rare(t){ whoosh(t,.5,.08,400,2400); tbell(N.D3,t+.3,3.5,.09); glass(N.A4,t+.35,2.6,.05,-.3,2000); glass(N.D4*2,t+.45,2.6,.04,.3,2000); },
+    loot_epic(t){ riser(t,.8,.12); impact(t+.8,.34); choir([N.D3*2,N.F4,N.A4],t+.85,3,.08,.3); tbell(N.D3,t+.9,4,.1); },
+    loot_legendary(t){ for(let i=0;i<6;i++) timp(t+i*.12,.1+i*.03,62); riser(t,1,.15); impact(t+1,.5); braam([N.D2,N.A2,N.D3,N.F3],t+1,2.2,.18); braam([N.Bb1,N.F2,N.Bb2,N.D3],t+2.3,3.4,.17); choir([N.D4,N.F4,N.Bb4],t+2.3,3.4,.1,.3); thunder(t+1,5,.12); },
     error(t){ sub(t,.16,60,34,.5); const g=ctx.createGain(); env(g,t,.01,.05,.5); [N.E3/2*2,N.Bb2].forEach(f=>{osc("triangle",f,t,.55).connect(g);}); out(g,.5); }
   };
-  return { init, play(name){ if(S.sound===false) return; if(!init()) return; try{ P[name](ctx.currentTime+.02); }catch(e){} } };
+  return { init, vol(v){ if(master) master.gain.value=1.2*(v/100); }, play(name){ if(S.sound===false) return; if(!init()) return; try{ P[name](ctx.currentTime+.02); }catch(e){} } };
 })();
 ["touchend","click","keydown"].forEach(ev=>document.addEventListener(ev,()=>{ if(S.sound!==false) SFX.init(); },{capture:true,passive:true}));
 
 /* ================= შენახვა ================= */
 const LS = "masa-tracker-v1";
-function blank(){return {start:todayKey(),days:{},weights:[{d:todayKey(),kg:PROFILE.startKg}],measures:[],sessions:[],updatedAt:0,seenLv:1,seenAch:[],title:null,run:null,pal:"obsidian",resetHour:0};}
+function blank(){return {start:todayKey(),days:{},weights:[{d:todayKey(),kg:PROFILE.startKg}],measures:[],sessions:[],updatedAt:0,seenLv:1,seenAch:[],title:null,run:null,pal:"obsidian",resetHour:0,penaltyStart:todayKey()};}
 let S = blank();
 try{const raw=localStorage.getItem(LS); if(raw) S=Object.assign(blank(),JSON.parse(raw));}catch(e){}
 if(!S.weights.length) S.weights=[{d:S.start,kg:PROFILE.startKg}];
@@ -733,7 +1025,7 @@ function save(){
       else await dbRef.set(JSON.parse(JSON.stringify(S)));
     } else { await dbRef.set(JSON.parse(JSON.stringify(S))); }
     syncState="✓ შენახულია შენს ანგარიშზე"; RESET_H=S.resetHour||0;
-    if(!S.v4init){markSeen();S.v4init=true;save();}
+    if(!S.penaltyStart){S.penaltyStart=todayKey();} if(!S.v6init){markSeen();S.v6init=true;save();}
     render();
   }catch(e){}
 })();
@@ -743,7 +1035,11 @@ function weekNum(k){ const diff=Math.floor((parse(k)-parse(S.start))/864e5); ret
 function phaseIdx(k){ const w=weekNum(k); return w<=4?0:w<=8?1:2; }
 function typeFor(k){ return SCHEDULE[parse(k).getDay()] || null; }
 function sortedW(){ return [...S.weights].sort((a,b)=>a.d<b.d?-1:1); }
-function questsFor(k){ const type=typeFor(k); return (type?[{id:"workout",i:"⚔️",t:WORKOUTS[type].name+": "+WORKOUTS[type].title,d:"„მისიის“ ჩანართში — აპი ნაბიჯ-ნაბიჯ გაგიძღვება"}]:[]).concat(DAILY); }
+function isRec(k){ return !!(S.days[k]&&S.days[k].rec); }
+function effAt(k){ const ws=sortedW().filter(w=>w.d<=k); const wk=Math.max(0,(parse(k)-parse(S.start))/6048e5), cap=PROFILE.startKg+0.5*wk+1;
+  if(!ws.length) return {v:PROFILE.startKg,avg:PROFILE.startKg,cap,capped:false};
+  const last=ws.slice(-3), avg=last.reduce((a,b)=>a+b.kg,0)/last.length; return {v:Math.min(avg,cap),avg,cap,capped:avg>cap}; }
+function questsFor(k){ const type=isRec(k)?null:typeFor(k); return (type?[{id:"workout",i:"⚔️",t:WORKOUTS[type].name+": "+WORKOUTS[type].title,d:"„მისიის“ ჩანართში — აპი ნაბიჯ-ნაბიჯ გაგიძღვება"}]:[]).concat(DAILY); }
 function dayComplete(k){ const d=S.days[k]; if(!d) return false; return questsFor(k).every(q=>d.c[q.id]); }
 function lastReps(exId){ for(let i=S.sessions.length-1;i>=0;i--){const r=S.sessions[i].sets[exId]; if(r&&r.some(x=>x!==""&&x!=null)) return r;} return null; }
 const sum = a => (a||[]).reduce((s,b)=>s+(+b||0),0);
@@ -779,29 +1075,86 @@ function dayXP(k){ let xp=0; const d=S.days[k]; if(d){ const c=d.c||{}; for(cons
   return xp + S.weights.filter(w=>w.d===k).length*XP.weigh + S.measures.filter(m=>m.d===k).length*XP.measure; }
 function game(){
   const tk=todayKey();
-  let xp=0, full=0, elx=0, kcDays=0;
-  for(const k in S.days){ const c=S.days[k].c||{}; for(const id in c) if(c[id]&&XP[id]) xp+=XP[id]; if(dayComplete(k)){xp+=XP.bonus;full++;} if(c.creatine&&c.d3&&c.gainer) elx++; if(kcalDay(k)>=PROFILE.kcal){xp+=XP.kcal;kcDays++;} }
-  xp += S.weights.length*XP.weigh + S.measures.length*XP.measure;
-  // სერია + ფარები + ჯილდოები
-  let run=0,best=0,shields=0,sBonus=0,runStart=null; const shielded=[], milestones=[];
+  const pStart=S.penaltyStart||tk, shop=S.shop||[], wl=sortedW(), clsLog=S.clsLog||[], talLog=S.talLog||[], eqLog=S.eqLog||[], towerLog=S.tower||[], upgLog=S.upg||[];
+  let xp=0,hp=100,gold=0,fallen=false,atone=0,shields=0,run=0,best=0,runStart=null,full=0,elx=0,kcDays=0,wi=0,mk=PROFILE.startKg,mult=1,chDone=0,floors=0,maxLvS=1,maxHp=100,spent=0,cls="none",clsSince=null;
+  const tal={vit:0,dis:0,greed:0,fury:0}, eq={weapon:null,helm:null,armor:null,gloves:null,boots:null,trinket:null}, owned={}, lvl={}, dayRec={};
+  const shielded=[],milestones=[],log=[],judg={},chKeys=[],bought=[],drops=[];
+  let modsToday=null, evToday=null;
+  const lvOf=x=>{let l=1,r=x;while(r>=xpNeed(l)){r-=xpNeed(l);l++;}return l;};
+  const ORD=["common","rare","epic","legendary"];
+  const drop=(k,src,salt,minR,force)=>{ const r=rng(Math.round(parse(k).getTime()/864e5)*97+salt); const roll=r();
+    let rar=roll<.03?"legendary":roll<.15?"epic":roll<.45?"rare":"common"; if(ORD.indexOf(rar)<ORD.indexOf(minR||"common")) rar=minR;
+    const pool=GEAR.filter(g=>g.r===rar), id=k+":"+src; let it=force?GEAR.find(g=>g.id===force):pool[Math.floor(r()*pool.length)]; rar=it.r;
+    if(owned[it.id]){ const gg=RARITY[rar].g; gold+=gg; drops.push({id,item:it.id,d:k,src,dup:true,gold:gg}); }
+    else { owned[it.id]=k; drops.push({id,item:it.id,d:k,src}); log.push({d:k,i:it.i,t:"Loot: "+it.n,v:RARITY[rar].n,good:1}); } };
   for(let k=S.start;k<=tk;k=addDays(k,1)){
-    if(dayComplete(k)){ run++; if(run===1) runStart=k; best=Math.max(best,run);
-      const rw=STREAK_REWARDS[run]||((run>30&&run%30===0)?500:0); if(rw){ sBonus+=rw; milestones.push({key:runStart+"#"+run,n:run,xp:rw,shield:run%7===0}); }
-      if(run%7===0) shields=Math.min(2,shields+1); }
-    else if(k===tk){}
-    else if(shields>0){ shields--; shielded.push(k); }
-    else run=0;
+    const c=((S.days[k]||{}).c)||{}, comp=dayComplete(k), di=Math.round(parse(k).getTime()/864e5);
+    clsLog.forEach(x=>{ if(x.d===k){ cls=x.c; clsSince=k; } });
+    talLog.forEach(x=>{ if(x.d===k&&tal[x.t]!=null&&tal[x.t]<5&&(maxLvS-1)-spent>0){ tal[x.t]++; spent++; } });
+    eqLog.forEach(x=>{ if(x.d!==k) return; if(x.id===null) eq[x.s]=null; else { const gi=GEAR.find(g=>g.id===x.id); if(gi&&owned[x.id]&&gi.s===x.s) eq[x.s]=x.id; } });
+    const EV=weekEvent(weekStart(k)), ev=EV.m;
+    const M={xp:1+tal.fury*.05,mis:1,gold:1+tal.greed*.08,pen:1-tal.dis*.08,regen:0,hp:tal.vit*10,elx:1,rest:1,kcal:1,disc:1,revive:2,misPen:1,mealPen:1,restPen:1,xpEv:1,penEv:1,tower:1};
+    const applyE=e=>{ if(e.xp) M.xp+=e.xp; if(e.mis) M.mis+=e.mis; if(e.gold) M.gold+=e.gold; if(e.pen) M.pen-=e.pen; if(e.hp) M.hp+=Math.round(e.hp); if(e.regen) M.regen+=Math.round(e.regen); if(e.revive) M.revive=1; if(e.kcal) M.kcal+=e.kcal; if(e.elx) M.elx+=e.elx; if(e.rest) M.rest+=e.rest; if(e.tower) M.tower+=e.tower; if(e.disc) M.disc-=e.disc; };
+    const setCnt={}; Object.values(eq).forEach(id=>{ if(!id) return; applyE(gearEff(id,lvl[id])); const st=GEAR.find(g=>g.id===id).set; if(st) setCnt[st]=(setCnt[st]||0)+1; });
+    for(const st in setCnt){ if(setCnt[st]>=2) applyE(SETS[st].b2); if(setCnt[st]>=3) applyE(SETS[st].b3); }
+    if(cls==="warrior"){ M.mis+=.25; M.misPen=1.5; } else if(cls==="monk"){ M.regen+=10; M.rest+=1; M.mis-=.1; } else if(cls==="alchemist"){ M.elx+=1; M.disc-=.2; M.mealPen=1.5; }
+    M.disc=Math.max(.5,M.disc);
+    if(ev.xp){ M.xp*=ev.xp; M.xpEv=ev.xp; } if(ev.pen){ M.pen*=ev.pen; M.penEv=ev.pen; } if(ev.kcal) M.kcal*=ev.kcal; if(ev.gold) M.gold*=ev.gold; if(ev.mis) M.mis*=ev.mis; if(ev.restPen) M.restPen=ev.restPen; if(ev.regen) M.regen+=ev.regen;
+    M.pen=Math.max(.15,M.pen); maxHp=100+M.hp; hp=Math.min(hp,maxHp);
+    let m=1;
+    const xp0=xp, gold0=gold;
+    shop.forEach(s=>{ if(s.d!==k) return; const it=s.item==="deal"?{id:"deal",cost:DEAL_PRICE[dealFor(k).r]}:SHOP.find(x=>x.id===s.item); if(!it) return; const cost=Math.round(it.cost*M.disc); if(gold<cost) return;
+      if(s.item==="deal"){ const di_=dealFor(k); if(owned[di_.id]) return; gold-=cost; owned[di_.id]=k; drops.push({id:k+":deal",item:di_.id,d:k,src:"deal"}); log.push({d:k,i:di_.i,t:"Daily Deal: "+di_.n,v:"−"+cost+" 🪙",good:1}); if(k===tk) bought.push("deal"); return; }
+      gold-=cost; if(k===tk) bought.push(s.item);
+      if(s.item==="gpotion"&&!fallen){ hp=maxHp; log.push({d:k,i:"⚗️",t:"Greater Potion",v:"სრული HP",good:1}); }
+      if(s.item==="potion"&&!fallen){ hp=Math.min(maxHp,hp+30); log.push({d:k,i:"🧪",t:"Health Potion",v:"+30 HP",good:1}); }
+      else if(s.item==="shield"){ shields=Math.min(3,shields+1); log.push({d:k,i:"🛡️",t:"Streak Shield",v:"+1 ფარი",good:1}); }
+      else if(s.item==="scroll"){ m*=1.5; log.push({d:k,i:"📜",t:"Scroll of Fervor",v:"XP ×1.5",good:1}); }
+      else if(s.item==="revive"&&fallen){ fallen=false; hp=Math.round(maxHp/2); atone=0; log.push({d:k,i:"🪶",t:"Phoenix Feather — აღდგენა",v:hp+" HP",good:1}); }
+      else if(s.item==="chest"){ drop(k,"shop"+shop.indexOf(s),shop.indexOf(s)*31+5,"rare"); }
+      else if(s.item==="chest2"){ drop(k,"shop"+shop.indexOf(s),shop.indexOf(s)*37+9,"epic"); } });
+    upgLog.forEach(u=>{ if(u.d!==k||!owned[u.id]) return; const it=GEAR.find(g=>g.id===u.id), L=lvl[u.id]||0; if(L>=5) return; const cost=Math.round(upCost(it,L)*M.disc); if(gold<cost) return; gold-=cost; lvl[u.id]=L+1; log.push({d:k,i:"🔨",t:it.n+" +"+(L+1),v:"−"+cost+" 🪙",good:1}); });
+    if(fallen) m*=.5; else if(hp<maxHp*.3) m*=.8;
+    if(k===tk){ mult=m; modsToday=M; evToday=EV; }
+    { const E=effAt(k); if(E.v>mk){ BOSSES.forEach(b=>{ if(mk<b.kg&&E.v>=b.kg){ xp+=b.xp; gold+=Math.round(100*M.gold); log.push({d:k,i:"⚔️",t:b.name+" დამარცხდა",v:"+"+b.xp+" XP",good:1}); drop(k,"boss"+b.kg,b.kg,b.kg>=65?"legendary":"epic",b.kg>=65?"m1":null); } }); mk=E.v; } }
+    let g0=0, gg=0;
+    for(const id in c){ if(!c[id]||!XP[id]) continue; let v=XP[id]; if(id==="workout") v*=M.mis; else if(id==="creatine"||id==="d3"||id==="gainer") v*=M.elx; else if(id==="sleep"||id==="water") v*=M.rest; g0+=v; }
+    if(comp){ g0+=XP.bonus; full++; gg+=10; }
+    if(c.workout){ gg+=cls==="warrior"?22:15; }
+    const tw=towerLog.find(x=>x.d===k); if(tw){ floors++; const T=towerTrial(floors); xp+=Math.round(T.xp*M.tower*M.xp*m); gg+=T.gold;
+      log.push({d:k,i:"🗼",t:"Tower Floor "+floors+(T.guard?" · Guardian":""),v:"+"+Math.round(T.xp*M.tower*M.xp*m)+" XP",good:1});
+      if(T.chest) drop(k,"tower"+floors,floors*13,T.chest==="mythic"?"legendary":T.chest,T.chest==="mythic"?"m2":null); }
+    if(c.bounty) gg+=10;
+    if(kcalDay(k)>=PROFILE.kcal){ g0+=XP.kcal*M.kcal; kcDays++; gg+=5; }
+    if(c.creatine&&c.d3&&c.gainer) elx++;
+    g0+=S.weights.filter(w=>w.d===k).length*XP.weigh + S.measures.filter(x=>x.d===k).length*XP.measure;
+    xp+=Math.round(g0*M.xp*m); gold+=Math.round(gg*M.gold);
+    const rc=rng(di*131+7); if(comp&&rc()<.35) drop(k,"day",1); if(c.workout&&rc()<.25) drop(k,"mis",2);
+    if(comp){ run++; if(run===1) runStart=k; best=Math.max(best,run);
+      const rw=STREAK_REWARDS[run]||((run>30&&run%30===0)?500:0); if(rw){ xp+=rw; gold+=Math.round(rw/5*M.gold); milestones.push({key:runStart+"#"+run,n:run,xp:rw,shield:run%7===0}); if(run===7||run===30) drop(k,"streak"+run,run*17,run>=30?"epic":"rare"); }
+      if(run%7===0) shields=Math.min(3,shields+1);
+      if(fallen){ atone++; if(atone>=M.revive){ fallen=false; hp=Math.round(maxHp/2); atone=0; log.push({d:k,i:"🔥",t:"Atonement — აღდგენა",v:hp+" HP",good:1}); } } }
+    else if(k<tk){ if(isRec(k)){ log.push({d:k,i:"🩹",t:"Recovery Day",v:"სასჯელის გარეშე",good:1}); } else if(shields>0){ shields--; shielded.push(k); } else run=0; if(fallen&&!isRec(k)) atone=0; }
+    if(parse(k).getDay()===0||k===tk){ const w0=weekStart(k); const cs=weekChallenges(w0); cs.forEach(ch=>{ if(ch.done){ chDone++; xp+=XP.challenge; gold+=Math.round(25*M.gold); chKeys.push({key:w0+":"+ch.id,t:ch.t,ico:ch.ico}); } }); if(cs.every(ch=>ch.done)) drop(k,"trial"+w0,23,"rare"); }
+    if(k<tk&&k>=pStart&&!(isRec(k)&&!comp)){
+      let dh=0,dx=0; const miss=[];
+      questsFor(k).forEach(q=>{ if(c[q.id]||!PEN[q.id]) return; let ph=PEN[q.id].hp; if(q.id==="workout") ph*=M.misPen; else if(q.id==="meals") ph*=M.mealPen; else if(q.id==="sleep"||q.id==="water") ph*=M.restPen;
+        dh+=Math.round(ph*M.pen); dx+=Math.round(PEN[q.id].xp*M.penEv); miss.push(q); });
+      const J={comp,miss,dh:0,dx:0,regen:0,fell:false,lost:0,shield:shielded.includes(k)};
+      if(comp){ const r=Math.min(15+M.regen,maxHp-hp); hp+=r; J.regen=r; }
+      else { const lx=Math.min(xp,dx); xp-=lx; J.dx=lx; if(!fallen){ J.dh=Math.min(hp,dh); hp-=J.dh; }
+        log.push({d:k,i:"🩸",t:"გამოტოვებული: "+miss.map(q=>q.t).join(", "),v:(J.dh?"−"+J.dh+" HP ":"")+(J.dx?"−"+J.dx+" XP":""),good:0}); }
+      if(hp<=0&&!fallen){ fallen=true; hp=0; const lost=Math.min(xp,150); xp-=lost; run=0; atone=0; J.fell=true; J.lost=lost; log.push({d:k,i:"☠️",t:"FALLEN",v:"−"+lost+" XP",good:0}); }
+      judg[k]=J;
+    }
+    dayRec[k]={dx:xp-xp0,dg:gold-gold0,hp,comp,rec:isRec(k),mis:!!c.workout,tower:!!tw,fallen};
+    maxLvS=Math.max(maxLvS,lvOf(xp));
   }
-  xp+=sBonus;
-  let chDone=0; const chKeys=[];
-  for(let ws=weekStart(S.start); ws<=tk; ws=addDays(ws,7)){ weekChallenges(ws).forEach(c=>{ if(c.done){ chDone++; xp+=XP.challenge; chKeys.push({key:ws+":"+c.id,t:c.t,ico:c.ico}); } }); }
-  const maxKg0=Math.max(...S.weights.map(x=>x.kg),PROFILE.startKg);
-  BOSSES.forEach(b=>{ if(maxKg0>=b.kg) xp+=b.xp; });
   let lv=1, rest=xp; while(rest>=xpNeed(lv)){rest-=xpNeed(lv);lv++;}
   const rank=[...RANKS].reverse().find(r=>lv>=r.lv), nextRank=RANKS.find(r=>r.lv>lv);
   const nextReward=[3,7,14,30].find(m=>m>run) || (Math.floor(run/30)+1)*30;
   const missions=S.sessions.length, totalReps=S.sessions.reduce((a,s)=>a+sessReps(s),0);
-  const w=sortedW(), cur=w.length?w[w.length-1].kg:PROFILE.startKg, maxKg=Math.max(...w.map(x=>x.kg),PROFILE.startKg);
+  const w=sortedW(), rawCur=w.length?w[w.length-1].kg:PROFILE.startKg, EF=effAt(tk), cur=EF.v, maxKg=Math.max(mk,PROFILE.startKg);
   const maxPu=Math.max(0,...S.sessions.map(s=>sum(s.sets.pu)));
   const cnt=(v,n,u)=>({pct:Math.min(1,v/n),txt:Math.min(v,n)+" / "+n+(u?" "+u:"")});
   const kgP=t=>({pct:Math.max(0,Math.min(1,(maxKg-PROFILE.startKg)/(t-PROFILE.startKg))),txt:maxKg.toFixed(1)+" / "+t+" კგ"});
@@ -835,9 +1188,9 @@ function game(){
     T("lv10","Ascension","silver","ᛉ","Knight's Oath","ფიცი დადებულია.","მიაღწიე LV 10-ს",lvP(10)),
     T("lv18","Ascension","gold","ᛏ","Champion's Crown","გვირგვინი ოფლით იჭედება.","მიაღწიე LV 18-ს",lvP(18)),
     T("lv28","Ascension","myth","ᛟ","Living Legend","მისი სახელი რუნებშია ამოკვეთილი.","მიაღწიე LV 28-ს",lvP(28))
-  ].map(a=>({...a,got:a.pct>=1}));
+  ].map(a=>({...a,got:a.pct>=1||(S.seenAch||[]).includes(a.id)}));
   const boss=BOSSES.find(b=>b.kg>maxKg);
-  return {xp,lv,rest,need:xpNeed(lv),rank,nextRank,streak:run,best,full,missions,totalReps,cur,maxKg,ach,boss,shields,shielded,nextReward,nextRewardXP:STREAK_REWARDS[nextReward]||500,chDone,kcDays,milestones,chKeys};
+  return {xp,lv,rest,need:xpNeed(lv),rank,nextRank,streak:run,best,full,missions,totalReps,cur,maxKg,ach,boss,shields,shielded,nextReward,nextRewardXP:STREAK_REWARDS[nextReward]||500,chDone,kcDays,milestones,chKeys,hp,gold,fallen,atone,mult,log,judg,bought,maxLv:Math.max(S.maxLv||1,lv),maxHp,cls,clsSince,tal,points:Math.max(0,(maxLvS-1)-spent),eq,owned,drops,floors,mods:modsToday,event:evToday,disc:modsToday?modsToday.disc:1,rawCur,capped:EF.capped,cap:EF.cap,avgKg:EF.avg,lvl,dayRec,towerToday:towerLog.some(x=>x.d===tk)};
 }
 function weekSummary(ws){
   const days=weekDays(ws), we=days[6], tk=todayKey();
@@ -883,15 +1236,21 @@ function bossSigil(b,size,dead){
   </svg>`;
 }
 function pendingEvents(g){
-  const ev=[], sb=S.seenBoss||[], ss=S.seenStreak||[], sc=S.seenCh||[], sa=S.seenAch||[];
+  const ev=[], sb=S.seenBoss||[], ss=S.seenStreak||[], sc=S.seenCh||[], sa=S.seenAch||[], yk=addDays(todayKey(),-1);
+  const U=Object.keys(g.judg).filter(d=>d<=yk&&(!S.seenJudg||d>S.seenJudg)).sort();
+  if(U.length){ const fellDay=U.find(d=>g.judg[d].fell); const base=g.judg[fellDay||U[U.length-1]];
+    const J={...base, dh:U.reduce((a,d)=>a+g.judg[d].dh,0), dx:U.reduce((a,d)=>a+g.judg[d].dx,0), days:U.length, missedDays:U.filter(d=>!g.judg[d].comp).length};
+    ev.push({k:"judge",d:yk,J}); }
   BOSSES.forEach(b=>{ if(g.maxKg>=b.kg&&!sb.includes(b.kg)) ev.push({k:"boss",b,id:b.kg}); });
   if(g.lv>(S.seenLv||1)) ev.push({k:"lv",from:S.seenLv||1,to:g.lv});
+  if(g.lv<(S.seenLv||1)) ev.push({k:"lvdown",from:S.seenLv||1,to:g.lv});
   g.milestones.forEach(m=>{ if(!ss.includes(m.key)) ev.push({k:"streak",m,id:m.key}); });
   g.chKeys.forEach(c=>{ if(!sc.includes(c.key)) ev.push({k:"ch",c,id:c.key}); });
+  const sl=S.seenLoot||[]; g.drops.forEach(d=>{ if(!sl.includes(d.id)) ev.push({k:"loot",dr:d,id:d.id}); });
   g.ach.forEach(a=>{ if(a.got&&!sa.includes(a.id)) ev.push({k:"ach",a,id:a.id}); });
   return ev;
 }
-function markSeen(){ const g=game(); S.seenLv=Math.max(S.seenLv||1,g.lv); S.seenBoss=BOSSES.filter(b=>g.maxKg>=b.kg).map(b=>b.kg); S.seenStreak=g.milestones.map(m=>m.key); S.seenCh=g.chKeys.map(c=>c.key); S.seenAch=Array.from(new Set((S.seenAch||[]).concat(g.ach.filter(a=>a.got).map(a=>a.id)))); }
+function markSeen(){ const g=game(); S.seenLv=g.lv; S.maxLv=Math.max(S.maxLv||1,g.lv); S.seenBoss=BOSSES.filter(b=>g.maxKg>=b.kg).map(b=>b.kg); S.seenStreak=g.milestones.map(m=>m.key); S.seenCh=g.chKeys.map(c=>c.key); S.seenAch=Array.from(new Set((S.seenAch||[]).concat(g.ach.filter(a=>a.got).map(a=>a.id)))); S.seenJudg=addDays(todayKey(),-1); S.seenLoot=g.drops.map(d=>d.id); }
 function screenFX(kind,col){
   if(REDUCED) return;
   const f=document.createElement("div"); f.className="flash"; if(col) f.style.background=`radial-gradient(circle at 50% 45%, ${col}, transparent 70%)`; document.body.appendChild(f); setTimeout(()=>f.remove(),1300);
@@ -900,6 +1259,25 @@ function screenFX(kind,col){
 function ascend(ev,g){
   let center="", msg="", sub="", snd="levelUp", col="", shards=false, delay=1100;
   const T=(s)=>`<text x="100" y="88" text-anchor="middle" font-family="Cinzel, serif" font-size="12" letter-spacing="4" style="fill:var(--og)">${s}</text>`;
+  if(ev.k==="loot"){ const it=GEAR.find(x=>x.id===ev.dr.item), R=RARITY[it.r]; col=R.c; snd="loot_"+(it.r==="mythic"?"legendary":it.r); shards=it.r==="epic"||it.r==="legendary"; delay=900;
+    const src={day:"სრული დღე",mis:"მისია",boss:"ბოსი",tower:"Tower",trial:"კვირის გამოწვევები",streak:"სერია",shop:"Merchant",deal:"Daily Deal"}[(ev.dr.src.match(/^[a-z]+/)||["day"])[0]]||"";
+    center=`<text x="100" y="122" text-anchor="middle" font-size="52">${it.i}</text>`; msg=R.n.toUpperCase()+" LOOT";
+    sub=`<b class="num" style="color:${R.c}">${esc(it.n)}</b><br>${esc(effText(gearEff(it.id,0)))}${it.set?`<br><span class="small">${SETS[it.set].i} ${SETS[it.set].n}</span>`:""}<br><span class="small">წყარო: ${src}</span>${ev.dr.dup?`<br>უკვე გაქვს — გადაიქცა <b class="num" style="color:var(--og)">+${ev.dr.gold} 🪙</b>`:"<br><span class='small'>Hero → Armory-ში აღიჭურვე.</span>"}`;
+  } else if(ev.k==="judge"){
+    const J=ev.J;
+    if(J.fell){ snd="fallen"; col="#D8283F"; shards=false; delay=900;
+      center=`<text x="100" y="122" text-anchor="middle" font-size="50">☠️</text>`; msg="FALLEN";
+      sub=`${J.missedDays>1?J.missedDays+" დღე":"გუშინ"} კვესტები არ შესრულდა და HP 0-მდე დაეცა.<br><b style="color:#FF7A6B">−${J.lost} XP</b> · XP ახლა ×0.5<br>აღდგენა: <b>2 სრული დღე ზედიზედ</b> ან 🪶 Phoenix Feather.`; }
+    else if(J.comp){ snd="judgeGood"; delay=900;
+      center=`<text x="100" y="122" text-anchor="middle" font-size="46">⚖️</text>`; msg="PERFECT DAY";
+      sub=`გუშინ ყველა კვესტი შესრულდა.${J.regen?`<br><span class="num" style="color:var(--og)">+${J.regen} HP</span>`:""}`; }
+    else { snd="judge"; col="#FF7A6B"; delay=900;
+      center=`<text x="100" y="122" text-anchor="middle" font-size="46">⚖️</text>`; msg="JUDGMENT";
+      sub=`${J.missedDays>1?`<b>${J.missedDays} დღე</b> დარჩა დაუსრულებელი. ბოლოს:`:"გუშინ დარჩა დაუსრულებელი:"}<br>${J.miss.map(q=>`${q.i} ${esc(q.t)}`).join("<br>")}<br><b style="color:#FF7A6B">${J.dh?"−"+J.dh+" HP":""} ${J.dx?"· −"+J.dx+" XP":""}</b>${J.shield?"<br>🛡️ ფარმა სერია დაიცვა":""}`; }
+  } else if(ev.k==="lvdown"){ snd="lvdown"; col="#FF7A6B"; delay=900;
+    center=T("LEVEL")+`<text x="100" y="128" text-anchor="middle" font-family="Cinzel, serif" font-weight="800" font-size="46" fill="#F1E9DA">${ev.to}</text>`;
+    msg="LEVEL LOST"; sub=`LV ${ev.from} → <b class="num">LV ${ev.to}</b><br>სასჯელებმა XP წაგართვა. დღეს დაიბრუნე.`;
+  } else
   if(ev.k==="lv"){
     center=T(ev.rank?"RANK":"LEVEL")+`<text x="100" y="128" text-anchor="middle" font-family="${ev.rank?"Noto Sans Runic, serif":"Cinzel, serif"}" font-weight="800" font-size="${ev.rank?52:46}" fill="#F1E9DA">${ev.rank?ev.rank.ico:ev.to}</text>`;
     if(ev.rank){ msg="RANK UP"; const pal=PALETTES.find(p=>p.lv===ev.rank.lv); sub=`ახალი რანგი: <b class="num">${ev.rank.name}</b> · LV ${ev.to}${pal?`<br>ახალი აურა გაიხსნა: <b class="num">${pal.name}</b>`:""}`; snd="rank"; shards=true; delay=1100; }
@@ -930,20 +1308,32 @@ function ascend(ev,g){
    <p>${sub}</p>
    <button class="btn gold full" data-close>Continue</button>`;
   $("#over").classList.add("on"); SFX.play(snd);
-  setTimeout(()=>screenFX(ev.k==="boss"||ev.rank?"shake":"",col||null),delay);
+  setTimeout(()=>screenFX(ev.k==="boss"||ev.rank||(ev.k==="judge"&&ev.J.fell)?"shake":"",col||null),delay);
   setTimeout(()=>{const x=$("#ovbox .btn");x&&x.focus();},50);
 }
 function celebrate(){
   if($("#over").classList.contains("on")) return;
   const g=game(), ev=pendingEvents(g)[0]; if(!ev) return;
-  if(ev.k==="boss") S.seenBoss=[...(S.seenBoss||[]),ev.id];
-  else if(ev.k==="lv"){ ev.rank=RANKS.find(r=>r.lv>ev.from&&r.lv<=ev.to); S.seenLv=ev.to; }
+  if(ev.k==="judge") S.seenJudg=ev.d;
+  else if(ev.k==="loot") S.seenLoot=[...(S.seenLoot||[]),ev.id];
+  else if(ev.k==="lvdown") S.seenLv=ev.to;
+  else if(ev.k==="boss") S.seenBoss=[...(S.seenBoss||[]),ev.id];
+  else if(ev.k==="lv"){ ev.rank=RANKS.find(r=>r.lv>Math.max(ev.from,S.maxLv||1)&&r.lv<=ev.to); S.seenLv=ev.to; S.maxLv=Math.max(S.maxLv||1,ev.to); }
   else if(ev.k==="streak") S.seenStreak=[...(S.seenStreak||[]),ev.id];
   else if(ev.k==="ch") S.seenCh=[...(S.seenCh||[]),ev.id];
   else { S.seenAch=[...(S.seenAch||[]),ev.id]; if(!S.title) S.title=ev.id; }
   save(); ascend(ev,g);
 }
 /* ================= კვესტები ================= */
+function effects(g){ const e=[];
+  const C=CLASSES.find(c=>c.id===g.cls); if(C&&C.id!=="none") e.push(`<span class="fx">${C.i} ${C.n}</span>`);
+  if(g.fallen) e.push(`<span class="fx bad">☠️ Fallen · XP ×0.5 · Atonement ${g.atone}/${g.eq.trinket==="t3"?1:2}</span>`);
+  else if(g.hp<g.maxHp*.3) e.push(`<span class="fx bad">🩸 Wounded · XP ×0.8</span>`);
+  if(g.event&&g.event.id!=="quiet") e.push(`<span class="fx ev">${g.event.i} ${g.event.n}</span>`);
+  if(g.bought.includes("scroll")) e.push(`<span class="fx good">📜 Fervor · XP ×1.5</span>`);
+  return e.length?`<div class="fxrow">${e.join("")}</div>`:""; }
+function pendingPen(k){ const c=(S.days[k]||{}).c||{}; let hp=0,xp=0; questsFor(k).forEach(q=>{ if(!c[q.id]&&PEN[q.id]){hp+=PEN[q.id].hp;xp+=PEN[q.id].xp;} }); return {hp,xp}; }
+function bountyFor(k){ const r=rng(Math.round(parse(k).getTime()/864e5)*40503); return BOUNTIES[Math.floor(r()*BOUNTIES.length)]; }
 function statusWin(g){
   const t=eqTitle(g);
   return `<div class="win lit">
@@ -958,6 +1348,8 @@ function statusWin(g){
         <div class="xprow"><span class="num">${g.rest} / ${g.need} XP</span><span>${g.nextRank?"Next rank: LV "+g.nextRank.lv:"Max rank"}</span></div>
       </div>
     </div>
+    <div class="life"><span class="num">HP</span><div class="lifebar ${g.hp<g.maxHp*.3?"low":""}"><i style="width:${Math.round(g.hp/g.maxHp*100)}%"></i></div><span class="num">${g.hp}/${g.maxHp}</span><span class="goldc num">🪙 ${g.gold}</span></div>
+    ${effects(g)}
     <div class="streak"><span class="flame">🔥</span> <span class="num">Streak ${g.streak}</span> <span class="muted small num" style="font-weight:600">· Best ${g.best}</span>${g.shields?`<span class="shield" title="ფარი">🛡️×${g.shields}</span>`:""}</div>
     <div class="small muted" style="margin-top:4px">შემდეგი ჯილდო: <b style="color:var(--gold)">${g.nextReward} დღე</b> ზედიზედ → <span class="num" style="color:var(--gold)">+${g.nextRewardXP} XP</span>${g.streak%7!==0||g.streak===0?` · ფარი ${7-(g.streak%7)} დღეში`:""}</div>
   </div>`;
@@ -965,7 +1357,7 @@ function statusWin(g){
 function bossCard(g){
   const b=g.boss;
   if(!b) return `<div class="win"><span class="tag">Boss Encounter</span><p><b class="num">All Bosses Defeated</b> — შენ ლეგენდა ხარ.</p></div>`;
-  const {hp,left,pct}=bossHP(b,g.maxKg), from=ui.hitFrom!=null?ui.hitFrom:pct;
+  const {hp,left,pct}=bossHP(b,g.cur), from=ui.hitFrom!=null?ui.hitFrom:pct;
   return `<div class="win boss-enc ${ui.hitFrom!=null?"hit":""}" style="--bc:${b.col}">
     <span class="tag">Boss Encounter · ${BOSSES.indexOf(b)+1} / ${BOSSES.length}</span>
     <div class="be"><span class="bem"><span>${b.r}</span></span>
@@ -973,6 +1365,8 @@ function bossCard(g){
       <span class="num small" style="color:var(--gold);white-space:nowrap">+${b.xp} XP</span></div>
     <div class="hpbar"><span class="hpghost" id="hpghost" style="width:${(from*100).toFixed(1)}%"></span><i id="hpfill" style="width:${(pct*100).toFixed(1)}%"></i></div>
     <div class="hprow"><span class="num">HP ${left.toFixed(1)} / ${hp.toFixed(1)}</span><span>დაეცემა ${b.kg} კგ-ზე</span></div>
+    <p class="small muted" style="margin-top:6px">ბოსზე ბოლო 3 აწონვის საშუალო ითვლება — ერთი დღის რყევა არაფერს ცვლის. თუ წონა მდგრადად დაიკლებს, ბოსი გამოჯანმრთელდება.</p>
+    ${g.capped?`<div class="threat" style="border-color:var(--gold)">🩺 <b>ტემპი ძალიან სწრაფია.</b> ჯანსაღი მომატება 0.25–0.5 კგ/კვირაა — ამაზე მეტი ძირითადად ცხიმია, ამიტომ ბოსზე არ ითვლება (ლიმიტი ახლა: ${g.cap.toFixed(1)} კგ). შეამცირე ტკბილეული და შემწვარი.</div>`:""}
     <div class="row" style="margin-top:12px"><input type="number" step="0.1" inputmode="decimal" id="qw" placeholder="დღევანდელი წონა" aria-label="წონა კილოგრამებში"><button class="btn gold" data-addw="${todayKey()}">⚔️ Strike</button></div>
   </div>`;
 }
@@ -999,17 +1393,26 @@ function vToday(){
   <h1>Daily Quests</h1>
   <div class="sub">${WD_EN[d.getDay()]} · ${fmtDateEn(k)}</div>
   ${statusWin(g)}
+  ${g.event?`<div class="win event"><span class="tag">World Event · ეს კვირა</span><div class="twr"><span class="tw">${g.event.i}</span><div><b class="num" style="font-size:1.15rem">${g.event.n}</b><div class="small muted">${esc(g.event.d)}</div></div></div></div>`:""}
+  ${g.fallen?`<div class="win fallen"><span class="tag">☠️ Fallen</span><p><b>HP 0-მდე დაეცა.</b> სანამ არ აღდგები, ყველა XP ×0.5-ია.</p><p class="small">აღდგენა: <b>2 სრული დღე ზედიზედ</b> (${g.atone}/2) ან 🪶 Phoenix Feather — 120 🪙 (Hero → Merchant).</p></div>`:""}
   ${shieldUsed?`<div class="alert" style="border-color:var(--gold)">🛡️ გუშინ კვესტები არ დასრულდა, მაგრამ ფარმა დაგიცვა — სერია შენარჩუნებულია.</div>`:""}
   ${missed?`<div class="alert">გუშინ კვესტები ბოლომდე არ შესრულდა და სერია განულდა. დღეს ცეცხლი თავიდან აანთე.</div>`:""}
-  ${type?`<div class="win lit"><span class="tag">Today's Mission</span><h3 class="num" style="font-size:1.25rem">⚔️ ${WORKOUTS[type].name}: ${WORKOUTS[type].title}</h3><p class="small muted">${WORKOUTS[type].focus} · ~45 წუთი · <span class="num" style="color:var(--gold)">+${XP.workout} XP</span></p><button class="btn gold full" style="margin-top:10px" data-go-train="${type}">მისიაზე გადასვლა</button></div>`
-        :`<div class="win"><span class="tag">Rest Day</span><h3 class="num" style="font-size:1.25rem">🏕️ Recovery</h3><p class="small muted">გაისეირნე 20–30 წუთი. ელიქსირები და ჭამა მაინც შეასრულე. შემდეგი მისია: ${WD_EN[nd.getDay()]}.</p></div>`}
+  ${isRec(k)?`<div class="win rec"><span class="tag">🩹 Recovery Day</span><p>დღეს მისია გაუქმებულია — <b>დაისვენე და აღდგი.</b> სასჯელი არ იქნება, სერია გაყინულია. ელიქსირები, ჭამა, წყალი და ძილი მაინც შეასრულე — ისინი აღდგენას გეხმარება.</p><p class="small muted">თუ ტკივილი ან ავადმყოფობა 2–3 დღეზე მეტხანს გრძელდება, ან მკვეთრი ტკივილია — მიმართე ექიმს.</p><button class="btn ghost full" data-unrec>გაუქმება — თავს კარგად ვგრძნობ</button></div>`:""}
+  ${type&&!isRec(k)?`<div class="win lit"><span class="tag">Today's Mission</span><h3 class="num" style="font-size:1.25rem">⚔️ ${WORKOUTS[type].name}: ${WORKOUTS[type].title}</h3><p class="small muted">${WORKOUTS[type].focus} · ~45 წუთი · <span class="num" style="color:var(--gold)">+${XP.workout} XP</span></p><button class="btn gold full" style="margin-top:10px" data-go-train="${type}">მისიაზე გადასვლა</button>
+    <button class="btn ghost full" style="margin-top:8px" data-rec>🤒 ცუდად ვარ / ტკივილი მაქვს</button></div>`
+        :isRec(k)?"":`<div class="win"><span class="tag">Rest Day</span><h3 class="num" style="font-size:1.25rem">🏕️ Recovery</h3><p class="small muted">გაისეირნე 20–30 წუთი. ელიქსირები და ჭამა მაინც შეასრულე. შემდეგი მისია: ${WD_EN[nd.getDay()]}.</p></div>`}
   <div class="win">
     <span class="tag">Daily Quests</span>
     <div class="qprog"><span>შესრულებულია ${done} / ${qs.length}</span><span class="num" style="color:var(--gold)">+${earned} XP</span></div>
     <div class="xpbar"><i style="width:${Math.round(done/qs.length*100)}%"></i></div>
     <ul class="quests" style="margin-top:4px">${list}</ul>
     <button class="q bq" data-go-food aria-pressed="${kcDone}"><span class="ico" aria-hidden="true">🍖</span><span style="flex:1;min-width:0"><span class="t">Bonus: Calorie Goal</span><span class="d">${kc} / ${PROFILE.kcal} კკალ — დააჭირე და ჩაწერე ჭამა</span><span class="xpbar" style="display:block;height:5px;margin-top:5px"><i style="width:${Math.min(100,Math.round(kc/PROFILE.kcal*100))}%"></i></span></span><span class="seal">${kcDone?"ᛝ ":""}+${XP.kcal}</span></button>
-    <div class="bonus ${all?"done":""}">${all?`ᛝ ყველა კვესტი შესრულდა! ბონუსი +${XP.bonus} XP, სერია გაგრძელდა.`:`ყველა კვესტის შესრულებაზე: ბონუსი +${XP.bonus} XP და სერიის გაგრძელება`}</div>
+    <div class="bonus ${all?"done":""}">${all?`ᛝ ყველა კვესტი შესრულდა! ბონუსი +${XP.bonus} XP · +10 🪙 · სერია გაგრძელდა.`:`ყველა კვესტის შესრულებაზე: ბონუსი +${XP.bonus} XP, +10 🪙 და სერიის გაგრძელება`}</div>
+    ${all?"":(()=>{const pp=pendingPen(k);return `<div class="threat">⚖️ <b>Judgment ${String(S.resetHour||0).padStart(2,"0")}:00-ზე</b> — დაუსრულებელი კვესტები: <span class="num">−${pp.hp} HP${pp.xp?" · −"+pp.xp+" XP":""}</span></div>`;})()}
+  </div>
+  <div class="win">
+    <span class="tag">Daily Bounty · არასავალდებულო</span>
+    <button class="q" data-check="bounty" aria-pressed="${!!dd.c.bounty}"><span class="ico" aria-hidden="true">🎯</span><span><span class="t">${esc(bountyFor(k))}</span><span class="d">დამატებითი ჯილდო, სასჯელის გარეშე</span></span><span class="seal">${dd.c.bounty?"ᛝ ":""}+${XP.bounty} · 🪙10</span></button>
   </div>
   ${bossCard(g)}
   ${challengesCard()}
@@ -1043,6 +1446,15 @@ function vTrain(){
   <h1>Mission</h1>
   <div class="sub">Full-body · No gym · No weights</div>
   <p class="lead">აქ არის შენი ვარჯიშის გეგმა — მთლიანი ტანი, დარბაზისა და ჰანტელების გარეშე.</p>
+  ${(()=>{ const g=game(), f=g.floors+1, T=towerTrial(f), done=g.towerToday;
+    const viz=[f+2,f+1,f,f-1,f-2].filter(x=>x>=1).map(x=>{ const t=towerTrial(x); return `<div class="tfl ${x<f?"clr":x===f?"cur":""} ${t.guard?"grd":""}"><span class="num">${x}</span><span>${x<f?"✓":t.guard?"🗿 Guardian":t.chest?"🎁":"·"}</span></div>`; }).join("");
+    return `<div class="win tower lit"><span class="tag">Tower of Ascension · Side Quest</span>
+      <div class="tgrid"><div class="tviz">${viz}</div>
+      <div><b class="num" style="font-size:1.25rem">Floor ${g.floors}</b><div class="small muted">გვერდითი დავალებებით ადიხარ. დღეში 1 სართული.</div>
+        <div class="trial ${T.guard?"grd":""}"><span class="small num" style="color:var(--gold)">${T.guard?"GUARDIAN · ":""}FLOOR ${f}</span><div><span style="font-size:1.3rem">${T.i}</span> <b>${esc(T.t)}</b></div><div class="num" style="font-size:1.1rem;color:var(--gold)">${T.n} ${T.u}</div>
+          <div class="small muted">+${Math.round(T.xp*(g.mods?g.mods.tower:1))} XP · +${T.gold} 🪙${T.chest?` · 🎁 ${RARITY[T.chest].n} სკივრი`:""}</div></div></div></div>
+      <button class="btn ${done?"ghost":"gold"} full" style="margin-top:10px" data-climb ${done?"disabled":""}>${done?"✓ დღეს უკვე ახვედი — შემდეგი სართული ხვალ":"🗼 შევასრულე — ავდივარ Floor "+f+"-ზე"}</button>
+      ${isRec(todayKey())?`<p class="small muted" style="margin-top:6px">🩹 Recovery Day-ზე მხოლოდ მსუბუქი დავალება გააკეთე, ან ხვალისთვის გადადე.</p>`:""}</div>`; })()}
   <div class="seg" role="group" aria-label="მისიის არჩევა">
     <button data-wt="upper" aria-pressed="${type==="upper"}">Mission I<small>Mon · Thu</small></button>
     <button data-wt="lower" aria-pressed="${type==="lower"}">Mission II<small>Tue · Fri</small></button>
@@ -1133,7 +1545,8 @@ function renderRun(){
         </div>
         <details class="cues"><summary style="cursor:pointer;color:var(--gold);font-weight:700">How to?</summary><ol>${e.steps.map(s=>`<li>${esc(s)}</li>`).join("")}</ol>${e.warn?`<div class="warnline">⚠️ ${esc(e.warn)}</div>`:""}</details>
         <button class="btn gold full" data-rset>ᛝ სეტი შესრულდა</button>
-        <button class="btn ghost full" style="margin-top:8px" data-rskipex>სავარჯიშოს გამოტოვება</button>`;
+        <button class="btn ghost full" style="margin-top:8px" data-rskipex>სავარჯიშოს გამოტოვება</button>
+        <button class="btn warn full" style="margin-top:8px" data-rpain>🩹 ტკივილი — მისიის შეწყვეტა</button>`;
     }
   }
   el.innerHTML=`<div class="rin"><div class="rtop"><button class="x" data-rexit>✕ გასვლა</button><div class="rprog"><i style="width:${pct}%"></i></div><span class="num small">${pct}%</span></div><div class="rstage">${stage}</div></div>`;
@@ -1184,94 +1597,163 @@ function chronicle(){
     </div>
   </div>`;
 }
+function gearCard(it,opts){ const R=RARITY[it.r]; return `<button class="gear ${opts.on?"on":""}" style="--rc:${R.c}" ${opts.attr||""}><span class="gi">${it.i}</span><span class="gt"><b class="num">${esc(it.n)}</b><span class="small" style="color:${R.c}">${R.n} · ${({weapon:"Weapon",armor:"Armor",trinket:"Trinket"})[it.s]}</span><span class="small muted">${esc(it.d)}</span></span>${opts.on?`<span class="badge num">Equipped</span>`:""}</button>`; }
 function vHero(){
-  const g=game(), pts=sortedW(), first=pts[0], last=pts[pts.length-1];
-  let verdict="2 კვირის შემდეგ აქ გეტყვი, სწორი ტემპით იმატებ თუ არა.";
-  if(first&&last&&first!==last){const days=(parse(last.d)-parse(first.d))/864e5;
-    if(days>=10){const r=(last.kg-first.kg)/days*7;
-      verdict=r<0.2?`კვირაში ${r.toFixed(1)} კგ — ცოტაა. დაამატე წასახემსებელი ან გეინერი რძით მოამზადე.`:
-              r>0.7?`კვირაში ${r.toFixed(1)} კგ — ცოტა სწრაფია. ტკბილეული და შემწვარი შეამცირე.`:
-              `კვირაში ${r.toFixed(1)} კგ — იდეალური ტემპი!`;}}
-  const m=[...S.measures].sort((a,b)=>a.d<b.d?1:-1)[0];
-  const hist=pts.slice().reverse().slice(0,10).map(p=>`<li><span>${fmtDate(p.d)}</span><span><b class="num">${p.kg.toFixed(1)}</b> კგ <button class="del" data-delw="${p.d}">წაშლა</button></span></li>`).join("");
-  const gain=g.cur-PROFILE.startKg, t=eqTitle(g), gotN=g.ach.filter(a=>a.got).length;
-  const cats=[...new Set(g.ach.map(a=>a.cat))];
-  const hall=cats.map(c=>`<div class="cat">${esc(c)}</div><div class="titles">${g.ach.filter(a=>a.cat===c).map(a=>{
-      const eq=S.title===a.id&&a.got;
-      return `<button class="tt t-${a.tier} ${a.tier==="myth"?"myth":""} ${a.got?"got":"locked"} ${eq?"eq":""}" ${a.got?`data-equip="${a.id}"`:"disabled"} aria-label="${esc(a.n)}${a.got?(eq?", აღჭურვილია":", დააჭირე აღსაჭურვად"):", ჩაკეტილია"}">
-        <span class="em"><span>${a.r}</span></span>
-        <span><span class="tn">${esc(a.n)}</span><span class="tier">${TIER[a.tier]}</span>
-          <span class="lore" style="display:block">${esc(a.lore)}</span>
-          <span class="cond" style="display:block">${a.got?"ᛝ მოპოვებულია":"🔒 "+esc(a.cond)}</span>
-          ${a.got?"":`<span class="tb" style="display:block"><i style="width:${Math.round(a.pct*100)}%"></i></span><span class="small muted">${a.txt}</span>`}
-        </span>${eq?`<span class="badge num">Equipped</span>`:""}
-      </button>`;}).join("")}</div>`).join("");
-  const pal=S.pal||"obsidian";
-  const auras=PALETTES.map(p=>{const open=g.lv>=p.lv, on=pal===p.id, rk=RANKS.find(r=>r.lv===p.lv);
-    return `<button class="aura ${on?"on":""} ${open?"":"lock"}" data-pal="${p.id}" aria-pressed="${on}">
-      <span class="sw">${p.sw.map(c=>`<i style="background:${c}"></i>`).join("")}</span>
-      <b>${esc(p.name)}</b><small>${open?esc(p.d):"🔒 "+(rk?rk.name:"")+" · LV "+p.lv}</small>${on?`<span class="badge">Active</span>`:""}</button>`;}).join("");
-  const bestiary=BOSSES.map(b=>{const dead=g.maxKg>=b.kg, next=g.boss&&g.boss.kg===b.kg, h=bossHP(b,g.maxKg);
-    return `<div class="boss ${dead?"dead":next?"next":"lock"}" style="--bc:${b.col}">${bossSigil(b,56,dead)}
-      <div style="min-width:0"><div class="bn">${esc(b.name)}</div><div class="small" style="color:var(--bc)">${esc(b.ep)}</div><div class="small muted">${esc(b.lore)}</div>
-        ${next?`<div class="minihp"><i style="width:${(h.pct*100).toFixed(0)}%"></i></div>`:""}</div>
-      <div class="bs">${dead?`<span style="color:var(--gold)">DEFEATED</span>`:next?`<span style="color:var(--bc)">HP ${h.left.toFixed(1)}</span>`:`${b.kg} kg`}<br><span class="muted">+${b.xp} XP</span></div></div>`;}).join("");
-  return `
-  <div class="hero">
-    ${sigilSVG("hs",230,g.lv,"LEVEL")}
-    <div class="rank"><span class="r rn" aria-hidden="true">${g.rank.ico}</span>${g.rank.name}</div>
-    ${t?`<div class="ttl-eq">« ${esc(t)} »</div>`:`<div class="small muted num">No title yet</div>`}
-    <div class="xpwrap"><div class="xpbar"><i style="width:${Math.round(g.rest/g.need*100)}%"></i></div>
-      <div class="xprow"><span class="num">${g.rest} / ${g.need} XP</span><span class="num"><span class="flame">🔥</span> Streak ${g.streak}${g.shields?" · 🛡️×"+g.shields:""}</span></div></div>
-  </div>
-  <div class="stats">
-    <div class="stat" data-r="ᚢ"><div class="k">💪 Strength</div><div class="v">${10+g.missions*2}</div><div class="h">+2 ყოველ მისიაზე</div></div>
-    <div class="stat" data-r="ᛖ"><div class="k">🫀 Endurance</div><div class="v">${10+Math.floor(g.totalReps/50)}</div><div class="h">+1 ყოველ 50 გამეორებაზე</div></div>
-    <div class="stat" data-r="ᛒ"><div class="k">⚖️ Mass</div><div class="v">${g.cur.toFixed(1)}</div><div class="h">${gain>=0?"+":""}${gain.toFixed(1)} კგ დაწყებიდან</div></div>
-    <div class="stat" data-r="ᚲ"><div class="k">🔥 Willpower</div><div class="v">${10+g.full}</div><div class="h">+1 ყოველ სრულ დღეზე</div></div>
-  </div>
-  <h2>Weekly Chronicle</h2>
-  ${chronicle()}
-  <h2>Bestiary</h2>
-  <div class="win">${bestiary}
-    <p class="small muted" style="margin-top:10px">${verdict}</p>${chart(pts)}</div>
-  <div class="win">
-    <span class="tag">Log Weight</span>
-    <div class="row" style="margin-top:4px"><input type="date" id="wd" value="${todayKey()}" aria-label="თარიღი"><input type="number" step="0.1" inputmode="decimal" id="wk" placeholder="კგ" aria-label="წონა"></div>
-    <button class="btn full" style="margin-top:10px" data-addw2>შენახვა (+${XP.weigh} XP)</button>
-  </div>
-  <h2>Hall of Titles</h2>
-  <div class="hallhead"><span class="small muted">მოპოვებული ტიტული დააჭირე, რომ აღიჭურვო — ის შენი სახელის ქვეშ გამოჩნდება.</span><span class="num" style="color:var(--gold);white-space:nowrap">${gotN} / ${g.ach.length}</span></div>
-  ${hall}
-  <h2>Auras</h2>
-  <p class="small muted" style="text-align:center;margin-top:-4px">აპის ფერები. ახალი აურები ახალ რანგზე იხსნება.</p>
-  <div class="auras">${auras}</div>
-  <h2>Measurements</h2>
-  <div class="win">
-    <div class="grid3">
-      <div><label class="f" for="ma">Arm</label><input type="number" step="0.1" id="ma" inputmode="decimal" placeholder="სმ"></div>
-      <div><label class="f" for="mc">Chest</label><input type="number" step="0.1" id="mc" inputmode="decimal" placeholder="სმ"></div>
-      <div><label class="f" for="mw">Waist</label><input type="number" step="0.1" id="mw" inputmode="decimal" placeholder="სმ"></div>
+  const g=game(), sub=ui.hsub||"hero", tk=todayKey();
+  const tabs=[["hero","Hero"],["armory","Armory"],["shop","Shop"],["bestiary","Bestiary"],["codex","Codex"]];
+  const t=eqTitle(g), clsO=CLASSES.find(c=>c.id===g.cls)||CLASSES[0];
+  let body="";
+  if(sub==="hero"){
+    const gain=g.rawCur-PROFILE.startKg;
+    const canCls=!g.clsSince||addDays(g.clsSince,7)<=tk;
+    body=`
+    <div class="hero">
+      ${sigilSVG("hs",220,g.lv,"LEVEL")}
+      <div class="rank"><span class="r rn" aria-hidden="true">${g.rank.ico}</span>${g.rank.name}</div>
+      <div class="small num" style="color:var(--arc)">${clsO.i} ${clsO.n}${t?` · « ${esc(t)} »`:""}</div>
+      <div class="xpwrap"><div class="xpbar"><i style="width:${Math.round(g.rest/g.need*100)}%"></i></div>
+        <div class="xprow"><span class="num">${g.rest} / ${g.need} XP</span><span class="num"><span class="flame">🔥</span> ${g.streak}${g.shields?" · 🛡️×"+g.shields:""}</span></div>
+        <div class="life" style="margin-top:8px"><span class="num">HP</span><div class="lifebar ${g.hp<g.maxHp*.3?"low":""}"><i style="width:${Math.round(g.hp/g.maxHp*100)}%"></i></div><span class="num">${g.hp}/${g.maxHp}</span><span class="goldc num">🪙 ${g.gold}</span></div></div>
     </div>
-    <button class="btn ghost full" style="margin-top:10px" data-addm>ზომების შენახვა (+${XP.measure} XP)</button>
-    <p class="small muted" style="margin-top:8px">თვეში ერთხელ გაზომე სანტიმეტრით.</p>
-    ${m?`<p class="small" style="margin-top:6px">ბოლოს (${fmtDate(m.d)}): მკლავი ${m.a||"—"} · მკერდი ${m.c||"—"} · წელი ${m.w||"—"} სმ</p>`:""}
-  </div>
-  <h2>Weight History</h2>
-  <div class="win"><ul class="hist">${hist}</ul></div>
-  <h2>XP Codex</h2>
-  <div class="win small">
-    <p>მისია +${XP.workout} · ჭამა +${XP.meals} · გეინერი +${XP.gainer} · ძილი +${XP.sleep} · წყალი +${XP.water} · კრეატინი +${XP.creatine} · D3 +${XP.d3} · სრული დღე +${XP.bonus} · კალორიის მიზანი +${XP.kcal} · კვირის გამოწვევა +${XP.challenge} · აწონვა +${XP.weigh} · ზომები +${XP.measure}</p>
-    <p><b>ბოსები:</b> ${BOSSES.map(b=>b.name+" +"+b.xp).join(" · ")}</p>
-    <p><b>სერიის ჯილდოები:</b> 3 დღე +30 · 7 დღე +100 · 14 დღე +200 · 30 დღე +500 (შემდეგ ყოველ 30 დღეზე +500).</p>
-    <p><b>🛡️ ფარი:</b> ყოველ 7 დღიან სერიაზე იღებ ერთ ფარს (მაქს. 2). თუ ერთ დღეს გამოტოვებ, ფარი ავტომატურად დაგიცავს და სერია არ განულდება.</p>
-    <p class="muted">${RANKS.map(r=>r.name+" (LV "+r.lv+")").join(" → ")}</p></div>`;
+    <div class="stats">
+      <div class="stat" data-r="ᚢ"><div class="k">💪 Strength</div><div class="v">${10+g.missions*2}</div><div class="h">+2 ყოველ მისიაზე</div></div>
+      <div class="stat" data-r="ᛖ"><div class="k">🫀 Endurance</div><div class="v">${10+Math.floor(g.totalReps/50)}</div><div class="h">+1 ყოველ 50 გამეორებაზე</div></div>
+      <div class="stat" data-r="ᛒ"><div class="k">⚖️ Mass</div><div class="v">${g.rawCur.toFixed(1)}</div><div class="h">${gain>=0?"+":""}${gain.toFixed(1)} კგ დაწყებიდან</div></div>
+      <div class="stat" data-r="ᚲ"><div class="k">🔥 Willpower</div><div class="v">${10+g.full}</div><div class="h">+1 ყოველ სრულ დღეზე</div></div>
+    </div>
+    <h2>Class</h2>
+    <p class="small muted" style="text-align:center;margin-top:-4px">${canCls?"აირჩიე კლასი. შეცვლა 7 დღეში ერთხელ შეიძლება.":"შემდეგი შეცვლა: "+fmtDate(addDays(g.clsSince,7))}</p>
+    <div class="classes">${CLASSES.map(c=>`<button class="cls ${g.cls===c.id?"on":""}" data-cls="${c.id}" ${g.cls===c.id||!canCls?"disabled":""}><span class="ci">${c.i}</span><b class="num">${c.n}</b><span class="small">${esc(c.d)}</span>${c.w?`<span class="small" style="color:var(--ember)">⚠️ ${esc(c.w)}</span>`:""}</button>`).join("")}</div>
+    <h2>Talents</h2>
+    <div class="win">
+      <div class="hallhead"><span class="small muted">ყოველი ახალი დონე = 1 ქულა. ქულები სამუდამოა.</span><span class="num" style="color:var(--gold);white-space:nowrap">${g.points} pts</span></div>
+      ${TALENTS.map(x=>`<div class="tal"><span class="ti">${x.i}</span><div style="min-width:0"><b class="num">${x.n}</b><div class="small muted">${esc(x.d)}</div><div class="pips">${[0,1,2,3,4].map(i=>`<i class="${i<g.tal[x.id]?"on":""}"></i>`).join("")}</div></div>
+        <button class="btn ${g.points>0&&g.tal[x.id]<5?"gold":"ghost"} plus" data-tal="${x.id}" ${g.points>0&&g.tal[x.id]<5?"":"disabled"} aria-label="${x.n} +1">+</button></div>`).join("")}
+    </div>
+    <h2>Weekly Chronicle</h2>
+    ${chronicle()}`;
+  } else if(sub==="armory"){
+    const RW={common:1,rare:2,epic:4,legendary:7,mythic:11};
+    const power=Object.values(g.eq).filter(Boolean).reduce((a,id)=>{const it=GEAR.find(x=>x.id===id);return a+RW[it.r]*10*(1+.2*(g.lvl[id]||0));},0);
+    const setCnt={}; Object.values(g.eq).forEach(id=>{ if(!id) return; const st=GEAR.find(x=>x.id===id).set; if(st) setCnt[st]=(setCnt[st]||0)+1; });
+    const filt=ui.afilt||"all", ORDR=["mythic","legendary","epic","rare","common"];
+    const own=GEAR.filter(x=>g.owned[x.id]&&(filt==="all"||x.s===filt)).sort((a,b)=>ORDR.indexOf(a.r)-ORDR.indexOf(b.r));
+    const total=GEAR.filter(x=>g.owned[x.id]).length;
+    body=`
+    <div class="win lit"><span class="tag">Equipment · Power ${Math.round(power)}</span>
+      <div class="slots">${SLOTS.map(([s,n,i])=>{ const id=g.eq[s], it=id&&GEAR.find(x=>x.id===id); return `<button class="slot" style="--rc:${it?RARITY[it.r].c:"var(--line)"}" data-afilt="${s}"><span class="small muted num">${n}</span><span class="si">${it?it.i:i}</span><b class="small num">${it?esc(it.n)+(g.lvl[id]?" +"+g.lvl[id]:""):"ცარიელი"}</b></button>`; }).join("")}</div>
+      ${Object.keys(SETS).filter(st=>setCnt[st]).map(st=>{const S_=SETS[st],n=setCnt[st];return `<div class="setb"><b class="num">${S_.i} ${S_.n} (${n}/3)</b><span class="small ${n>=2?"":"muted"}">2: ${S_.d2}</span><span class="small ${n>=3?"":"muted"}">3: ${S_.d3}</span></div>`;}).join("")}
+    </div>
+    <h2>Inventory · ${total}/${GEAR.length}</h2>
+    <div class="fcats">${[["all","All"]].concat(SLOTS.map(x=>[x[0],x[1]])).map(([id,n])=>`<button class="fcat" data-afilt="${id}" aria-pressed="${filt===id}">${n}</button>`).join("")}</div>
+    <div class="inv" style="margin-top:10px">${own.length?own.map(it=>{ const R=RARITY[it.r], L=g.lvl[it.id]||0, on=g.eq[it.s]===it.id, cost=Math.round(upCost(it,L)*g.disc);
+      return `<div class="gear ${on?"on":""}" style="--rc:${R.c}"><span class="gi">${it.i}</span><span class="gt"><b class="num">${esc(it.n)}${L?` <span style="color:${R.c}">+${L}</span>`:""}</b>
+        <span class="small" style="color:${R.c}">${R.n} · ${SLOTS.find(x=>x[0]===it.s)[1]}${it.set?` · ${SETS[it.set].i} ${SETS[it.set].n}`:""}</span>
+        <span class="small">${esc(effText(gearEff(it.id,L)))}</span>
+        <span class="gbtns"><button class="btn ${on?"ghost":"gold"} sm" data-eq="${it.id}">${on?"მოხსნა":"აღჭურვა"}</button>${L<5?`<button class="btn ghost sm" data-upg="${it.id}" ${g.gold<cost?"disabled":""}>🔨 +${L+1} · 🪙${cost}</button>`:`<span class="small num" style="color:${R.c}">MAX</span>`}</span></span></div>`; }).join(""):`<p class="small muted">ამ სლოტში ნივთი ჯერ არ გაქვს.</p>`}</div>
+    <h2>Collection</h2>
+    <div class="coll">${ORDR.slice().reverse().map(r=>`<div><span class="small num" style="color:${RARITY[r].c}">${RARITY[r].n}</span><div class="locked-gear">${GEAR.filter(x=>x.r===r).map(x=>g.owned[x.id]?`<span class="got" title="${esc(x.n)}" style="--rc:${RARITY[r].c}">${x.i}</span>`:`<span title="${x.src?esc(x.src):"?"}" style="--rc:${RARITY[r].c}">?</span>`).join("")}</div></div>`).join("")}</div>
+    <p class="small muted" style="margin-top:8px">ნივთები ცვივა სრულ დღეებზე, მისიებზე, Tower-ში, სერიებზე, კვირის გამოწვევებზე და ბოსებზე. Mythic ნივთები: Tower Floor 50 და Abyss Sovereign. 🔨 გაძლიერება: თითო დონე +20% ეფექტი (მაქს. +5).</p>`;
+  } else if(sub==="shop"){
+    const D=dealFor(tk), dc=Math.round(DEAL_PRICE[D.r]*g.disc), dOwn=!!g.owned[D.id], R=RARITY[D.r];
+    const row=it=>{ const cost=Math.round(it.cost*g.disc); let why="";
+      if(g.gold<cost) why="ოქრო არ გყოფნის";
+      else if((it.id==="potion"||it.id==="gpotion")&&(g.hp>=g.maxHp||g.fallen)) why=g.fallen?"Fallen-ზე არ მოქმედებს":"HP სავსეა";
+      else if(it.id==="shield"&&g.shields>=3) why="მაქსიმუმი";
+      else if(it.id==="scroll"&&g.bought.includes("scroll")) why="დღეს აქტიურია";
+      else if(it.id==="revive"&&!g.fallen) why="მხოლოდ Fallen-ისას";
+      return `<div class="item"><span class="ii">${it.i}</span><div style="min-width:0"><b class="num">${it.n}</b><div class="small muted">${esc(it.d)}</div>${why?`<div class="small" style="color:var(--ember)">${why}</div>`:""}</div>
+        <button class="btn ${why?"ghost":"gold"} buy" data-buy="${it.id}" ${why?"disabled":""}>🪙 ${cost}</button></div>`; };
+    body=`
+    <div class="win lit gold-bal"><span class="tag">The Merchant</span><div class="bal"><span class="num">🪙 ${g.gold}</span><span class="small muted">${g.disc<1?"ფასდაკლება −"+Math.round((1-g.disc)*100)+"%":"ოქრო: კვესტები, მისიები, Tower, ბოსები"}</span></div></div>
+    <h2>Daily Deal</h2>
+    <div class="win deal" style="--rc:${R.c}"><span class="tag" style="color:${R.c}">${R.n} · იცვლება ყოველდღე</span>
+      <div class="gear" style="--rc:${R.c};border:0;padding:0;background:none"><span class="gi">${D.i}</span><span class="gt"><b class="num">${esc(D.n)}</b><span class="small" style="color:${R.c}">${SLOTS.find(x=>x[0]===D.s)[1]}${D.set?" · "+SETS[D.set].i+" "+SETS[D.set].n:""}</span><span class="small">${esc(effText(gearEff(D.id,0)))}</span></span></div>
+      <button class="btn ${dOwn||g.gold<dc?"ghost":"gold"} full" style="margin-top:10px" data-buy="deal" ${dOwn||g.gold<dc?"disabled":""}>${dOwn?"უკვე გაქვს":"🪙 "+dc+" — ყიდვა"}</button></div>
+    <h2>Consumables</h2>
+    <div class="shop">${SHOP.filter(x=>x.cat==="c").map(row).join("")}</div>
+    <h2>Chests</h2>
+    <div class="shop">${SHOP.filter(x=>x.cat==="x").map(row).join("")}</div>`;
+  } else if(sub==="bestiary"){
+    const pts=sortedW(), first=pts[0], last=pts[pts.length-1];
+    let verdict="2 კვირის შემდეგ აქ გეტყვი, სწორი ტემპით იმატებ თუ არა.";
+    if(first&&last&&first!==last){const days=(parse(last.d)-parse(first.d))/864e5;
+      if(days>=10){const r=(last.kg-first.kg)/days*7;
+        verdict=r<0.2?`კვირაში ${r.toFixed(1)} კგ — ცოტაა. დაამატე წასახემსებელი ან გეინერი რძით მოამზადე.`:r>0.7?`კვირაში ${r.toFixed(1)} კგ — ცოტა სწრაფია. ტკბილეული და შემწვარი შეამცირე.`:`კვირაში ${r.toFixed(1)} კგ — იდეალური ტემპი!`;}}
+    const m=[...S.measures].sort((a,b)=>a.d<b.d?1:-1)[0];
+    const hist=pts.slice().reverse().slice(0,10).map(p=>`<li><span>${fmtDate(p.d)}</span><span><b class="num">${p.kg.toFixed(1)}</b> კგ <button class="del" data-delw="${p.d}">წაშლა</button></span></li>`).join("");
+    const bestiary=BOSSES.map(b=>{const dead=g.maxKg>=b.kg, next=g.boss&&g.boss.kg===b.kg, h=bossHP(b,g.cur);
+      return `<div class="boss ${dead?"dead":next?"next":"lock"}" style="--bc:${b.col}">${bossSigil(b,56,dead)}
+        <div style="min-width:0"><div class="bn">${esc(b.name)}</div><div class="small" style="color:var(--bc)">${esc(b.ep)}</div><div class="small muted">${esc(b.lore)}</div>
+          ${next?`<div class="minihp"><i style="width:${(h.pct*100).toFixed(0)}%"></i></div>`:""}</div>
+        <div class="bs">${dead?`<span style="color:var(--gold)">DEFEATED</span>`:next?`<span style="color:var(--bc)">HP ${h.left.toFixed(1)}</span>`:`${b.kg} kg`}<br><span class="muted">+${b.xp} XP</span></div></div>`;}).join("");
+    body=`
+    <h2>Bestiary</h2>
+    <div class="win">${bestiary}<p class="small muted" style="margin-top:10px">${verdict}</p>${chart(pts)}</div>
+    <div class="win"><span class="tag">Log Weight</span>
+      <div class="row" style="margin-top:4px"><input type="date" id="wd" value="${tk}" aria-label="თარიღი"><input type="number" step="0.1" inputmode="decimal" id="wk" placeholder="კგ" aria-label="წონა"></div>
+      <button class="btn full" style="margin-top:10px" data-addw2>შენახვა (+${XP.weigh} XP)</button></div>
+    <h2>Measurements</h2>
+    <div class="win"><div class="grid3">
+        <div><label class="f" for="ma">Arm</label><input type="number" step="0.1" id="ma" inputmode="decimal" placeholder="სმ"></div>
+        <div><label class="f" for="mc">Chest</label><input type="number" step="0.1" id="mc" inputmode="decimal" placeholder="სმ"></div>
+        <div><label class="f" for="mw">Waist</label><input type="number" step="0.1" id="mw" inputmode="decimal" placeholder="სმ"></div></div>
+      <button class="btn ghost full" style="margin-top:10px" data-addm>ზომების შენახვა (+${XP.measure} XP)</button>
+      ${m?`<p class="small" style="margin-top:8px">ბოლოს (${fmtDate(m.d)}): მკლავი ${m.a||"—"} · მკერდი ${m.c||"—"} · წელი ${m.w||"—"} სმ</p>`:""}</div>
+    <h2>Weight History</h2>
+    <div class="win"><ul class="hist">${hist}</ul></div>`;
+  } else {
+    const gotN=g.ach.filter(a=>a.got).length, cats=[...new Set(g.ach.map(a=>a.cat))];
+    const hall=cats.map(c=>`<div class="cat">${esc(c)}</div><div class="titles">${g.ach.filter(a=>a.cat===c).map(a=>{ const eq=S.title===a.id&&a.got;
+      return `<button class="tt t-${a.tier} ${a.tier==="myth"?"myth":""} ${a.got?"got":"locked"} ${eq?"eq":""}" ${a.got?`data-equip="${a.id}"`:"disabled"}>
+        <span class="em"><span>${a.r}</span></span>
+        <span><span class="tn">${esc(a.n)}</span><span class="tier">${TIER[a.tier]}</span><span class="lore" style="display:block">${esc(a.lore)}</span>
+          <span class="cond" style="display:block">${a.got?"ᛝ მოპოვებულია":"🔒 "+esc(a.cond)}</span>
+          ${a.got?"":`<span class="tb" style="display:block"><i style="width:${Math.round(a.pct*100)}%"></i></span><span class="small muted">${a.txt}</span>`}</span>${eq?`<span class="badge num">Equipped</span>`:""}</button>`;}).join("")}</div>`).join("");
+    const pal=S.pal||"obsidian";
+    const auras=PALETTES.map(p=>{const open=g.maxLv>=p.lv, on=pal===p.id, rk=RANKS.find(r=>r.lv===p.lv);
+      return `<button class="aura ${on?"on":""} ${open?"":"lock"}" data-pal="${p.id}" aria-pressed="${on}"><span class="sw">${p.sw.map(c=>`<i style="background:${c}"></i>`).join("")}</span>
+        <b>${esc(p.name)}</b><small>${open?esc(p.d):"🔒 "+(rk?rk.name:"")+" · LV "+p.lv}</small>${on?`<span class="badge">Active</span>`:""}</button>`;}).join("");
+    body=`
+    <h2>Hall of Titles</h2>
+    <div class="hallhead"><span class="small muted">მოპოვებული ტიტული დააჭირე, რომ აღიჭურვო.</span><span class="num" style="color:var(--gold);white-space:nowrap">${gotN} / ${g.ach.length}</span></div>
+    ${hall}
+    <h2>Auras</h2>
+    <p class="small muted" style="text-align:center;margin-top:-4px">აპის ფერები. ახალი აურები ახალ რანგზე იხსნება.</p>
+    <div class="auras">${auras}</div>
+    <h2>Chronicle of Consequences</h2>
+    <div class="win">${g.log.length?`<ul class="hist">${g.log.slice(-15).reverse().map(l=>`<li><span>${l.i} ${esc(l.t)}<br><span class="small muted">${fmtDate(l.d)}</span></span><span class="num small" style="color:${l.good?"var(--gold)":"var(--ember)"};white-space:nowrap">${esc(l.v)}</span></li>`).join("")}</ul>`:`<p class="small muted">ჯერ ჩანაწერი არ არის.</p>`}</div>
+    <h2>XP Codex</h2>
+    <div class="win small">
+      <p><b>XP:</b> მისია +${XP.workout} · ჭამა +${XP.meals} · გეინერი +${XP.gainer} · ძილი +${XP.sleep} · წყალი +${XP.water} · კრეატინი +${XP.creatine} · D3 +${XP.d3} · სრული დღე +${XP.bonus} · კალორიის მიზანი +${XP.kcal} · ბაუნტი +${XP.bounty} · გამოწვევა +${XP.challenge} · აწონვა +${XP.weigh} · ზომები +${XP.measure}</p>
+      <p><b>⚖️ განაჩენი ყოველ ღამე:</b> მისია −20 HP −30 XP · ჭამა −15 HP −15 XP · გეინერი −10 HP −5 XP · ძილი −10 HP −5 XP · წყალი, კრეატინი, D3 −5 HP · სრული დღე +15 HP.</p>
+      <p><b>🩸 Wounded</b> (HP &lt; 30%): XP ×0.8. <b>☠️ Fallen</b> (HP 0): −150 XP, სერია ნულდება, XP ×0.5, სანამ 2 სრულ დღეს ზედიზედ არ შეასრულებ ან Phoenix Feather-ს არ იყიდი.</p>
+      <p><b>🎒 Loot:</b> სრული დღე 35% · მისია 25% · Tower: ყოველი მე-5 სართული Rare, მე-10 (Guardian) Epic, მე-50 Mythic · 7 და 30 დღიანი სერია · 3/3 კვირის გამოწვევა · ბოსი (Epic/Legendary, ფინალური — Mythic) · Merchant. განმეორებული ნივთი ოქროდ გადაიქცევა. 🔨 გაძლიერება +20%/დონე, მაქს. +5.</p>
+      <p><b>🧩 Sets:</b> ${Object.values(SETS).map(s=>s.i+" "+s.n+" (2: "+s.d2+", 3: "+s.d3+")").join(" · ")}</p>
+      <p><b>🗼 Tower:</b> გვერდითი დავალებები, დღეში 1 სართული. +30 XP, +10 🪙; Guardian: +120 XP, +40 🪙.</p>
+      <p><b>🌍 World Events:</b> ყოველ კვირას ახალი მოვლენა: ${EVENTS.map(e=>e.i+" "+e.n).join(" · ")}.</p>
+      <p><b>🪙 ოქრო:</b> სრული დღე +10 · მისია +15 · ბაუნტი +10 · კალორია +5 · გამოწვევა +25 · ბოსი +100 · სერიის ჯილდოები.</p>
+      <p><b>🛡️ ფარი:</b> ყოველ 7 დღიან სერიაზე ერთი, ან Merchant-თან (მაქს. 3). გამოტოვებულ დღეს სერიას იცავს.</p>
+      <p class="muted">${RANKS.map(r=>r.name+" (LV "+r.lv+")").join(" → ")}</p></div>`;
+  }
+  return `<h1>Hero</h1><div class="sub">${clsO.i} ${clsO.n} · LV ${g.lv}</div>
+  <div class="htabs" role="tablist">${tabs.map(([id,n])=>`<button data-hsub="${id}" aria-pressed="${sub===id}">${n}</button>`).join("")}</div>
+  ${body}`;
 }
 
 /* ================= კვება ================= */
+function allFoods(){ return FOODS.map((f,i)=>({...f,key:"b"+i})).concat((S.myFoods||[]).map((f,i)=>({...f,c:"My Foods",key:"m"+i}))); }
+function foodByKey(key){ return allFoods().find(f=>f.key===key); }
 function foodCounter(){
   const k=todayKey(), dd=dayData(k), list=dd.food||[], kc=kcalDay(k), pr=protDay(k);
-  const pct=Math.min(1,kc/PROFILE.kcal), C=326.7;
+  const pct=Math.min(1,kc/PROFILE.kcal), C=326.7, af=allFoods();
+  const recent=(S.recent||[]).map(n=>af.find(f=>f.n===n)).filter(Boolean);
+  const cats=(recent.length?["Recent"]:[]).concat(FOOD_CATS).concat((S.myFoods||[]).length?["My Foods"]:[]);
+  if(!ui.fcat||!cats.includes(ui.fcat)) ui.fcat=cats[0];
+  const q=(ui.fq||"").trim();
+  const shown=q?af.filter(f=>f.n.includes(q)):ui.fcat==="Recent"?recent:af.filter(f=>f.c===ui.fcat);
+  const mul=ui.fmul||1, ML=[[.5,"×½"],[1,"×1"],[1.5,"×1½"],[2,"×2"]];
+  const y=addDays(k,-1), yl=(S.days[y]&&S.days[y].food)||[];
   return `<div class="win lit">
     <span class="tag">Today's Feast</span>
     <div class="fc">
@@ -1281,12 +1763,19 @@ function foodCounter(){
       <div>
         <div class="small"><b>Protein:</b> <span class="num" style="color:var(--gold)">${pr}</span> / ${PROFILE.protein} გ</div>
         <div class="xpbar" style="height:6px"><i style="width:${Math.min(100,Math.round(pr/PROFILE.protein*100))}%"></i></div>
-        <p class="small muted" style="margin-top:8px">${kc>=PROFILE.kcal?`ᛝ მიზანი შესრულდა! +${XP.kcal} XP`:`დარჩა <b>${PROFILE.kcal-kc}</b> კკალ. მიზნის შესრულებაზე +${XP.kcal} XP.`}</p>
+        <p class="small muted" style="margin-top:8px">${kc>PROFILE.kcal+800?`🩺 დღეს მიზანზე ბევრად მეტი შეჭამე. მეტი XP არ ემატება — ზომიერება ჯანსაღი მასისთვის მნიშვნელოვანია.`:kc>=PROFILE.kcal?`ᛝ მიზანი შესრულდა! +${XP.kcal} XP · +5 🪙`:`დარჩა <b>${PROFILE.kcal-kc}</b> კკალ. მიზნის შესრულებაზე +${XP.kcal} XP.`}</p>
+        ${yl.length&&!list.length?`<button class="btn ghost" style="margin-top:6px;padding:8px 12px;font-size:.85rem" data-frepeat>↻ გუშინდელის გამეორება</button>`:""}
       </div>
     </div>
-    <div class="chips">${FOODS.map((f,i)=>`<button class="chip" data-food="${i}"><span class="ci" aria-hidden="true">${f.i}</span><b>${esc(f.n)}</b><small>${esc(f.u)} · ${f.k}</small></button>`).join("")}</div>
-    <div class="row" style="margin-top:10px"><input type="number" inputmode="numeric" id="fk" placeholder="სხვა: კკალ" aria-label="კალორია"><input type="number" inputmode="numeric" id="fp" placeholder="ცილა, გ" aria-label="ცილა გრამებში"><button class="btn" data-fcustom>+</button></div>
-    ${list.length?`<ul class="flist">${list.map((f,i)=>`<li><span>${f.i||"🍽️"} ${esc(f.n)}</span><span><span class="num">${f.k}</span> კკალ · ${f.p} გ <button class="del" data-fdel="${i}" aria-label="წაშლა">✕</button></span></li>`).join("")}</ul>`:`<p class="small muted" style="margin-top:10px">დააჭირე საკვებს, როცა შეჭამ — კალორია და ცილა თავისით დაითვლება. რიცხვები დაახლოებითია.</p>`}
+    <input type="search" id="fq" class="fsearch" placeholder="🔍 მოძებნე საკვები…" value="${esc(q)}" aria-label="საკვების ძებნა">
+    ${q?"":`<div class="fcats" role="tablist">${cats.map(c=>`<button class="fcat" data-fcat="${esc(c)}" aria-pressed="${c===ui.fcat}">${esc(c)}</button>`).join("")}</div>`}
+    <div class="fmul"><span class="small muted">პორცია:</span>${ML.map(([v,l])=>`<button data-fmul="${v}" aria-pressed="${v===mul}">${l}</button>`).join("")}</div>
+    <div class="chips">${shown.length?shown.map(f=>`<button class="chip" data-food="${f.key}"><span class="ci" aria-hidden="true">${f.i||"🍽️"}</span><b>${esc(f.n)}</b><small>${esc(f.u||"")} · ${Math.round(f.k*mul)}</small></button>`).join(""):`<p class="small muted" style="grid-column:1/-1">ვერაფერი მოიძებნა. ქვემოთ საკუთარი დაამატე.</p>`}</div>
+    <details class="custom"><summary>+ საკუთარი საკვები</summary>
+      <input type="text" id="fn" placeholder="სახელი (მაგ. დედის ბორში)" aria-label="სახელი" style="margin-top:8px">
+      <div class="row" style="margin-top:8px"><input type="number" inputmode="numeric" id="fk" placeholder="კკალ" aria-label="კალორია"><input type="number" inputmode="numeric" id="fp" placeholder="ცილა, გ" aria-label="ცილა"><button class="btn" data-fcustom>დამატება</button></div>
+      <p class="small muted" style="margin-top:6px">სახელით დამატებული საკვები „My Foods“-ში შეინახება.</p></details>
+    ${list.length?`<ul class="flist">${list.map((f,i)=>`<li><span>${f.i||"🍽️"} ${esc(f.n)}${f.m&&f.m!==1?` <span class="muted small">×${f.m}</span>`:""}</span><span><span class="num">${f.k}</span> კკალ · ${f.p} გ <button class="del" data-fdel="${i}" aria-label="წაშლა">✕</button></span></li>`).join("")}</ul>`:`<p class="small muted" style="margin-top:10px">დააჭირე საკვებს, როცა შეჭამ. რიცხვები დაახლოებითია.</p>`}
   </div>`;
 }
 function vFood(){
@@ -1301,15 +1790,45 @@ function vFood(){
   <div class="win">
     <div class="meal"><span class="time">09:00</span><div><b class="num">Breakfast</b> + ☀️ D3<br>3 კვერცხი, 2 ნაჭერი პური, 50 გ ყველი, 1 ბანანი<div class="k">≈ 650 კალორია</div></div></div>
     <div class="meal"><span class="time">13:30</span><div><b class="num">Lunch</b><br>150 გ ქათამი ან საქონელი, დიდი თეფში ბრინჯი ან წიწიბურა, სალათი ზეთით, პური<div class="k">≈ 800 კალორია</div></div></div>
-    <div class="meal"><span class="time">17:00</span><div><b class="num">🥤 Gainer + 🥄 Creatine</b><br>მისიის დღეს — ვარჯიშის შემდეგ<div class="k">≈ 700 კალორია (ეტიკეტის მიხედვით)</div></div></div>
+    <div class="meal"><span class="time">17:00</span><div><b class="num">🥤 Gainer + 🥄 Creatine</b><br>მისიის დღეს — ვარჯიშის შემდეგ. 3 მერქი + 5 გ კრეატინი 450 მლ რძეში/წყალში<div class="k">≈ 700 კალორია (ეტიკეტის მიხედვით)</div></div></div>
     <div class="meal"><span class="time">20:30</span><div><b class="num">Dinner</b><br>ლობიო, თევზი ან ხორცი + კარტოფილი, ბოსტნეული<div class="k">≈ 600 კალორია</div></div></div>
     <div class="meal"><span class="time">22:30</span><div><b class="num">Snack</b><br>მაწონი ან ხაჭო + ერთი მუჭა თხილი/ნიგოზი<div class="k">≈ 300 კალორია</div></div></div>
   </div>
   <h2>Elixirs</h2>
-  <div class="win supp"><span class="ico">🥄</span><div><h3 class="num">Creatine</h3><div class="dose">5 გ ყოველდღე</div><ul><li>დასვენების დღესაც. დრო არ აქვს მნიშვნელობა.</li><li>პირველ კვირებში +1–2 კგ წყალი ნორმალურია.</li><li>ბევრი წყალი დალიე.</li></ul></div></div>
-  <div class="win supp"><span class="ico">☀️</span><div><h3 class="num">Vitamin D3 · 3000 IU</h3><div class="dose">1 კაფსულა დღეში</div><ul><li>საუზმესთან ერთად — ცხიმთან უკეთ შეიწოვება.</li><li>90 კაფსულა ≈ 3 თვე. დოზა არ გააორმაგო.</li></ul></div></div>
-  <div class="win supp"><span class="ico">🥤</span><div><h3 class="num">Mass Gainer · Muscle Mass 3000</h3><div class="dose">1 პორცია დღეში</div><ul><li>რძით მოამზადე — მეტი კალორია იქნება.</li><li>თუ მუცელს ამძიმებს, გაყავი ორად: დილით და საღამოს.</li><li>საჭმელს არ ანაცვლებს.</li></ul></div></div>
-  <h2>Hero's Code</h2>
+  <p class="small muted" style="text-align:center;margin-top:-4px">როდის, რამდენჯერ და რაში — სამივე დანამატი.</p>
+  <div class="win supp"><span class="ico">🥄</span><div style="min-width:0"><h3 class="num">Creatine Monohydrate</h3><div class="dose">5 გ · დღეში 1-ჯერ · 200–250 მლ</div>
+    <dl class="elx">
+      <dt>რამდენჯერ</dt><dd>დღეში <b>ერთხელ</b>, ყოველდღე — დასვენების დღესაც. „დატვირთვის ფაზა“ საჭირო არ არის.</dd>
+      <dt>მისიის დღეს</dt><dd>ვარჯიშის შემდეგ, გეინერთან ერთად (ერთ შეიკერში).</dd>
+      <dt>დასვენების დღეს</dt><dd>საუზმესთან ან ნებისმიერ ჭამასთან. მთავარია, ყოველდღე ერთ დროს.</dd>
+      <dt>რაში</dt><dd>200–250 მლ წყალში ან წვენში, ან გეინერის 450 მლ-ში. აურიე და მაშინვე დალიე — ძირში ილექება.</dd>
+      <dt>თუ გამოგრჩა</dt><dd>უბრალოდ გააგრძელე მეორე დღეს. დოზა <b>არ გააორმაგო</b>.</dd>
+      <dt>მნიშვნელოვანი</dt><dd>დღეში 3 ლ წყალი. პირველ კვირებში +1–2 კგ წყლის წონა ნორმალურია. ზუსტი დოზა ეტიკეტზეც გადაამოწმე.</dd>
+    </dl></div></div>
+  <div class="win supp"><span class="ico">☀️</span><div style="min-width:0"><h3 class="num">Vitamin D3 · 3000 IU</h3><div class="dose">1 კაფსულა · დღეში 1-ჯერ · 1 ჭიქა წყალი</div>
+    <dl class="elx">
+      <dt>რამდენჯერ</dt><dd>დღეში <b>ერთხელ</b>, ყოველდღე.</dd>
+      <dt>როდის</dt><dd>საუზმის ან სადილის დროს — ცხიმიან საკვებთან (კვერცხი, ყველი, ზეთი) უკეთ შეიწოვება.</dd>
+      <dt>რაში</dt><dd>გადაყლაპე 1 ჭიქა (≈200 მლ) წყლით.</dd>
+      <dt>თუ გამოგრჩა</dt><dd>მეორე დღეს ჩვეულებრივი 1 კაფსულა. <b>არ გააორმაგო</b>.</dd>
+      <dt>მნიშვნელოვანი</dt><dd>90 კაფსულა ≈ 3 თვე. თუ დიდი ხნით აპირებ მიღებას, კარგია 25(OH)D-ის ანალიზი და ექიმთან კონსულტაცია.</dd>
+    </dl></div></div>
+  <div class="win supp"><span class="ico">🥤</span><div style="min-width:0"><h3 class="num">Mass Gainer · Muscle Mass 3000</h3><div class="dose">3 მერქი (150 გ) · დღეში 1-ჯერ · 450 მლ</div>
+    <dl class="elx">
+      <dt>რამდენჯერ</dt><dd>დღეში <b>1 სრული პორცია</b>. თუ მუცელს ამძიმებს, გაყავი <b>2-ად</b>: 1½ მერქი ≈225 მლ სითხეში, ორჯერ.</dd>
+      <dt>მისიის დღეს</dt><dd>ვარჯიშის დასრულებიდან <b>1 საათში</b>, კრეატინთან ერთად.</dd>
+      <dt>დასვენების დღეს</dt><dd>ჭამებს შორის — მაგ. 11:00-ზე ან 17:00-ზე. ჭამის ნაცვლად არა!</dd>
+      <dt>რაში</dt><dd>ეტიკეტის მიხედვით 1 მერქი = 50 გ. 3 მერქი <b>450 მლ</b> წყალში ან რძეში (≈150 მლ თითო მერქზე). ჯერ სითხე, მერე ფხვნილი, შეანჯღრიე 20–30 წამი.</dd>
+      <dt>წყალი თუ რძე</dt><dd>რძით +≈290 კკალ და +15 გ ცილა — მასისთვის უკეთესია. წყლით უფრო მსუბუქია მუცლისთვის.</dd>
+      <dt>თუ გამოგრჩა</dt><dd>იმ დღეს უფრო მეტი ჭამე. მეორე დღეს ჩვეულებრივ 1 პორცია.</dd>
+    </dl></div></div>
+  <div class="win small"><span class="tag">Daily Ritual · მაგალითი</span>
+    <table class="week"><tr><td class="num">09:00</td><td>საუზმე + ☀️ D3 (დასვენების დღეს + 🥄 კრეატინი)</td></tr>
+    <tr><td class="num">17:00</td><td>⚔️ მისია</td></tr>
+    <tr><td class="num">18:00</td><td>🥤 გეინერი 450 მლ რძეში + 🥄 კრეატინი 5 გ</td></tr>
+    <tr><td class="num">მთელი დღე</td><td>💧 3 ლიტრი წყალი</td></tr></table></div>
+  
+<h2>Hero's Code</h2>
   <div class="win"><ol class="rules">
     <li>ჭამა არასდროს გამოტოვო, თუნდაც მადა არ გქონდეს.</li>
     <li>ყოველ ჭამაში იყოს ცილა: კვერცხი, ხორცი, თევზი, ყველი, ხაჭო, ლობიო.</li>
@@ -1328,13 +1847,59 @@ function vFood(){
   </div>
   <h2>Settings</h2>
   <div class="win">
-    <label class="f" for="rh">New day starts at</label>
+    <div class="setrow"><span><b class="num">🔊 Sound</b><br><span class="small muted">ხმის ეფექტები</span></span><button class="switch ${S.sound===false?"":"on"}" data-sound aria-pressed="${S.sound!==false}" aria-label="ხმა"><i></i></button></div>
+    <label class="f" for="vol" style="margin-top:12px">Volume · <span id="volv">${S.vol==null?80:S.vol}</span>%</label>
+    <input type="range" id="vol" min="0" max="100" step="5" value="${S.vol==null?80:S.vol}" ${S.sound===false?"disabled":""}>
+    <label class="f" for="rh" style="margin-top:16px">New day starts at</label>
     <select id="rh">${RESET_OPTS.map(([v,l])=>`<option value="${v}" ${v===rh?"selected":""}>${l}</option>`).join("")}</select>
     <p class="small muted" style="margin-top:6px">თუ გვიან იძინებ, აირჩიე მაგ. 04:00 — მაშინ 00:00-დან 04:00-მდე მონიშნული კვესტები ჯერ კიდევ წინა დღეს ჩაეთვლება.</p>
     <label class="f" for="sd" style="margin-top:14px">Adventure start date</label>
     <div class="row"><input type="date" id="sd" value="${S.start}"><button class="btn ghost" data-setstart>შეცვლა</button></div>
     <button class="btn warn full" style="margin-top:14px" data-reset>ყველაფრის თავიდან დაწყება</button>
   </div>`;
+}
+
+function vJourney(){
+  const g=game(), tk=todayKey(), D=g.dayRec;
+  if(!ui.jm) ui.jm=tk.slice(0,7);
+  const [Y,Mo]=ui.jm.split("-").map(Number), first=new Date(Y,Mo-1,1), dim=new Date(Y,Mo,0).getDate(), off=(first.getDay()+6)%7;
+  const sel=ui.jday||tk;
+  let cells=""; for(let i=0;i<off;i++) cells+=`<span class="cd empty"></span>`;
+  for(let d=1;d<=dim;d++){ const k=Y+"-"+pad(Mo)+"-"+pad(d), r=D[k], fut=k>tk, pre=k<S.start;
+    let cl=fut||pre?"none":r?(r.comp?"perf":r.rec?"rec":k<tk?(r.dx<0?"miss":"part"):"today"):"none";
+    const icons=r?((r.mis?"⚔":"")+(r.tower?"🗼":"")+(r.rec?"🩹":"")):"";
+    cells+=`<button class="cd ${cl} ${k===sel?"sel":""} ${k===tk?"tod":""}" data-jday="${k}" ${fut||pre?"disabled":""}><span class="num">${d}</span><i>${icons}</i></button>`; }
+  const r=D[sel], dd=S.days[sel]||{c:{}}, qs=questsFor(sel), ses=S.sessions.filter(s=>s.d===sel), wt=S.weights.find(w=>w.d===sel), lg=g.log.filter(l=>l.d===sel);
+  const kc=kcalDay(sel), pr=protDay(sel);
+  const days=Math.max(1,Math.round((parse(tk)-parse(S.start))/864e5)+1), perf=Object.values(D).filter(x=>x.comp).length;
+  const last30=[]; for(let i=29;i>=0;i--){ const k=addDays(tk,-i); last30.push({k,v:(D[k]&&D[k].dx)||0,hp:D[k]?D[k].hp:null}); }
+  const mx=Math.max(20,...last30.map(x=>Math.abs(x.v)));
+  const bars=last30.map((x,i)=>{ const h=Math.abs(x.v)/mx*44, y=x.v>=0?50-h:50; return `<rect x="${i*10+1}" y="${y.toFixed(1)}" width="8" height="${Math.max(1,h).toFixed(1)}" rx="1.5" style="fill:${x.v>=0?"var(--gold)":"var(--ember)"}"/>`; }).join("");
+  const hpPts=last30.map((x,i)=>x.hp==null?null:[i*10+5, 100-(x.hp/g.maxHp)*40]).filter(Boolean);
+  const hpLine=hpPts.length>1?`<path d="${hpPts.map((p,i)=>(i?"L":"M")+p[0]+" "+p[1].toFixed(1)).join(" ")}" fill="none" stroke="#E23B4E" stroke-width="1.6"/>`:"";
+  return `<h1>Journey</h1><div class="sub">${days} days on the Path</div>
+  <div class="jsum">
+    <div><b class="num">${perf}</b><span>Perfect Days</span></div><div><b class="num">${Object.values(D).filter(x=>x.mis).length}</b><span>Missions</span></div><div><b class="num">${g.best}</b><span>Best Streak</span></div>
+    <div><b class="num">${(g.rawCur-PROFILE.startKg>=0?"+":"")+(g.rawCur-PROFILE.startKg).toFixed(1)}</b><span>kg</span></div><div><b class="num">${g.floors}</b><span>Tower Floor</span></div><div><b class="num">${BOSSES.filter(b=>g.maxKg>=b.kg).length}/${BOSSES.length}</b><span>Bosses</span></div>
+  </div>
+  <div class="win">
+    <div class="calhead"><button class="btn ghost sm" data-jm="-1" aria-label="წინა თვე">‹</button><b class="num">${MONTHS_EN[Mo-1]} ${Y}</b><button class="btn ghost sm" data-jm="1" aria-label="შემდეგი თვე">›</button></div>
+    <div class="cal">${["Mo","Tu","We","Th","Fr","Sa","Su"].map(x=>`<span class="cw num">${x}</span>`).join("")}${cells}</div>
+    <div class="legend small"><span><i class="lg perf"></i>სრული</span><span><i class="lg part"></i>ნაწილობრივ</span><span><i class="lg miss"></i>სასჯელი</span><span><i class="lg rec"></i>Recovery</span></div>
+  </div>
+  <div class="win lit"><span class="tag">${WD_EN[parse(sel).getDay()]} · ${fmtDateEn(sel)}</span>
+    ${r?`<div class="jday"><span class="num" style="color:${r.dx>=0?"var(--gold)":"var(--ember)"}">${r.dx>=0?"+":""}${r.dx} XP</span><span class="num" style="color:var(--gold)">${r.dg>=0?"+":""}${r.dg} 🪙</span><span class="num" style="color:#E23B4E">❤️ ${r.hp}</span>${r.comp?`<span class="fx good">ᛝ Perfect</span>`:r.rec?`<span class="fx">🩹 Recovery</span>`:""}</div>`:`<p class="small muted">ამ დღის ჩანაწერი არ არის.</p>`}
+    <ul class="jq">${qs.map(q=>`<li class="${dd.c[q.id]?"ok":"no"}">${dd.c[q.id]?"✓":"✗"} ${q.i} ${esc(q.t)}</li>`).join("")}${dd.c.bounty?`<li class="ok">✓ 🎯 Bounty</li>`:""}</ul>
+    ${ses.length?ses.map(s=>`<div class="small" style="margin-top:6px">⚔️ <b>${WORKOUTS[s.type].name}</b> — ${sessReps(s)} გამეორება</div>`).join(""):""}
+    ${kc?`<div class="small" style="margin-top:4px">🍖 ${kc} კკალ · ${pr} გ ცილა</div>`:""}
+    ${wt?`<div class="small" style="margin-top:4px">⚖️ ${wt.kg.toFixed(1)} კგ</div>`:""}
+    ${lg.length?`<ul class="hist" style="margin-top:8px">${lg.map(l=>`<li><span>${l.i} ${esc(l.t)}</span><span class="num small" style="color:${l.good?"var(--gold)":"var(--ember)"}">${esc(l.v)}</span></li>`).join("")}</ul>`:""}
+  </div>
+  <h2>Last 30 Days</h2>
+  <div class="win"><svg viewBox="0 0 300 104" width="100%" aria-label="XP და HP ბოლო 30 დღეში"><line x1="0" x2="300" y1="50" y2="50" style="stroke:var(--line)"/>${bars}${hpLine}</svg>
+    <div class="legend small"><span><i class="lg perf"></i>XP / დღე</span><span><i class="lg miss"></i>XP დანაკარგი</span><span><i class="lg" style="background:#E23B4E;height:2px"></i>HP</span></div></div>
+  <h2>Weight</h2>
+  <div class="win">${chart(sortedW())}</div>`;
 }
 
 /* ================= რენდერი და მოვლენები ================= */
@@ -1344,7 +1909,7 @@ function xpFloat(x,y,txt){ if(REDUCED) return; const e=document.createElement("d
 function ripple(el){ if(REDUCED) return; const r=document.createElement("span"); r.className="ripple"; el.appendChild(r); setTimeout(()=>r.remove(),800); }
 function render(){
   sndUI(); applyPal();
-  const app=$("#app"); app.innerHTML={today:vToday,train:vTrain,hero:vHero,food:vFood}[ui.tab]();
+  const app=$("#app"); app.innerHTML={today:vToday,train:vTrain,hero:vHero,journey:vJourney,food:vFood}[ui.tab]();
   if(ui.enter&&!REDUCED){ app.classList.remove("enter"); void app.offsetWidth; app.classList.add("enter"); setTimeout(()=>app.classList.remove("enter"),1400); } ui.enter=false;
   if(ui.hitFrom!=null){ const gh=$("#hpghost"), g=game(); if(gh&&g.boss){ setTimeout(()=>{ gh.style.width=(bossHP(g.boss,g.maxKg).pct*100).toFixed(1)+"%"; },450); } setTimeout(()=>{ const c=$(".boss-enc"); c&&c.classList.remove("hit"); },700); ui.hitFrom=null; }
   document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===ui.tab));
@@ -1353,19 +1918,23 @@ function act(){ save(); render(); celebrate(); }
 function addWeight(k,val){
   const kg=parseFloat(String(val).replace(",","."));
   if(!(kg>30&&kg<200)){toast("ჩაწერე წონა კილოგრამებში, მაგ. 54.6",1);return false;}
-  const g0=game(), b0=g0.boss, pct0=b0?bossHP(b0,g0.maxKg).pct:null;
+  const g0=game(), b0=g0.boss, h0=b0?bossHP(b0,g0.cur):null;
   S.weights=S.weights.filter(w=>w.d!==k); S.weights.push({d:k,kg});
-  const g1=game();
-  if(b0 && g1.maxKg>g0.maxKg){ const dmg=Math.min(g1.maxKg,b0.kg)-g0.maxKg; ui.hitFrom=pct0; SFX.play("hit"); toast("⚔️ "+b0.name+" −"+dmg.toFixed(1)+" HP · +"+XP.weigh+" XP"); screenFX("shake",b0.col+"55"); }
+  const g1=game(), h1=b0?bossHP(b0,g1.cur):null;
+  if(b0&&h1.left<h0.left){ ui.hitFrom=h0.pct; SFX.play("hit"); toast("⚔️ "+b0.name+" −"+(h0.left-h1.left).toFixed(1)+" HP · +"+XP.weigh+" XP"); screenFX("shake",b0.col+"55"); }
+  else if(b0&&h1.left>h0.left){ ui.hitFrom=h0.pct; SFX.play("heal"); toast("🩸 "+b0.name+" გამოჯანმრთელდა +"+(h1.left-h0.left).toFixed(1)+" HP — წონა დაიკლო",1); screenFX("","#D8283F55"); }
   else { SFX.play("save"); toast("+"+XP.weigh+" XP · "+kg.toFixed(1)+" კგ"); }
   return true;
 }
 document.addEventListener("click",e=>{
   const t=e.target.closest("button"); if(!t) return;
   const R=S.run;
-  if(t.id==="snd"){ S.sound = S.sound===false; save(); sndUI(); if(S.sound){SFX.init();SFX.play("check");toast("ხმა ჩართულია");} else toast("ხმა გამორთულია"); return; }
+  if(false&&t.id==="snd"){ S.sound = S.sound===false; save(); sndUI(); if(S.sound){SFX.init();SFX.play("check");toast("ხმა ჩართულია");} else toast("ხმა გამორთულია"); return; }
   if("close" in t.dataset){SFX.play("tap");$("#over").classList.remove("on");celebrate();return;}
   /* runner */
+  if("rpain" in t.dataset){ if(!confirm("შევწყვიტოთ მისია? დღე Recovery Day გახდება — სასჯელის გარეშე.")) return;
+    const k=todayKey(), R=S.run; if(R&&Object.keys(R.reps).length){ S.sessions=S.sessions.filter(s=>!(s.d===k&&s.type===R.type)); S.sessions.push({d:k,type:R.type,sets:JSON.parse(JSON.stringify(R.reps))}); }
+    dayData(k).rec=true; S.run=null; closeRun(); SFX.play("uncheck"); alert("სწორი გადაწყვეტილებაა. სახსრის ან მკვეთრი ტკივილის დროს ვარჯიში შეწყვიტე. დაისვენე, და თუ ტკივილი 2–3 დღეში არ გაივლის — მიმართე ექიმს."); act(); return; }
   if("rexit" in t.dataset){ SFX.play("uncheck"); save(); closeRun(); toast("მისია შეჩერდა — შეგიძლია გააგრძელო"); return; }
   if("rnext" in t.dataset){ SFX.play("start"); R.step=0;R.set=0;R.cur=null;save();renderRun();return; }
   if(t.dataset.rstep){ SFX.play("step"); const ex=WORKOUTS[R.type].ex[R.step]; const st=ex.unit==="sec"?5:1; R.cur=Math.max(0,(R.cur||0)+st*(+t.dataset.rstep)); const v=$("#rv"); if(v) v.textContent=R.cur; return; }
@@ -1374,23 +1943,52 @@ document.addEventListener("click",e=>{
   if("rskip" in t.dataset){ SFX.play("tap"); R.rest=false;save();renderRun();return; }
   if("radd" in t.dataset){ SFX.play("step"); R.restEnd+=15000; R.restDur=(R.restDur||60)+15; return; }
   if("rfinish" in t.dataset){ SFX.play("mission"); const b=t.getBoundingClientRect(); burst(b.left+b.width/2,b.top+b.height/2); finishRun(); return; }
-  if(t.dataset.run){ SFX.init(); SFX.play("tap"); startRun(t.dataset.run,false); return; }
+  if(t.dataset.run){ const k=todayKey();
+    if(isRec(k)){ if(!confirm("დღეს Recovery Day-ა. ავადმყოფობის ან ტკივილის დროს ვარჯიში შეიძლება ზიანი იყოს. მაინც დავიწყოთ?")) return; }
+    else if(S.sessions.some(s=>s.d===k)&&!(S.run&&S.run.type===t.dataset.run)){ if(!confirm("დღეს უკვე ივარჯიშე. კუნთი დასვენების დროს იზრდება — მეორე ვარჯიში XP-ს არ მოგცემს და აღდგენას შეაფერხებს. მაინც დავიწყოთ?")) return; }
+    else if(!typeFor(k)&&!(S.run)){ if(!confirm("დღეს დასვენების დღეა — კუნთი ახლა აღდგება. დამატებითი ვარჯიში XP-ს არ მოგცემს. მაინც დავიწყოთ?")) return; }
+    SFX.init(); SFX.play("tap"); startRun(t.dataset.run,false); return; }
   if(t.dataset.runreset){ SFX.play("tap"); startRun(t.dataset.runreset,true); return; }
   /* app */
-  if(t.dataset.food){ const f=FOODS[+t.dataset.food], k=todayKey(), dd=dayData(k), before=kcalDay(k);
-    (dd.food ||= []).push({n:f.n,k:f.k,p:f.p,i:f.i}); if(f.q&&!dd.c[f.q]){dd.c[f.q]=true;}
-    const b=t.getBoundingClientRect(); burst(b.left+b.width/2,b.top+b.height/2); SFX.play("food");
-    if(before<PROFILE.kcal&&kcalDay(k)>=PROFILE.kcal){SFX.play("check");toast("🍖 კალორიის მიზანი შესრულდა! +"+XP.kcal+" XP");} else toast("+"+f.k+" კკალ · "+f.n);
+  if("climb" in t.dataset){ const g=game(), f=g.floors+1, T=towerTrial(f); if(g.towerToday) return;
+    if(!confirm(`Floor ${f}: ${T.t} — ${T.n} ${T.u}\n\nშეასრულე? დაადასტურე მხოლოდ მაშინ, თუ ნამდვილად გააკეთე.`)) return;
+    (S.tower ||= []).push({d:todayKey(),f}); const b=t.getBoundingClientRect(); burst(b.left+b.width/2,b.top+b.height/2); SFX.play(T.guard?"challenge":"set"); toast("🗼 Floor "+f+" · +"+T.xp+" XP"+(T.chest?" · 🎁":"")); act(); return; }
+  if(t.dataset.upg){ const it=GEAR.find(x=>x.id===t.dataset.upg), g=game(), L=g.lvl[it.id]||0, cost=Math.round(upCost(it,L)*g.disc); if(L>=5||g.gold<cost) return;
+    (S.upg ||= []).push({d:todayKey(),id:it.id}); const b=t.getBoundingClientRect(); burst(b.left+b.width/2,b.top+b.height/2); SFX.play("talent"); toast("🔨 "+it.n+" +"+(L+1)+" · −"+cost+" 🪙"); act(); return; }
+  if(t.dataset.afilt){ ui.afilt=t.dataset.afilt; if(ui.hsub!=="armory"){ui.hsub="armory";} SFX.play("step"); render(); return; }
+  if(t.dataset.jm){ const [y,m]=(ui.jm||todayKey().slice(0,7)).split("-").map(Number); const d=new Date(y,m-1+(+t.dataset.jm),1); ui.jm=d.getFullYear()+"-"+pad(d.getMonth()+1); SFX.play("step"); render(); return; }
+  if(t.dataset.jday){ ui.jday=t.dataset.jday; SFX.play("step"); render(); return; }
+  if("rec" in t.dataset){ if(!confirm("დღეს Recovery Day გავხადოთ?\n\nმისია გაუქმდება, სასჯელი არ იქნება და სერია გაიყინება. ავადმყოფობის ან ტკივილის დროს ვარჯიში არ ღირს.")) return; const dd=dayData(todayKey()); dd.rec=true; dd.c.workout=false; SFX.play("save"); toast("🩹 Recovery Day — დაისვენე"); act(); return; }
+  if("unrec" in t.dataset){ const dd=dayData(todayKey()); delete dd.rec; SFX.play("tap"); act(); return; }
+  if(t.dataset.hsub){ ui.hsub=t.dataset.hsub; ui.enter=true; SFX.play("tab"); render(); scrollTo(0,0); return; }
+  if(t.dataset.cls){ const c=CLASSES.find(x=>x.id===t.dataset.cls); if(!confirm(c.i+" "+c.n+" — აირჩიო? შემდეგი შეცვლა 7 დღეში იქნება.")) return; (S.clsLog ||= []).push({d:todayKey(),c:c.id}); SFX.play("equip"); const b=t.getBoundingClientRect(); burst(b.left+b.width/2,b.top+b.height/2); toast("კლასი: "+c.n); act(); return; }
+  if(t.dataset.tal){ (S.talLog ||= []).push({d:todayKey(),t:t.dataset.tal}); SFX.play("talent"); const b=t.getBoundingClientRect(); burst(b.left+b.width/2,b.top+b.height/2); toast(TALENTS.find(x=>x.id===t.dataset.tal).n+" +1"); act(); return; }
+  if(t.dataset.eq){ const it=GEAR.find(x=>x.id===t.dataset.eq), g=game(), on=g.eq[it.s]===it.id; (S.eqLog ||= []).push({d:todayKey(),s:it.s,id:on?null:it.id}); SFX.play(on?"uncheck":"equip"); toast(on?"მოიხსენი: "+it.n:"აღიჭურვე: "+it.n); act(); return; }
+  if("sound" in t.dataset){ S.sound=S.sound===false; save(); if(S.sound){SFX.init();SFX.play("check");} render(); return; }
+  if(t.dataset.food){ const f=foodByKey(t.dataset.food); if(!f) return; const mul=ui.fmul||1, k=todayKey(), dd=dayData(k), before=kcalDay(k);
+    (dd.food ||= []).push({n:f.n,k:Math.round(f.k*mul),p:Math.round(f.p*mul),i:f.i,m:mul}); if(f.q&&!dd.c[f.q]){dd.c[f.q]=true;}
+    S.recent=[f.n].concat((S.recent||[]).filter(n=>n!==f.n)).slice(0,9);
+    const b=t.getBoundingClientRect(); burst(b.left+b.width/2,b.top+b.height/2); xpFloat(b.left+b.width/2,b.top,"+"+Math.round(f.k*mul)+" kcal"); SFX.play("food");
+    if(before<PROFILE.kcal&&kcalDay(k)>=PROFILE.kcal){SFX.play("check");toast("🍖 კალორიის მიზანი შესრულდა! +"+XP.kcal+" XP");} else toast("+"+Math.round(f.k*mul)+" კკალ · "+f.n);
     act(); return; }
+  if(t.dataset.fcat){ ui.fcat=t.dataset.fcat; SFX.play("step"); render(); return; }
+  if(t.dataset.fmul){ ui.fmul=+t.dataset.fmul; SFX.play("step"); render(); return; }
+  if("frepeat" in t.dataset){ const k=todayKey(), y=addDays(k,-1), dd=dayData(k); (dd.food ||= []).push(...((S.days[y]||{}).food||[]).map(f=>({...f}))); if(dd.food.some(f=>/გეინერი/.test(f.n))) dd.c.gainer=true; SFX.play("save"); toast("გუშინდელი მენიუ დაემატა"); act(); return; }
   if(t.dataset.fdel){ const dd=dayData(todayKey()); dd.food.splice(+t.dataset.fdel,1); SFX.play("uncheck"); act(); return; }
-  if("fcustom" in t.dataset){ const kk=parseInt($("#fk").value,10), pp=parseInt($("#fp").value,10)||0;
+  if("fcustom" in t.dataset){ const nm=($("#fn").value||"").trim(), kk=parseInt($("#fk").value,10), pp=parseInt($("#fp").value,10)||0;
     if(!(kk>0&&kk<5000)){toast("ჩაწერე კალორია, მაგ. 450",1);return;}
-    const k=todayKey(), dd=dayData(k), before=kcalDay(k); (dd.food ||= []).push({n:"სხვა",k:kk,p:pp,i:"🍽️"}); SFX.play("food");
-    if(before<PROFILE.kcal&&kcalDay(k)>=PROFILE.kcal){SFX.play("check");toast("🍖 კალორიის მიზანი შესრულდა! +"+XP.kcal+" XP");} else toast("+"+kk+" კკალ");
+    const k=todayKey(), dd=dayData(k), before=kcalDay(k); (dd.food ||= []).push({n:nm||"სხვა",k:kk,p:pp,i:"🍽️"});
+    if(nm){ S.myFoods=(S.myFoods||[]).filter(f=>f.n!==nm).concat({n:nm,u:"1 პორცია",k:kk,p:pp,i:"🍽️"}); S.recent=[nm].concat((S.recent||[]).filter(n=>n!==nm)).slice(0,9); }
+    SFX.play("food");
+    if(before<PROFILE.kcal&&kcalDay(k)>=PROFILE.kcal){SFX.play("check");toast("🍖 კალორიის მიზანი შესრულდა! +"+XP.kcal+" XP");} else toast("+"+kk+" კკალ"+(nm?" · შენახულია My Foods-ში":""));
     act(); return; }
+  if(t.dataset.buy){ const g=game(), it=t.dataset.buy==="deal"?{id:"deal",n:dealFor(todayKey()).n,i:dealFor(todayKey()).i,cost:DEAL_PRICE[dealFor(todayKey()).r]}:SHOP.find(x=>x.id===t.dataset.buy); if(!it||g.gold<Math.round(it.cost*g.disc)) return;
+    (S.shop ||= []).push({d:todayKey(),item:it.id}); const b=t.getBoundingClientRect(); burst(b.left+b.width/2,b.top+b.height/2); SFX.play("coin");
+    if(it.id==="revive") setTimeout(()=>SFX.play("revive"),250);
+    toast(it.i+" "+it.n+" · −"+Math.round(it.cost*g.disc)+" 🪙"); act(); return; }
   if("goFood" in t.dataset){ SFX.play("tab"); ui.enter=true; ui.tab="food"; render(); scrollTo(0,0); return; }
   if(t.dataset.pal){ const p=PALETTES.find(x=>x.id===t.dataset.pal), g=game();
-    if(g.lv<p.lv){ const rk=RANKS.find(r=>r.lv===p.lv); toast("🔒 "+p.name+" იხსნება "+(rk?rk.name+" ":"")+"რანგზე (LV "+p.lv+")",1); return; }
+    if(g.maxLv<p.lv){ const rk=RANKS.find(r=>r.lv===p.lv); toast("🔒 "+p.name+" იხსნება "+(rk?rk.name+" ":"")+"რანგზე (LV "+p.lv+")",1); return; }
     S.pal=p.id; const b=t.getBoundingClientRect(); SFX.play("equip"); save(); render(); burst(b.left+b.width/2,b.top+b.height/2); toast("აურა: "+p.name); return; }
   if(t.dataset.tab){SFX.play("tab");ui.tab=t.dataset.tab;ui.enter=true;render();scrollTo(0,0);return;}
   if(t.dataset.check){const k=todayKey(),dd=dayData(k),id=t.dataset.check;dd.c[id]=!dd.c[id];
@@ -1418,11 +2016,12 @@ document.addEventListener("click",e=>{
     try{ if(!v.startsWith("MASA1:")) throw 0; const o=JSON.parse(decodeURIComponent(escape(atob(v.slice(6)))));
       if(!o||typeof o!=="object"||!o.days||!Array.isArray(o.weights)) throw 0;
       if(!confirm("ახლანდელი მონაცემები შეიცვლება კოდიდან ჩატვირთულით. გავაგრძელო?")) return;
-      S=Object.assign(blank(),o); S.v4init=true; markSeen(); S.updatedAt=0; save(); ui.xcode=null; render(); SFX.play("equip"); toast("პროგრესი წარმატებით გადმოვიდა!");
+      S=Object.assign(blank(),o); S.v6init=true; markSeen(); S.updatedAt=0; save(); ui.xcode=null; render(); SFX.play("equip"); toast("პროგრესი წარმატებით გადმოვიდა!");
     }catch(e){ toast("კოდი არასწორია — დარწმუნდი, რომ მთლიანად ჩასვი",1); } return; }
   if("setstart" in t.dataset){const v=$("#sd").value;if(v){S.start=v;act();toast("თარიღი შეიცვალა");}return;}
-  if("reset" in t.dataset){if(confirm("ნამდვილად წავშალო ყველა ჩანაწერი? დონე, XP და ტიტულები განულდება.")){S=blank();S.v4init=true;save();render();toast("ახალი თავგადასავალი დაიწყო");}return;}
+  if("reset" in t.dataset){if(confirm("ნამდვილად წავშალო ყველა ჩანაწერი? დონე, XP და ტიტულები განულდება.")){S=blank();S.v6init=true;save();render();toast("ახალი თავგადასავალი დაიწყო");}return;}
 });
+document.addEventListener("input",e=>{ if(e.target.id==="vol"){ S.vol=+e.target.value; SFX.vol(S.vol); const v=$("#volv"); if(v) v.textContent=S.vol; clearTimeout(window._vt); window._vt=setTimeout(()=>{save();SFX.play("check");},250); return; } if(e.target.id==="fq"){ ui.fq=e.target.value; render(); const f=$("#fq"); if(f){ f.focus(); const L=f.value.length; try{f.setSelectionRange(L,L);}catch(_){} } } });
 document.addEventListener("change",e=>{ if(e.target.id==="rh"){ S.resetHour=+e.target.value; RESET_H=S.resetHour; SFX.play("save"); save(); render(); toast("ახალი დღე იწყება "+String(S.resetHour).padStart(2,"0")+":00-ზე"); } });
 document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&$("#over").classList.contains("on")) $("#over").classList.remove("on"); });
 document.addEventListener("visibilitychange",()=>{ if(!document.hidden && ui.running && S.run) renderRun(); });
@@ -1446,7 +2045,11 @@ document.addEventListener("visibilitychange",()=>{ if(!document.hidden && ui.run
   requestAnimationFrame(frame);
 })();
 
-if(!S.v4init){markSeen();S.v4init=true;}
+(function(){ const sp=$("#splash"); if(!sp) return; let done=false;
+  const close=(tap)=>{ if(done) return; done=true; if(tap){ SFX.init(); SFX.play("enter"); } sp.classList.add("out"); setTimeout(()=>{ sp.remove(); celebrate(); },750); };
+  sp.addEventListener("click",()=>close(true)); setTimeout(()=>close(false), REDUCED?600:3400); })();
+if(!S.penaltyStart){S.penaltyStart=todayKey();}
+if(!S.v6init){markSeen();S.v6init=true;}
 ui.enter=true;
 if(!S.updatedAt) save();
 render();
